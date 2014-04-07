@@ -25,3 +25,11 @@ In a future version, there will be a settings panel where you can costumize the 
 
 Just download and extract wp-slider-captcha to your `wp-content/plugins` directory.
 
+## Changelog
+
+### 0.5
+ - Initial release.
+
+## License
+
+This plugin is available under the [GPLv3 license](https://www.gnu.org/copyleft/gpl.html).
