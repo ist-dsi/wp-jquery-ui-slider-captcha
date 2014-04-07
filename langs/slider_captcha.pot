@@ -1,0 +1,32 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: CAS Maestro\n"
+"POT-Creation-Date: 2014-04-07 13:56-0000\n"
+"PO-Revision-Date: 2014-04-07 13:56-0000\n"
+"Last-Translator: \n"
+"Language-Team: NME <nme@ist.utl.pt>\n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.2\n"
+"X-Poedit-KeywordsList: _;gettext;gettext_noop;_e;__;__ngettext;_n:1,2;"
+"_nc:4c,1,2\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: ..\n"
+
+#: ../wp-slider-captcha.php:28
+msgid "Swipe to Validate"
+msgstr ""
+
+#: ../wp-slider-captcha.php:29
+msgid "You can now Submit"
+msgstr ""
+
+#: ../wp-slider-captcha.php:98
+msgid ""
+"<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation... "
+"Please make sure you have Javascript enabled on your browser."
+msgstr ""
