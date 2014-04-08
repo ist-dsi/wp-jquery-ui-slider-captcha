@@ -5,6 +5,8 @@ The WordPress jQuery UI Slider Captcha is a WordPress plugin that will allow you
 
 Using the [jQuery UI Slider Captcha](https://github.com/tecnicolisboa/jquery-ui-slider-captcha "jQuery UI Slider Captcha"), we provide an easy way to implement this new method of CAPTCHA interaction on your WordPress.
 
+This plugin was developed by the Computer and Network Services of Técnico Lisboa due to usability concerns with the traditional captcha tool. We wanted to provide a more fluid and quick interaction to the user, while maintaining the validation pattern that a web form requires. This plugin was inspired in similar approaches found in the web.
+
 ## Usage
 
 After the plugin initialization, the CAPTCHA should appear *automagically* on your theme's comment form. If not, of if you want to use the captcha in other part of your template/plugin, you may do like this:
