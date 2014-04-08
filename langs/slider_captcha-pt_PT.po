@@ -17,15 +17,15 @@ msgstr ""
 "Language: pt_PT\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../wp-slider-captcha.php:28
+#: ../slider-captcha.php:28
 msgid "Swipe to Validate"
 msgstr "Arrastar para Validar"
 
-#: ../wp-slider-captcha.php:29
+#: ../slider-captcha.php:29
 msgid "You can now Submit"
 msgstr "Já pode submeter"
 
-#: ../wp-slider-captcha.php:98
+#: ../slider-captcha.php:98
 msgid ""
 "<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation... "
 "Please make sure you have Javascript enabled on your browser."

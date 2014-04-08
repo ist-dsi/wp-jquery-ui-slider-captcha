@@ -1,6 +1,6 @@
 <?php
 /*
-Plugin Name: WP Slider Captcha
+Plugin Name: Slider Captcha
 Plugin URL: http://nme.ist.utl.pt
 Description: Slider Captcha is a module that will replace all the captcha from WordPress. 
 Version: 0.5
@@ -10,12 +10,12 @@ Text Domain: slider_captcha
 */
 
 // plugin folder url
-if(!defined('WP-SLIDER-CAPTCHA-URL')) {
-	define('WP-SLIDER-CAPTCHA-URL', plugin_dir_url( __FILE__ ));
+if(!defined('SLIDER-CAPTCHA-URL')) {
+	define('SLIDER-CAPTCHA-URL', plugin_dir_url( __FILE__ ));
 }
 
-if(!defined('WP-SLIDER-CAPTCHA-PATH')) {
-	define('WP-SLIDER-CAPTCHA-PATH', plugin_dir_path( __FILE__ ));
+if(!defined('SLIDER-CAPTCHA-PATH')) {
+	define('SLIDER-CAPTCHA-PATH', plugin_dir_path( __FILE__ ));
 }
 
 class SliderCaptcha {
@@ -69,9 +69,9 @@ class SliderCaptcha {
 		wp_enqueue_script('jquery-ui-mouse');
 		wp_enqueue_script('jquery-ui-draggable');
 		wp_enqueue_script('jquery-ui-droppable');
-		wp_enqueue_script('jquery-ui-touch-punch', plugins_url( '/js/jquery.ui.touch-punch-improved.js', __FILE__ ), array('jquery-ui-core'), '0.3.1',false);
+		wp_enqueue_script('jquery-ui-touch-punch', plugins_url( '/js/jquery.ui.touch-punch-improved.js', __FILE__ ), array('jquery-ui-core','jquery-ui-mouse','jquery'), '0.3.1',false);
 	
-		wp_enqueue_script('jquery-slider-captcha', plugins_url( '/js/slider-captcha.js', __FILE__ ), array('jquery-ui-core','jquery-ui-touch-punch'), '1.0.0',false);
+		wp_enqueue_script('jquery-slider-captcha', plugins_url( '/js/slider-captcha.min.js', __FILE__ ), array('jquery-ui-core','jquery-ui-touch-punch'), '0.1',false);
 		
 		wp_enqueue_style('slider-captcha-css', plugins_url( '/css/slider-captcha.css', __FILE__ ) );
 	}

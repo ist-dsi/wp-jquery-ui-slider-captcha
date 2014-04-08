@@ -17,15 +17,15 @@ msgstr ""
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../wp-slider-captcha.php:28
+#: ../slider-captcha.php:28
 msgid "Swipe to Validate"
 msgstr ""
 
-#: ../wp-slider-captcha.php:29
+#: ../slider-captcha.php:29
 msgid "You can now Submit"
 msgstr ""
 
-#: ../wp-slider-captcha.php:98
+#: ../slider-captcha.php:98
 msgid ""
 "<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation... "
 "Please make sure you have Javascript enabled on your browser."

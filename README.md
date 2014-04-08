@@ -23,7 +23,7 @@ In a future version, there will be a settings panel where you can costumize the 
 
 ## Installation
 
-Just download and extract wp-slider-captcha to your `wp-content/plugins` directory.
+Just download and extract slider-captcha to your `wp-content/plugins` directory.
 
 ## Changelog
 
