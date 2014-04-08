@@ -113,6 +113,8 @@ function slider_captcha($container = 'p', $settings = null) {
 	global $sliderCaptcha;
 	if($settings == null)
 		$settings = $sliderCaptcha->settings;
+	else
+		$settings = array_merge($sliderCaptcha->settings, $settings);
 	?>
 		<<?=$container?> id="slidercaptcha"> </<?=$container?>>
 		<script type="text/javascript">
