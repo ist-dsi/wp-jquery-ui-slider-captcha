@@ -38,7 +38,7 @@ That's probabily because of the way your theme is built. You will have to edit y
 	slider_captcha();
 ?>`
 
-== What if I want to add another Slider? Can I costumize it? ==
+= What if I want to add another Slider? Can I costumize it? =
 Sure, you can use the `slider_captcha($container, $params)` function to insert a new Slider Captcha.
 The `$container` is the container where your CAPTCHA will be placed. By default it is "p".
 The `$params` is an array where you can costumize the Slider Captcha, acording to this:
@@ -91,11 +91,20 @@ For instance, if you want to change your hint text and your width, you must send
 	),
 );`
 
+= How do I change the appearence of the comment form Slider Captcha? =
+If you want to change the appearance of your default CAPTCHA, at the moment you need to, either edit the .css (.scss provided), or to edit the slider_captcha.php's default values.
+
+In the upcoming versions, a Settings panel will be added to allow easy costumization of the CAPTCHA.
+
+
 == Screenshots ==
 
 1. The default slider on the WordPress Twenty Fourteen theme.
 
 == Changelog ==
+
+= 0.5.1 =
+* jQuery Slider Captcha version updated with bugfix in HTML5 form validations
 
 = 0.5 =
 * Initial release.
