@@ -3,7 +3,7 @@
 Plugin Name: Slider Captcha
 Plugin URL: http://nme.ist.utl.pt
 Description: Slider Captcha is a module that will replace all the captcha from WordPress. 
-Version: 0.5
+Version: 0.5.2
 Author: NME - Núcleo de Multimédia e E-Learning.
 Author URI: http://nme.ist.utl.pt
 Text Domain: slider_captcha
@@ -19,6 +19,8 @@ if(!defined('SLIDER-CAPTCHA-PATH')) {
 }
 
 class SliderCaptcha {
+
+	public $js_settings;
 
 	public $settings;
 
@@ -40,12 +42,15 @@ class SliderCaptcha {
 
 	function init_default() {
 		//Slider default settings
-		$this->settings = array(
+		$this->js_settings = array(
 			'hintText' => __('Swipe to Validate','slider_captcha'),
 			'textAfterUnlock' => __("You can now Submit",'slider_captcha'),
 			'events' => array(
 				'validateOnServer' => true,
 				),
+			);
+		$this->settings = array(
+			'containerClass' => null,
 			);
 	}
 
@@ -112,11 +117,15 @@ $GLOBALS['sliderCaptcha'] = new SliderCaptcha();
 function slider_captcha($container = 'p', $settings = null) {
 	global $sliderCaptcha;
 	if($settings == null)
-		$settings = $sliderCaptcha->settings;
+		$settings = array_merge($sliderCaptcha->js_settings, $sliderCaptcha->settings);
 	else
-		$settings = array_merge($sliderCaptcha->settings, $settings);
+		$settings = array_merge($sliderCaptcha->js_settings, $sliderCaptcha->settings, $settings);
+
+	$container_class = (isset($settings['containerClass']) && $settings['containerClass']!=NULL 
+		? 'class="' . $settings['containerClass'] . '"' : '');
+
 	?>
-		<<?=$container?> id="slidercaptcha"> </<?=$container?>>
+		<<?=$container?> <?=$container_class?> id="slidercaptcha"> </<?=$container?>>
 		<script type="text/javascript">
 		jQuery(function($) {
 			$( document ).ready(function() {
