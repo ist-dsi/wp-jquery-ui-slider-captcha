@@ -31,6 +31,9 @@ Just download and extract slider-captcha to your `wp-content/plugins` directory.
 
 ## Changelog
 
+###  0.5.3
+ - Added new version of jQuery UI Slider Captcha
+
 ###  0.5.2
  - Added `containerClass` setting to allow a custom class name to the container
  - Fixed bug with Entypo on Windows deviced
