@@ -7,6 +7,8 @@ Using the [jQuery UI Slider Captcha](https://github.com/tecnicolisboa/jquery-ui-
 
 This plugin was developed by the Computer and Network Services of Técnico Lisboa due to usability concerns with the traditional captcha tool. We wanted to provide a more fluid and quick interaction to the user, while maintaining the validation pattern that a web form requires. This plugin was inspired in similar approaches found in the web.
 
+This plugin is currently on WordPress plugins repository, and it is called [Slider Captcha](http://wordpress.org/plugins/slider-captcha/).
+
 ## Usage
 
 After the plugin initialization, the CAPTCHA should appear *automagically* on your theme's comment form. If not, of if you want to use the captcha in other part of your template/plugin, you may do like this:
@@ -28,6 +30,13 @@ In a future version, there will be a settings panel where you can costumize the 
 Just download and extract slider-captcha to your `wp-content/plugins` directory.
 
 ## Changelog
+
+###  0.5.2
+ - Added `containerClass` setting to allow a custom class name to the container
+ - Fixed bug with Entypo on Windows deviced
+
+### 0.5.1
+* jQuery Slider Captcha version updated with bugfix in HTML5 form validations
 
 ### 0.5
  - Initial release.

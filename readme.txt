@@ -4,7 +4,7 @@ Donate link: https://dsi.tecnico.ulisboa.pt
 Tags: slider, captcha, comment, spam
 Requires at least: 3.0
 Tested up to: 3.5
-Stable tag: 0.5
+Stable tag: 0.5.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -91,6 +91,8 @@ For instance, if you want to change your hint text and your width, you must send
 	),
 );`
 
+To add a class to the container, you can use `'containerClass' => 'nameoftheclass' on your $params array.
+
 = How do I change the appearence of the comment form Slider Captcha? =
 If you want to change the appearance of your default CAPTCHA, at the moment you need to, either edit the .css (.scss provided), or to edit the slider_captcha.php's default values.
 
@@ -102,6 +104,10 @@ In the upcoming versions, a Settings panel will be added to allow easy costumiza
 1. The default slider on the WordPress Twenty Fourteen theme.
 
 == Changelog ==
+
+= 0.5.2 =
+* Added `containerClass` setting to allow a custom class name to the container
+* Fixed bug with Entypo on Windows deviced
 
 = 0.5.1 =
 * jQuery Slider Captcha version updated with bugfix in HTML5 form validations
