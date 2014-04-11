@@ -1,12 +1,12 @@
 === Slider CAPTCHA ===
 Contributors: vaurdan, jpargana
 Donate link: https://dsi.tecnico.ulisboa.pt
-Tags: slider, captcha, comment, spam
+Tags: slider, captcha, ui, comment, responsive, spam, antispam, jquery, jquery-ui
 Requires at least: 3.0
-Tested up to: 3.5
+Tested up to: 3.9
 Stable tag: 0.5.3
-License: GPLv2 or later
-License URI: http://www.gnu.org/licenses/gpl-2.0.html
+License: GPLv3
+License URI: https://www.gnu.org/copyleft/gpl.html
 
 Slider CAPTCHA is a WordPress plugin that will allow you to replace or add a CAPTCHA field to the comment form.
 
