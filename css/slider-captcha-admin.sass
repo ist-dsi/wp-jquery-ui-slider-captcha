@@ -1,0 +1,43 @@
+@import 'partials/base'
+
+#form_options_container, #live_preview_container
+  background: #fff
+  margin-top: 20px
+  padding: 10px 20px
+  +rect-radius()
+
+label.label-radio + label.label-radio
+  margin-left: 20px
+
+label + input, label + select
+  margin-left: 10px
+
+p.hint_text
+  float: left
+  & + p.hint_text
+    margin-left: 10px
+
+fieldset
+  p + h3
+    margin-top: 30px
+
+fieldset#slider_styles_container
+  & > h3
+    margin-bottom: 0
+  & > fieldset:first-child
+    float: left
+  & > fieldset
+    float: left
+    width: 50%
+
+.number_input
+  width: 65px
+
+.color_input
+  width: 80px
+
+#slidercaptcha
+  margin-top: 30px
+
+.units
+  color: #888
