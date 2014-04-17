@@ -1,7 +1,7 @@
 <fieldset>
 	<h3><?php _e( 'Select the option to configure form' ,'slider-captcha') ?></h3>
 	<p><?php _e( 'Slider activation should take place in individual form option. Individual slider settings will overide general options for each form.', 'slider-captcha' ); ?></p>
-	<select>
+	<select id="slider_captcha_form_selector">
 		<option><?php _e( 'General options' ,'slider-captcha'); ?></option>
 		<option><?php _e( 'Comments form' ,'slider-captcha'); ?></option>
 		<option><?php _e( 'Registration form' ,'slider-captcha'); ?></option>
