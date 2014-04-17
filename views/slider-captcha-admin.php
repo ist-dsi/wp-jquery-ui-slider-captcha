@@ -2,13 +2,9 @@
 	<h3><?php _e( 'Select the option to configure form' ,'slider-captcha') ?></h3>
 	<p><?php _e( 'Slider activation should take place in individual form option. Individual slider settings will overide general options for each form.', 'slider-captcha' ); ?></p>
 	<select>
-		<option><?php _e( 'General options' ,'slider-captcha'); ?></option>
-		<option><?php _e( 'Comments form' ,'slider-captcha'); ?></option>
-		<option><?php _e( 'Registration form' ,'slider-captcha'); ?></option>
-		<option><?php _e( 'Reset password form' ,'slider-captcha'); ?></option>
-		<option><?php _e( 'Contact form' ,'slider-captcha'); ?></option>
-		<option><?php _e( 'Mailpress registration form' ,'slider-captcha'); ?></option>
-		<option><?php _e( 'Custom' ,'slider-captcha'); ?></option>
+		<?foreach($this->captcha_locations as $machine=>$location):?>
+			<option value="<?=$machine?>"><?=$location?></option>
+		<?endforeach?>
 	<select>
 </fieldset>
 <fieldset id="form_options_container">
@@ -49,7 +45,7 @@
 				<p>
 					<label for="knob_icon_face_before_unlock"><?php _e( 'Icon face', 'slider-captcha' ); ?></label>
 					<select name="knob_icon_face_before_unlock" id="knob_icon_face_before_unlock">
-						<?php include 'font_face_options.php'; ?>
+						<?php _slider_draw_fontface_options() ?>
 					</select>
 				</p>
 				<p>
@@ -86,7 +82,7 @@
 				<p>
 					<label for="knob_icon_face_after_unlock"><?php _e( 'Icon face', 'slider-captcha' ); ?></label>
 					<select name="knob_icon_face_after_unlock" id="knob_icon_face_after_unlock">
-						<?php include 'font_face_options.php'; ?>
+						<?php _slider_draw_fontface_options() ?>
 					</select>
 				</p>
 				<p>

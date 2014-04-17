@@ -30,6 +30,8 @@ class SliderCaptcha {
 	public $js_settings;
 	public $settings;
 
+	public $captcha_locations;
+
 	function __construct() {
 
 		// Load the languages
@@ -65,6 +67,22 @@ class SliderCaptcha {
 			);
 		$this->settings = array(
 			'containerClass' => null,
+			);
+
+/*<option><?php _e( 'General options' ,'slider-captcha'); ?></option>
+		<option><?php _e( 'Comments form' ,'slider-captcha'); ?></option>
+		<option><?php _e( 'Registration form' ,'slider-captcha'); ?></option>
+		<option><?php _e( 'Reset password form' ,'slider-captcha'); ?></option>
+		<option><?php _e( 'Contact form' ,'slider-captcha'); ?></option>
+		<option><?php _e( 'Mailpress registration form' ,'slider-captcha'); ?></option>
+		<option><?php _e( 'Custom' ,'slider-captcha'); ?></option> */
+
+		//Default captcha locations
+		$this->captcha_locations = array(
+				'general' 	    	=> __( 'General options' ,'slider-captcha'),
+				'registration'		=> __( 'Registration options' ,'slider-captcha'),
+				'reset_password' 	=> __( 'Reset password form' ,'slider-captcha'),
+				'login' 			=> __( 'Login form', 'slider-captcha'),
 			);
 	}
 
@@ -169,27 +187,3 @@ class SliderCaptcha {
 }
 
 $GLOBALS['sliderCaptcha'] = new SliderCaptcha();
-
-function slider_captcha($container = 'p', $settings = null) {
-	global $sliderCaptcha;
-	if($settings == null)
-		$settings = array_merge($sliderCaptcha->js_settings, $sliderCaptcha->settings);
-	else
-		$settings = array_merge($sliderCaptcha->js_settings, $sliderCaptcha->settings, $settings);
-
-	$container_class = (isset($settings['containerClass']) && $settings['containerClass']!=NULL 
-		? 'class="' . $settings['containerClass'] . '"' : '');
-
-	?>
-		<<?=$container?> <?=$container_class?> id="slidercaptcha"> </<?=$container?>>
-		<script type="text/javascript">
-		jQuery(function($) {
-			$( document ).ready(function() {
-				//Load the slider captcha
-				$("#slidercaptcha").sliderCaptcha(<?=json_encode($settings)?>);
-			});
-		});
-		</script>
-	<?
-
-}
