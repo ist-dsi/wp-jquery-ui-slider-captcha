@@ -19,6 +19,12 @@
   border-top-right-radius: 3px;
   border-bottom-right-radius: 3px; }
 
+#form_options_container > fieldset:first-child {
+  visibility: visible; }
+#form_options_container > fieldset:not(:first-child) {
+  visibility: hidden;
+  height: 0; }
+
 label.label-radio + label.label-radio {
   margin-left: 20px; }
 
@@ -33,11 +39,11 @@ p.hint_text {
 fieldset p + h3 {
   margin-top: 30px; }
 
-fieldset#slider_styles_container > h3 {
+fieldset.slider_styles_container > h3 {
   margin-bottom: 0; }
-fieldset#slider_styles_container > fieldset:first-child {
+fieldset.slider_styles_container > fieldset:first-child {
   float: left; }
-fieldset#slider_styles_container > fieldset {
+fieldset.slider_styles_container > fieldset {
   float: left;
   width: 50%; }
 

@@ -6,6 +6,14 @@
   padding: 10px 20px
   +rect-radius()
 
+#form_options_container > fieldset
+  &:first-child
+    visibility: visible
+  &:not(:first-child)
+    visibility: hidden
+    height: 0
+
+
 label.label-radio + label.label-radio
   margin-left: 20px
 
@@ -21,7 +29,7 @@ fieldset
   p + h3
     margin-top: 30px
 
-fieldset#slider_styles_container
+fieldset.slider_styles_container
   & > h3
     margin-bottom: 0
   & > fieldset:first-child
