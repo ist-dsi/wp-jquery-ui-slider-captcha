@@ -19,15 +19,39 @@ var_dump(slider_get_slider_options('comments'));
 		?>
 		<fieldset id="<?=$machine?>_options_container">
 			<fieldset class="general_settings_container">
+				<?php if ( $i ) : ?>
+				<h3><?=sprintf( __( '%s %s activation', 'slider-captcha'), $location, __('Slider Captcha', 'slider-captcha') ); ?></h3>
+				<p>
+					<label for="<?=$machine?>_slider_enable" class="label-radio">
+						<input value="1" type="radio" name="slider_enable_[<?=$machine?>]" id="<?=$machine?>_slider_enable" checked="checked"> <span><?php _e( 'Enabled' ,'slider_captcha'); ?></span>
+					</label>
+					<label for="<?=$machine?>_slider_disable" class="label-radio">
+						<input value="0" type="radio" name="slider_enable_[<?=$machine?>]" id="<?=$machine?>_slider_disable"> <span><?php _e( 'Disabled' ,'slider_captcha'); ?></span>
+					</label>
+				</p>
+				<?php else: $i = 1; endif; ?>
+
 				<h3><?php _e( 'Type', 'slider-captcha' ); ?></h3>
 				<p>
 					<label for="<?=$machine?>_admin_slider_type_normal" class="label-radio">
-						<input type="radio" name="slider_type_normal[<?=$machine?>]" id="<?=$machine?>_slider_type_normal" value="sidebar" <?=($slider['type']=='normal'|| !isset($slider['type'])) ? 'checked="checked"' : ''?> <span><?php _e( 'Normal' ,'slider_captcha'); ?></span>
+						<input value="normal" type="radio" name="slider_type_normal[<?=$machine?>]" id="<?=$machine?>_slider_type_normal" value="sidebar" <?=($slider['type']=='normal'|| !isset($slider['type'])) ? 'checked="checked"' : ''?>> <span><?php _e( 'Normal' ,'slider_captcha'); ?></span>
 					</label>
 					<label for="<?=$machine?>_admin_slider_type_filled" class="label-radio">
-						<input type="radio" name="slider_type_filled[<?=$machine?>]" id="<?=$machine?>_slider_type_filled" value="sidebar" <?=checked($slider['type'],'filled')?> <span><?php _e( 'Filled' ,'slider_captcha'); ?></span>
+						<input value="filled" type="radio" name="slider_type_filled[<?=$machine?>]" id="<?=$machine?>_slider_type_filled" value="sidebar" <?=checked($slider['type'],'filled')?> <span><?php _e( 'Filled' ,'slider_captcha'); ?></span>
 					</label>
-				</p>			
+				</p>
+				<h4><?php _e( 'Animation type', 'slider-captcha' ); ?></h4>
+				<p>
+					<label for="<?=$machine?>_slider_animation_type_swipe" class="label-radio">
+						<input value="swipe" type="radio" name="slider_animation_type_[<?=$machine?>]" id="<?=$machine?>_slider_animation_type_swipe" checked="checked"> <span><?php _e( 'Swipe' ,'slider_captcha'); ?></span>
+					</label>
+					<label for="<?=$machine?>_slider_animation_type_overlap" class="label-radio">
+						<input value="overlap" type="radio" name="slider_animation_type_[<?=$machine?>]" id="<?=$machine?>_slider_animation_type_overlap"> <span><?php _e( 'Overlap' ,'slider_captcha'); ?></span>
+					</label>
+					<label for="<?=$machine?>_slider_animation_type_overlap_swipe" class="label-radio">
+						<input value="swipe_overlap" type="radio" name="slider_animation_type_[<?=$machine?>]" id="<?=$machine?>_slider_animation_type_overlap_swipe"> <span><?php _e( 'Swipe & overlap' ,'slider_captcha'); ?></span>
+					</label>
+				</p>				
 				<h3><?php _e( 'Dimensions', 'slider-captcha' ); ?></h3>
 				<p>
 					<label for="<?=$machine?>_slider_width"><?php _e( 'Width', 'slider-captcha') ?></label> &times; <label for="<?=$machine?>_slider_height"><?php _e( 'height:', 'slider-captcha') ?></label>
@@ -90,7 +114,7 @@ var_dump(slider_get_slider_options('comments'));
 					<p>
 						<label for="<?=$machine?>_knob_icon_face_after_unlock"><?php _e( 'Icon face', 'slider-captcha' ); ?></label>
 						<select name="knob_icon_face_after_unlock[<?=$machine?>]" id="<?=$machine?>_knob_icon_face_after_unlock">
-							<?php _slider_draw_fontface_options() ?>
+							<?php _slider_draw_fontface_options('entypoStart',$slider) ?>
 						</select>
 					</p>
 					<p>
@@ -115,6 +139,7 @@ var_dump(slider_get_slider_options('comments'));
 						<label for="<?=$machine?>_hint_text_size_after_unlock"><?php _e( 'Hint text size', 'slider-captcha' ); ?></label>
 						<input type="number" class="number_input" name="hint_text_size_after_unlock[<?=$machine?>]" id="<?=$machine?>_hint_text_size_after_unlock" value="" placeholder="">
 						<span class="units"><?php _e( 'px', 'slider-captcha' ); ?></span>
+					</p>
 					<p>
 						<label for="<?=$machine?>_hint_text_color_after_unlock"><?php _e( 'Hint text color', 'slider-captcha' ); ?></label>
 						<input type="text" class="color_input" name="hint_text_color_after_unlock[<?=$machine?>]" id="<?=$machine?>_hint_text_color_after_unlock" value="" placeholder="">
@@ -152,6 +177,6 @@ var_dump(slider_get_slider_options('comments'));
 		'events' => array( 'submitAfterUnlock' => '1')
 	);
 
-	slider_captcha( $container = 'p', $settings );
+	slider_captcha( 'general', $container = 'p', $settings );
 
 ?>

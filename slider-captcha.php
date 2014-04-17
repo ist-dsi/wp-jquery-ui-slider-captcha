@@ -78,8 +78,8 @@ class SliderCaptcha {
 
 		$this->captcha_locations = array(
 				'general' 	    	=> __( 'General options' ,'slider-captcha'),
-				'comments'			=> __( 'Comments options' ,'slider-captcha'),
-				'registration'		=> __( 'Registration options' ,'slider-captcha'),
+				'comments'			=> __( 'Comments form' ,'slider-captcha'),
+				'registration'		=> __( 'Registration form' ,'slider-captcha'),
 				'reset_password' 	=> __( 'Reset password form' ,'slider-captcha'),
 				'login' 			=> __( 'Login form', 'slider-captcha'),
 			);
