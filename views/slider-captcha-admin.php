@@ -12,15 +12,17 @@
 	<select>
 </fieldset>
 <fieldset id="form_options_container">
-	<fieldset id="general_options">
-		<fieldset id="general_settings_container">
+
+	<fieldset id="general_options_container">
+		
+		<fieldset class="general_settings_container">
 			<h3><?php _e( 'Type', 'slider-captcha' ); ?></h3>
 			<p>
 				<label for="admin_slider_type_normal" class="label-radio">
-					<input type="radio" name="slider_type" id="admin_slider_type_normal" value="sidebar" checked="checked"> <span><?php _e( 'Normal' ,'slider_captcha'); ?></span>
+					<input type="radio" name="slider_type_normal" id="slider_type_normal" value="sidebar" checked="checked"> <span><?php _e( 'Normal' ,'slider_captcha'); ?></span>
 				</label>
 				<label for="admin_slider_type_filled" class="label-radio">
-					<input type="radio" name="slider_type" id="admin_slider_type_filled" value="sidebar"> <span><?php _e( 'Filled' ,'slider_captcha'); ?></span>
+					<input type="radio" name="slider_type_filled" id="slider_type_filled" value="sidebar"> <span><?php _e( 'Filled' ,'slider_captcha'); ?></span>
 				</label>
 			</p>			
 			<h3><?php _e( 'Dimensions', 'slider-captcha' ); ?></h3>
@@ -42,7 +44,7 @@
 				<input type="text" name="hint_text_after_unlock" id="hint_text_after_unlock" value="" placeholder="<?php _e( 'Unlocked', 'slider-captcha') ?>">
 			</p>
 		</fieldset>
-		<fieldset id="slider_styles_container">
+		<fieldset class="slider_styles_container">
 			<h3><?php _e( 'Styles', 'slider-captcha' ); ?></h3>
 			<fieldset>
 				<h4><?php _e( 'Before unlock', 'slider-captcha' ); ?></h4>
@@ -80,7 +82,6 @@
 					<span class="units"><?php _e( '(hex)', 'slider-captcha' ); ?></span>
 				</p>
 			</fieldset>
-	
 			<fieldset>
 				<h4><?php _e( 'After unlock', 'slider-captcha' ); ?></h4>
 				<p>
@@ -118,6 +119,8 @@
 				</p>
 			</fieldset>
 		</fieldset>
+	</fieldset>
+	<fieldset id="comments_form_options_container">
 	</fieldset>
 </fieldset>
 <fieldset id="live_preview_container">
