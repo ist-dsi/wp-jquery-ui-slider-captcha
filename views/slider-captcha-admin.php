@@ -11,13 +11,25 @@
 	<?foreach($this->captcha_locations as $machine=>$location):?>
 		<fieldset id="<?=$machine?>_options_container">
 			<fieldset class="general_settings_container">
+				<?php if ( $i ) : ?>
+				<h3><?php _e( 'Activation', 'slider-captcha' ); ?></h3>
+				<p>
+					<label for="<?=$machine?>_slider_enable" class="label-radio">
+						<input type="radio" name="slider_enable_[<?=$machine?>]" id="<?=$machine?>_slider_enable" value="sidebar" checked="checked"> <span><?php _e( 'Enabled' ,'slider_captcha'); ?></span>
+					</label>
+					<label for="<?=$machine?>_slider_disable" class="label-radio">
+						<input type="radio" name="slider_enable_[<?=$machine?>]" id="<?=$machine?>_slider_disable" value="sidebar"> <span><?php _e( 'Disabled' ,'slider_captcha'); ?></span>
+					</label>
+				</p>
+				<?php else: $i = 1; endif; ?>
+
 				<h3><?php _e( 'Type', 'slider-captcha' ); ?></h3>
 				<p>
-					<label for="<?=$machine?>_admin_slider_type_normal" class="label-radio">
-						<input type="radio" name="slider_type_normal[<?=$machine?>]" id="<?=$machine?>_slider_type_normal" value="sidebar" checked="checked"> <span><?php _e( 'Normal' ,'slider_captcha'); ?></span>
+					<label for="<?=$machine?>_slider_type_normal" class="label-radio">
+						<input type="radio" name="slider_type_[<?=$machine?>]" id="<?=$machine?>_slider_type_normal" value="sidebar" checked="checked"> <span><?php _e( 'Normal' ,'slider_captcha'); ?></span>
 					</label>
-					<label for="<?=$machine?>_admin_slider_type_filled" class="label-radio">
-						<input type="radio" name="slider_type_filled[<?=$machine?>]" id="<?=$machine?>_slider_type_filled" value="sidebar"> <span><?php _e( 'Filled' ,'slider_captcha'); ?></span>
+					<label for="<?=$machine?>_slider_type_filled" class="label-radio">
+						<input type="radio" name="slider_type_[<?=$machine?>]" id="<?=$machine?>_slider_type_filled" value="sidebar"> <span><?php _e( 'Filled' ,'slider_captcha'); ?></span>
 					</label>
 				</p>			
 				<h3><?php _e( 'Dimensions', 'slider-captcha' ); ?></h3>
