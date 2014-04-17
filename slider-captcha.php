@@ -25,46 +25,9 @@ class SliderCaptcha {
 	private $options;
 	private $plugin_version = '0.6';
 
-	public function register_menus() {
-		// This page will be under "Settings"
-		add_options_page(
-			'options-general.php', 
-			'Slider Captcha', 
-			'manage_options', 
-			'slider-captcha-setting', 
-			array( $this, 'create_admin_page' )
-		);
-	}
-
-	public function create_admin_page() {
-	    //$this->options = get_option( 'my_option_name' );
-	    ?>
-	    <div class="wrap">
-	        <?php screen_icon(); ?>
-			<h2><?php _e( 'Slider Captcha Settings', 'slider_captcha' ) ?></h2>
-	        <form method="post" action="#">
-				<?php include( "slider-captcha-admin.php" ); ?>
-	        </form>
-		</div>
-		<?php
-	}
-
-	public function register_admin_scripts($hook) {
-
-		if( $hook == "settings_page_slider-captcha-setting" ) {
-
-			wp_enqueue_script( 'slider-captcha-admin', plugins_url( '/js/slider-captcha-admin.js', __FILE__), array( 'jquery' ), $plugin_version );
-
-			//Register CSS files
-			wp_register_style( 'slider-captcha-admin-css', plugins_url( '/css/slider-captcha-admin.css', __FILE__), array(), $plugin_version );
-			wp_enqueue_style( 'slider-captcha-admin-css' );
-		}
-	}
-
 	/* Public */
 
 	public $js_settings;
-
 	public $settings;
 
 	function __construct() {
@@ -84,6 +47,7 @@ class SliderCaptcha {
 		// Admin register function
 		add_action( 'admin_menu', array( $this, 'register_menus' ), 49);
 		add_action( 'admin_head', 'admin_color_scheme');
+
 		// Load front-end srcipts for live preview		
 		add_action( 'admin_enqueue_scripts', array(&$this, 'register_scripts' ));
 		add_action( 'admin_enqueue_scripts', array(&$this, 'register_admin_scripts'));
@@ -165,6 +129,43 @@ class SliderCaptcha {
 		return $comment_data;
 	}
 
+	/**
+	 * Admin interface functions 
+	 */
+	public function register_menus() {
+		// This page will be under "Settings"
+		add_options_page(
+			'options-general.php', 
+			'Slider Captcha', 
+			'manage_options', 
+			'slider-captcha-setting', 
+			array( $this, 'create_admin_page' )
+		);
+	}
+
+	public function create_admin_page() {
+	    //$this->options = get_option( 'my_option_name' );
+	    ?>
+	    <div class="wrap">
+	        <?php screen_icon(); ?>
+			<h2><?php _e( 'Slider Captcha Settings', 'slider_captcha' ) ?></h2>
+	        <form method="post" action="#">
+				<?php include( "views/slider-captcha-admin.php" ); ?>
+	        </form>
+		</div>
+		<?php
+	}
+
+	public function register_admin_scripts($hook) {
+		if( $hook == "settings_page_slider-captcha-setting" ) {
+
+			wp_enqueue_script( 'slider-captcha-admin', plugins_url( '/js/slider-captcha-admin.js', __FILE__), array( 'jquery' ), $plugin_version );
+
+			//Register CSS files
+			wp_register_style( 'slider-captcha-admin-css', plugins_url( '/css/slider-captcha-admin.css', __FILE__), array(), $plugin_version );
+			wp_enqueue_style( 'slider-captcha-admin-css' );
+		}
+	}
 }
 
 $GLOBALS['sliderCaptcha'] = new SliderCaptcha();
