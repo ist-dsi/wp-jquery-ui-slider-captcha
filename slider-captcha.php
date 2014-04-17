@@ -3,7 +3,7 @@
 Plugin Name: Slider Captcha
 Plugin URL: http://nme.ist.utl.pt
 Description: Slider Captcha is a module that will replace all the captcha from WordPress. 
-Version: 0.5.2
+Version: 0.6
 Author: NME - Núcleo de Multimédia e E-Learning.
 Author URI: http://nme.ist.utl.pt
 Text Domain: slider_captcha
@@ -20,23 +20,73 @@ if(!defined('SLIDER-CAPTCHA-PATH')) {
 
 class SliderCaptcha {
 
+	/* Private */
+
+	private $options;
+	private $plugin_version = '0.6';
+
+	public function register_menus() {
+		// This page will be under "Settings"
+		add_options_page(
+			'options-general.php', 
+			'Slider Captcha', 
+			'manage_options', 
+			'slider-captcha-setting', 
+			array( $this, 'create_admin_page' )
+		);
+	}
+
+	public function create_admin_page() {
+	    //$this->options = get_option( 'my_option_name' );
+	    ?>
+	    <div class="wrap">
+	        <?php screen_icon(); ?>
+			<h2><?php _e( 'Slider Captcha Settings', 'slider_captcha' ) ?></h2>
+	        <form method="post" action="#">
+				<?php include( "slider-captcha-admin.php" ); ?>
+	        </form>
+		</div>
+		<?php
+	}
+
+	public function register_admin_scripts($hook) {
+
+		if( $hook == "settings_page_slider-captcha-setting" ) {
+
+			wp_enqueue_script( 'slider-captcha-admin', plugins_url( '/js/slider-captcha-admin.js', __FILE__), array( 'jquery' ), $plugin_version );
+
+			//Register CSS files
+			wp_register_style( 'slider-captcha-admin-css', plugins_url( '/css/slider-captcha-admin.css', __FILE__), array(), $plugin_version );
+			wp_enqueue_style( 'slider-captcha-admin-css' );
+		}
+	}
+
+	/* Public */
+
 	public $js_settings;
 
 	public $settings;
 
 	function __construct() {
 
-		//Load the languages
+		// Load the languages
 		add_action('init' ,array(&$this, 'lang_init'));
 
-		//Load all the scripts required
+		// Load all the scripts required
 		add_action( 'wp_enqueue_scripts', array(&$this, 'register_scripts' ));
 
-		//Draw the captcha on the comment form
+		// Draw the captcha on the comment form
 		add_action('comment_form', array($this,'render_slider_on_comments'));
 
-		//Validate the captcha after comment is made
-        add_filter('preprocess_comment', array($this, 'hook_validate_slider'));
+		// Validate the captcha after comment is made
+		add_filter('preprocess_comment', array($this, 'hook_validate_slider'));
+
+		// Admin register function
+		add_action( 'admin_menu', array( $this, 'register_menus' ), 49);
+		add_action( 'admin_head', 'admin_color_scheme');
+		// Load front-end srcipts for live preview		
+		add_action( 'admin_enqueue_scripts', array(&$this, 'register_scripts' ));
+		add_action( 'admin_enqueue_scripts', array(&$this, 'register_admin_scripts'));
 
 	}
 
@@ -52,6 +102,11 @@ class SliderCaptcha {
 		$this->settings = array(
 			'containerClass' => null,
 			);
+	}
+
+	function admin_color_scheme() {
+   		global $_wp_admin_css_colors;
+   		//$_wp_admin_css_colors = 0;
 	}
 
 	/**
@@ -76,9 +131,9 @@ class SliderCaptcha {
 		wp_enqueue_script('jquery-ui-droppable');
 		wp_enqueue_script('jquery-ui-touch-punch', plugins_url( '/js/jquery.ui.touch-punch-improved.js', __FILE__ ), array('jquery-ui-core','jquery-ui-mouse','jquery'), '0.3.1',false);
 	
-		wp_enqueue_script('jquery-slider-captcha', plugins_url( '/js/slider-captcha.min.js', __FILE__ ), array('jquery-ui-core','jquery-ui-touch-punch'), '0.2.1',false);
+		wp_enqueue_script('jquery-slider-captcha', plugins_url( '/js/slider-captcha.min.js', __FILE__ ), array('jquery-ui-core','jquery-ui-touch-punch'), $plugin_version,false);
 		
-		wp_enqueue_style('slider-captcha-css', plugins_url( '/css/slider-captcha.css', __FILE__ ), '0.2.1' );
+		wp_enqueue_style('slider-captcha-css', plugins_url( '/css/slider-captcha.css', __FILE__ ), $plugin_version );
 	}
 
 	/**
