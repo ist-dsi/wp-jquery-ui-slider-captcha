@@ -10,12 +10,12 @@ Text Domain: slider_captcha
 */
 
 // plugin folder url
-if(!defined('SLIDER-CAPTCHA-URL')) {
-	define('SLIDER-CAPTCHA-URL', plugin_dir_url( __FILE__ ));
+if(!defined('SLIDER_CAPTCHA_URL')) {
+	define('SLIDER_CAPTCHA_URL', plugin_dir_url( __FILE__ ));
 }
 
-if(!defined('SLIDER-CAPTCHA-PATH')) {
-	define('SLIDER-CAPTCHA-PATH', plugin_dir_path( __FILE__ ));
+if(!defined('SLIDER_CAPTCHA_PATH')) {
+	define('SLIDER_CAPTCHA_PATH', plugin_dir_path( __FILE__ ));
 }
 
 class SliderCaptcha {
@@ -187,3 +187,5 @@ class SliderCaptcha {
 }
 
 $GLOBALS['sliderCaptcha'] = new SliderCaptcha();
+
+include "functions.php";

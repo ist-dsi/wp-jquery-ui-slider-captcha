@@ -28,5 +28,5 @@ function slider_captcha($container = 'p', $settings = null) {
 
 
 function _slider_draw_fontface_options($selected='') {
-	include 'font_face_options.php';
+	include SLIDER_CAPTCHA_PATH . 'font_face_options.php';
 }

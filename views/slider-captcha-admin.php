@@ -1,7 +1,7 @@
 <fieldset>
 	<h3><?php _e( 'Select the option to configure form' ,'slider-captcha') ?></h3>
 	<p><?php _e( 'Slider activation should take place in individual form option. Individual slider settings will overide general options for each form.', 'slider-captcha' ); ?></p>
-   	<select>
+   	<select id="slider_captcha_form_selector">
 		<?foreach($this->captcha_locations as $machine=>$location):?>
 			<option value="<?=$machine?>"><?=$location?></option>
 		<?endforeach?>
@@ -10,7 +10,6 @@
 <fieldset id="form_options_container">
 
 	<fieldset id="general_options_container">
-		
 		<fieldset class="general_settings_container">
 			<h3><?php _e( 'Type', 'slider-captcha' ); ?></h3>
 			<p>
@@ -117,6 +116,7 @@
 		</fieldset>
 	</fieldset>
 	<fieldset id="comments_form_options_container">
+		Hello
 	</fieldset>
 </fieldset>
 <fieldset id="live_preview_container">
