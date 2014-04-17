@@ -9,7 +9,7 @@
 </fieldset>
 <fieldset id="form_options_container">
 	<?foreach($this->captcha_locations as $machine=>$location):?>
-		<fieldset id="<?=$machine?>_general_options_container">
+		<fieldset id="<?=$machine?>_options_container">
 			<fieldset class="general_settings_container">
 				<h3><?php _e( 'Type', 'slider-captcha' ); ?></h3>
 				<p>
@@ -114,9 +114,6 @@
 					</p>
 				</fieldset>
 			</fieldset>
-		</fieldset>
-		<fieldset id="comments_form_options_container">
-			Hello
 		</fieldset>
 	<?endforeach?>
 </fieldset>
