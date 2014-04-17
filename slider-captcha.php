@@ -31,6 +31,7 @@ class SliderCaptcha {
 	public $settings;
 
 	public $captcha_locations;
+	private $sliders; //Array where the sliders will be structured. 
 
 	function __construct() {
 
@@ -69,15 +70,12 @@ class SliderCaptcha {
 			'containerClass' => null,
 			);
 
-/*<option><?php _e( 'General options' ,'slider-captcha'); ?></option>
-		<option><?php _e( 'Comments form' ,'slider-captcha'); ?></option>
-		<option><?php _e( 'Registration form' ,'slider-captcha'); ?></option>
-		<option><?php _e( 'Reset password form' ,'slider-captcha'); ?></option>
-		<option><?php _e( 'Contact form' ,'slider-captcha'); ?></option>
-		<option><?php _e( 'Mailpress registration form' ,'slider-captcha'); ?></option>
-		<option><?php _e( 'Custom' ,'slider-captcha'); ?></option> */
+		$default_sliders = array(
+			'general' => array_merge($this->js_settings, $this->settings),
+			);
 
-		//Default captcha locations
+		$this->sliders = get_option('slider_captcha_sliders',$default_sliders);
+
 		$this->captcha_locations = array(
 				'general' 	    	=> __( 'General options' ,'slider-captcha'),
 				'comments'			=> __( 'Comments options' ,'slider-captcha'),
@@ -184,6 +182,41 @@ class SliderCaptcha {
 			wp_register_style( 'slider-captcha-admin-css', plugins_url( '/css/slider-captcha-admin.css', __FILE__), array(), $plugin_version );
 			wp_enqueue_style( 'slider-captcha-admin-css' );
 		}
+	}
+
+	/**
+	 * Public functions to manage the sliders
+	 */
+	public function get_slider($slider_name) {
+		if( !isset($this->sliders[$slider_name]) )
+			return $this->sliders['general'];
+		return $this->sliders[$slider_name];
+	}
+
+	public function update_slider($slider_name, $options) {
+		$curr_slide = $this->get_slider($slider_name);
+		$options = array_merge($curr_slide, $options);
+
+		return $this->add_to_sliders($slider_name, $options);
+	}
+
+	public function get_sliders() {
+		return $this->sliders;
+	}
+
+	public function set_sliders(array $s) {
+		$this->sliders = $s;
+		return update_option('slider_captcha_sliders', $s);
+	}
+
+	public function add_to_sliders($slide_name, array $options) {
+		$sliders = $this->get_sliders();
+		$sliders[$slide_name] = $options;
+		return $this->set_sliders($sliders);
+	}
+
+	public function get_json_settings($slider) {
+		return json_encode($this->get_slider($slider));
 	}
 }
 

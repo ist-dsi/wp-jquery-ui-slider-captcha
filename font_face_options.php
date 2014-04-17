@@ -1,284 +1,285 @@
-<option>note</option>
-<option>logo-db</option>
-<option>music</option>
-<option>search</option>
-<option>flashlight</option>
-<option>mail</option>
-<option>heart</option>
-<option>heart-empty</option>
-<option>star</option>
-<option>star-empty</option>
-<option>user</option>
-<option>users</option>
-<option>user-add</option>
-<option>video</option>
-<option>picture</option>
-<option>camera</option>
-<option>layout</option>
-<option>menu</option>
-<option>check</option>
-<option>cancel</option>
-<option>cancel-circled</option>
-<option>cancel-squared</option>
-<option>plus</option>
-<option>plus-circled</option>
-<option>plus-squared</option>
-<option>minus</option>
-<option>minus-circled</option>
-<option>minus-squared</option>
-<option>help</option>
-<option>help-circled</option>
-<option>info</option>
-<option>info-circled</option>
-<option>back</option>
-<option>home</option>
-<option>link</option>
-<option>attach</option>
-<option>lock</option>
-<option>lock-open</option>
-<option>eye</option>
-<option>tag</option>
-<option>bookmark</option>
-<option>bookmarks</option>
-<option>flag</option>
-<option>thumbs-up</option>
-<option>thumbs-down</option>
-<option>download</option>
-<option>upload</option>
-<option>upload-cloud</option>
-<option>reply</option>
-<option>reply-all</option>
-<option>forward</option>
-<option>quote</option>
-<option>code</option>
-<option>export</option>
-<option>pencil</option>
-<option>feather</option>
-<option>print</option>
-<option>retweet</option>
-<option>keyboard</option>
-<option>comment</option>
-<option>chat</option>
-<option>bell</option>
-<option>attention</option>
-<option>alert</option>
-<option>vcard</option>
-<option>address</option>
-<option>location</option>
-<option>map</option>
-<option>direction</option>
-<option>compass</option>
-<option>cup</option>
-<option>trash</option>
-<option>doc</option>
-<option>docs</option>
-<option>doc-landscape</option>
-<option>doc-text</option>
-<option>doc-text-inv</option>
-<option>newspaper</option>
-<option>book-open</option>
-<option>book</option>
-<option>folder</option>
-<option>archive</option>
-<option>box</option>
-<option>rss</option>
-<option>phone</option>
-<option>cog</option>
-<option>tools</option>
-<option>share</option>
-<option>shareable</option>
-<option>basket</option>
-<option>bag</option>
-<option>calendar</option>
-<option>login</option>
-<option>logout</option>
-<option>mic</option>
-<option>mute</option>
-<option>sound</option>
-<option>volume</option>
-<option>clock</option>
-<option>hourglass</option>
-<option>lamp</option>
-<option>light-down</option>
-<option>light-up</option>
-<option>adjust</option>
-<option>block</option>
-<option>resize-full</option>
-<option>resize-small</option>
-<option>popup</option>
-<option>publish</option>
-<option>window</option>
-<option>arrow-combo</option>
-<option>down-circled</option>
-<option>left-circled</option>
-<option>right-circled</option>
-<option>up-circled</option>
-<option>down-open</option>
-<option>left-open</option>
+<?var_dump($options)?>
+<option value="note" <?checked($options['face'][$field], "note")?>>note</option>
+<option value="logo-db" <?checked($options['face'][$field], "logo-db")?>>logo-db</option>
+<option value="music" <?checked($options['face'][$field], "music")?>>music</option>
+<option value="search" <?checked($options['face'][$field], "search")?>>search</option>
+<option value="flashlight" <?checked($options['face'][$field], "flashlight")?>>flashlight</option>
+<option value="mail" <?checked($options['face'][$field], "mail")?>>mail</option>
+<option value="heart" <?checked($options['face'][$field], "heart")?>>heart</option>
+<option value="heart-empty" <?checked($options['face'][$field], "heart-empty")?>>heart-empty</option>
+<option value="star" <?checked($options['face'][$field], "star")?>>star</option>
+<option value="star-empty" <?checked($options['face'][$field], "star-empty")?>>star-empty</option>
+<option value="user" <?checked($options['face'][$field], "user")?>>user</option>
+<option value="users" <?checked($options['face'][$field], "users")?>>users</option>
+<option value="user-add" <?checked($options['face'][$field], "user-add")?>>user-add</option>
+<option value="video" <?checked($options['face'][$field], "video")?>>video</option>
+<option value="picture" <?checked($options['face'][$field], "picture")?>>picture</option>
+<option value="camera" <?checked($options['face'][$field], "camera")?>>camera</option>
+<option value="layout" <?checked($options['face'][$field], "layout")?>>layout</option>
+<option value="menu" <?checked($options['face'][$field], "menu")?>>menu</option>
+<option value="check" <?checked($options['face'][$field], "check")?>>check</option>
+<option value="cancel" <?checked($options['face'][$field], "cancel")?>>cancel</option>
+<option value="cancel-circled" <?checked($options['face'][$field], "cancel-circled")?>>cancel-circled</option>
+<option value="cancel-squared" <?checked($options['face'][$field], "cancel-squared")?>>cancel-squared</option>
+<option value="plus" <?checked($options['face'][$field], "plus")?>>plus</option>
+<option value="plus-circled" <?checked($options['face'][$field], "plus-circled")?>>plus-circled</option>
+<option value="plus-squared" <?checked($options['face'][$field], "plus-squared")?>>plus-squared</option>
+<option value="minus" <?checked($options['face'][$field], "minus")?>>minus</option>
+<option value="minus-circled" <?checked($options['face'][$field], "minus-circled")?>>minus-circled</option>
+<option value="minus-squared" <?checked($options['face'][$field], "minus-squared")?>>minus-squared</option>
+<option value="help" <?checked($options['face'][$field], "help")?>>help</option>
+<option value="help-circled" <?checked($options['face'][$field], "help-circled")?>>help-circled</option>
+<option value="info" <?checked($options['face'][$field], "info")?>>info</option>
+<option value="info-circled" <?checked($options['face'][$field], "info-circled")?>>info-circled</option>
+<option value="back" <?checked($options['face'][$field], "back")?>>back</option>
+<option value="home" <?checked($options['face'][$field], "home")?>>home</option>
+<option value="link" <?checked($options['face'][$field], "link")?>>link</option>
+<option value="attach" <?checked($options['face'][$field], "attach")?>>attach</option>
+<option value="lock" <?checked($options['face'][$field], "lock")?>>lock</option>
+<option value="lock-open" <?checked($options['face'][$field], "lock-open")?>>lock-open</option>
+<option value="eye" <?checked($options['face'][$field], "eye")?>>eye</option>
+<option value="tag" <?checked($options['face'][$field], "tag")?>>tag</option>
+<option value="bookmark" <?checked($options['face'][$field], "bookmark")?>>bookmark</option>
+<option value="bookmarks" <?checked($options['face'][$field], "bookmarks")?>>bookmarks</option>
+<option value="flag" <?checked($options['face'][$field], "flag")?>>flag</option>
+<option value="thumbs-up" <?checked($options['face'][$field], "thumbs-up")?>>thumbs-up</option>
+<option value="thumbs-down" <?checked($options['face'][$field], "thumbs-down")?>>thumbs-down</option>
+<option value="download" <?checked($options['face'][$field], "download")?>>download</option>
+<option value="upload" <?checked($options['face'][$field], "upload")?>>upload</option>
+<option value="upload-cloud" <?checked($options['face'][$field], "upload-cloud")?>>upload-cloud</option>
+<option value="reply" <?checked($options['face'][$field], "reply")?>>reply</option>
+<option value="reply-all" <?checked($options['face'][$field], "reply-all")?>>reply-all</option>
+<option value="forward" <?checked($options['face'][$field], "forward")?>>forward</option>
+<option value="quote" <?checked($options['face'][$field], "quote")?>>quote</option>
+<option value="code" <?checked($options['face'][$field], "code")?>>code</option>
+<option value="export" <?checked($options['face'][$field], "export")?>>export</option>
+<option value="pencil" <?checked($options['face'][$field], "pencil")?>>pencil</option>
+<option value="feather" <?checked($options['face'][$field], "feather")?>>feather</option>
+<option value="print" <?checked($options['face'][$field], "print")?>>print</option>
+<option value="retweet" <?checked($options['face'][$field], "retweet")?>>retweet</option>
+<option value="keyboard" <?checked($options['face'][$field], "keyboard")?>>keyboard</option>
+<option value="comment" <?checked($options['face'][$field], "comment")?>>comment</option>
+<option value="chat" <?checked($options['face'][$field], "chat")?>>chat</option>
+<option value="bell" <?checked($options['face'][$field], "bell")?>>bell</option>
+<option value="attention" <?checked($options['face'][$field], "attention")?>>attention</option>
+<option value="alert" <?checked($options['face'][$field], "alert")?>>alert</option>
+<option value="vcard" <?checked($options['face'][$field], "vcard")?>>vcard</option>
+<option value="address" <?checked($options['face'][$field], "address")?>>address</option>
+<option value="location" <?checked($options['face'][$field], "location")?>>location</option>
+<option value="map" <?checked($options['face'][$field], "map")?>>map</option>
+<option value="direction" <?checked($options['face'][$field], "direction")?>>direction</option>
+<option value="compass" <?checked($options['face'][$field], "compass")?>>compass</option>
+<option value="cup" <?checked($options['face'][$field], "cup")?>>cup</option>
+<option value="trash" <?checked($options['face'][$field], "trash")?>>trash</option>
+<option value="doc" <?checked($options['face'][$field], "doc")?>>doc</option>
+<option value="docs" <?checked($options['face'][$field], "docs")?>>docs</option>
+<option value="doc-landscape" <?checked($options['face'][$field], "doc-landscape")?>>doc-landscape</option>
+<option value="doc-text" <?checked($options['face'][$field], "doc-text")?>>doc-text</option>
+<option value="doc-text-inv" <?checked($options['face'][$field], "doc-text-inv")?>>doc-text-inv</option>
+<option value="newspaper" <?checked($options['face'][$field], "newspaper")?>>newspaper</option>
+<option value="book-open" <?checked($options['face'][$field], "book-open")?>>book-open</option>
+<option value="book" <?checked($options['face'][$field], "book")?>>book</option>
+<option value="folder" <?checked($options['face'][$field], "folder")?>>folder</option>
+<option value="archive" <?checked($options['face'][$field], "archive")?>>archive</option>
+<option value="box" <?checked($options['face'][$field], "box")?>>box</option>
+<option value="rss" <?checked($options['face'][$field], "rss")?>>rss</option>
+<option value="phone" <?checked($options['face'][$field], "phone")?>>phone</option>
+<option value="cog" <?checked($options['face'][$field], "cog")?>>cog</option>
+<option value="tools" <?checked($options['face'][$field], "tools")?>>tools</option>
+<option value="share" <?checked($options['face'][$field], "share")?>>share</option>
+<option value="shareable" <?checked($options['face'][$field], "shareable")?>>shareable</option>
+<option value="basket" <?checked($options['face'][$field], "basket")?>>basket</option>
+<option value="bag" <?checked($options['face'][$field], "bag")?>>bag</option>
+<option value="calendar" <?checked($options['face'][$field], "calendar")?>>calendar</option>
+<option value="login" <?checked($options['face'][$field], "login")?>>login</option>
+<option value="logout" <?checked($options['face'][$field], "logout")?>>logout</option>
+<option value="mic" <?checked($options['face'][$field], "mic")?>>mic</option>
+<option value="mute" <?checked($options['face'][$field], "mute")?>>mute</option>
+<option value="sound" <?checked($options['face'][$field], "sound")?>>sound</option>
+<option value="volume" <?checked($options['face'][$field], "volume")?>>volume</option>
+<option value="clock" <?checked($options['face'][$field], "clock")?>>clock</option>
+<option value="hourglass" <?checked($options['face'][$field], "hourglass")?>>hourglass</option>
+<option value="lamp" <?checked($options['face'][$field], "lamp")?>>lamp</option>
+<option value="light-down" <?checked($options['face'][$field], "light-down")?>>light-down</option>
+<option value="light-up" <?checked($options['face'][$field], "light-up")?>>light-up</option>
+<option value="adjust" <?checked($options['face'][$field], "adjust")?>>adjust</option>
+<option value="block" <?checked($options['face'][$field], "block")?>>block</option>
+<option value="resize-full" <?checked($options['face'][$field], "resize-full")?>>resize-full</option>
+<option value="resize-small" <?checked($options['face'][$field], "resize-small")?>>resize-small</option>
+<option value="popup" <?checked($options['face'][$field], "popup")?>>popup</option>
+<option value="publish" <?checked($options['face'][$field], "publish")?>>publish</option>
+<option value="window" <?checked($options['face'][$field], "window")?>>window</option>
+<option value="arrow-combo" <?checked($options['face'][$field], "arrow-combo")?>>arrow-combo</option>
+<option value="down-circled" <?checked($options['face'][$field], "down-circled")?>>down-circled</option>
+<option value="left-circled" <?checked($options['face'][$field], "left-circled")?>>left-circled</option>
+<option value="right-circled" <?checked($options['face'][$field], "right-circled")?>>right-circled</option>
+<option value="up-circled" <?checked($options['face'][$field], "up-circled")?>>up-circled</option>
+<option value="down-open" <?checked($options['face'][$field], "down-open")?>>down-open</option>
+<option value="left-open" <?checked($options['face'][$field], "left-open")?>>left-open</option>
 <option selected>right-open</option>
-<option>up-open</option>
-<option>down-open-mini</option>
-<option>left-open-mini</option>
-<option>right-open-mini</option>
-<option>up-open-mini</option>
-<option>down-open-big</option>
-<option>left-open-big</option>
-<option>right-open-big</option>
-<option>up-open-big</option>
-<option>down</option>
-<option>left</option>
-<option>right</option>
-<option>up</option>
-<option>down-dir</option>
-<option>left-dir</option>
-<option>right-dir</option>
-<option>up-dir</option>
-<option>down-bold</option>
-<option>left-bold</option>
-<option>right-bold</option>
-<option>up-bold</option>
-<option>down-thin</option>
-<option>left-thin</option>
-<option>right-thin</option>
-<option>note-beamed</option>
-<option>ccw</option>
-<option>cw</option>
-<option>arrows-ccw</option>
-<option>level-down</option>
-<option>level-up</option>
-<option>shuffle</option>
-<option>loop</option>
-<option>switch</option>
-<option>play</option>
-<option>stop</option>
-<option>pause</option>
-<option>record</option>
-<option>to-end</option>
-<option>to-start</option>
-<option>fast-forward</option>
-<option>fast-backward</option>
-<option>progress-0</option>
-<option>progress-1</option>
-<option>progress-2</option>
-<option>progress-3</option>
-<option>target</option>
-<option>palette</option>
-<option>list</option>
-<option>list-add</option>
-<option>signal</option>
-<option>trophy</option>
-<option>battery</option>
-<option>back-in-time</option>
-<option>monitor</option>
-<option>mobile</option>
-<option>network</option>
-<option>cd</option>
-<option>inbox</option>
-<option>install</option>
-<option>globe</option>
-<option>cloud</option>
-<option>cloud-thunder</option>
-<option>flash</option>
-<option>moon</option>
-<option>flight</option>
-<option>paper-plane</option>
-<option>leaf</option>
-<option>lifebuoy</option>
-<option>mouse</option>
-<option>briefcase</option>
-<option>suitcase</option>
-<option>dot</option>
-<option>dot-2</option>
-<option>dot-3</option>
-<option>brush</option>
-<option>magnet</option>
-<option>infinity</option>
-<option>erase</option>
-<option>chart-pie</option>
-<option>chart-line</option>
-<option>chart-bar</option>
-<option>chart-area</option>
-<option>tape</option>
-<option>graduation-cap</option>
-<option>language</option>
-<option>ticket</option>
-<option>water</option>
-<option>droplet</option>
-<option>air</option>
-<option>credit-card</option>
-<option>floppy</option>
-<option>clipboard</option>
-<option>megaphone</option>
-<option>database</option>
-<option>drive</option>
-<option>bucket</option>
-<option>thermometer</option>
-<option>key</option>
-<option>flow-cascade</option>
-<option>flow-branch</option>
-<option>flow-tree</option>
-<option>flow-line</option>
-<option>flow-parallel</option>
-<option>rocket</option>
-<option>gauge</option>
-<option>traffic-cone</option>
-<option>cc</option>
-<option>cc-by</option>
-<option>cc-nc</option>
-<option>cc-nc-eu</option>
-<option>cc-nc-jp</option>
-<option>cc-sa</option>
-<option>cc-nd</option>
-<option>cc-pd</option>
-<option>cc-zero</option>
-<option>cc-share</option>
-<option>cc-remix</option>
-<option>github</option>
-<option>github-circled</option>
-<option>flickr</option>
-<option>flickr-circled</option>
-<option>vimeo</option>
-<option>vimeo-circled</option>
-<option>twitter</option>
-<option>twitter-circled</option>
-<option>facebook</option>
-<option>facebook-circled</option>
-<option>facebook-squared</option>
-<option>gplus</option>
-<option>gplus-circled</option>
-<option>pinterest</option>
-<option>pinterest-circled</option>
-<option>tumblr</option>
-<option>tumblr-circled</option>
-<option>linkedin</option>
-<option>linkedin-circled</option>
-<option>dribbble</option>
-<option>dribbble-circled</option>
-<option>stumbleupon</option>
-<option>stumbleupon-circled</option>
-<option>lastfm</option>
-<option>lastfm-circled</option>
-<option>rdio</option>
-<option>rdio-circled</option>
-<option>spotify</option>
-<option>spotify-circled</option>
-<option>qq</option>
-<option>instagram</option>
-<option>dropbox</option>
-<option>evernote</option>
-<option>flattr</option>
-<option>skype</option>
-<option>skype-circled</option>
-<option>renren</option>
-<option>sina-weibo</option>
-<option>paypal</option>
-<option>picasa</option>
-<option>soundcloud</option>
-<option>mixi</option>
-<option>behance</option>
-<option>google-circles</option>
-<option>vkontakte</option>
-<option>smashing</option>
-<option>sweden</option>
-<option>db-shape</option>
-<option>up-thin</option>
+<option value="up-open" <?checked($options['face'][$field], "up-open")?>>up-open</option>
+<option value="down-open-mini" <?checked($options['face'][$field], "down-open-mini")?>>down-open-mini</option>
+<option value="left-open-mini" <?checked($options['face'][$field], "left-open-mini")?>>left-open-mini</option>
+<option value="right-open-mini" <?checked($options['face'][$field], "right-open-mini")?>>right-open-mini</option>
+<option value="up-open-mini" <?checked($options['face'][$field], "up-open-mini")?>>up-open-mini</option>
+<option value="down-open-big" <?checked($options['face'][$field], "down-open-big")?>>down-open-big</option>
+<option value="left-open-big" <?checked($options['face'][$field], "left-open-big")?>>left-open-big</option>
+<option value="right-open-big" <?checked($options['face'][$field], "right-open-big")?>>right-open-big</option>
+<option value="up-open-big" <?checked($options['face'][$field], "up-open-big")?>>up-open-big</option>
+<option value="down" <?checked($options['face'][$field], "down")?>>down</option>
+<option value="left" <?checked($options['face'][$field], "left")?>>left</option>
+<option value="right" <?checked($options['face'][$field], "right")?>>right</option>
+<option value="up" <?checked($options['face'][$field], "up")?>>up</option>
+<option value="down-dir" <?checked($options['face'][$field], "down-dir")?>>down-dir</option>
+<option value="left-dir" <?checked($options['face'][$field], "left-dir")?>>left-dir</option>
+<option value="right-dir" <?checked($options['face'][$field], "right-dir")?>>right-dir</option>
+<option value="up-dir" <?checked($options['face'][$field], "up-dir")?>>up-dir</option>
+<option value="down-bold" <?checked($options['face'][$field], "down-bold")?>>down-bold</option>
+<option value="left-bold" <?checked($options['face'][$field], "left-bold")?>>left-bold</option>
+<option value="right-bold" <?checked($options['face'][$field], "right-bold")?>>right-bold</option>
+<option value="up-bold" <?checked($options['face'][$field], "up-bold")?>>up-bold</option>
+<option value="down-thin" <?checked($options['face'][$field], "down-thin")?>>down-thin</option>
+<option value="left-thin" <?checked($options['face'][$field], "left-thin")?>>left-thin</option>
+<option value="right-thin" <?checked($options['face'][$field], "right-thin")?>>right-thin</option>
+<option value="note-beamed" <?checked($options['face'][$field], "note-beamed")?>>note-beamed</option>
+<option value="ccw" <?checked($options['face'][$field], "ccw")?>>ccw</option>
+<option value="cw" <?checked($options['face'][$field], "cw")?>>cw</option>
+<option value="arrows-ccw" <?checked($options['face'][$field], "arrows-ccw")?>>arrows-ccw</option>
+<option value="level-down" <?checked($options['face'][$field], "level-down")?>>level-down</option>
+<option value="level-up" <?checked($options['face'][$field], "level-up")?>>level-up</option>
+<option value="shuffle" <?checked($options['face'][$field], "shuffle")?>>shuffle</option>
+<option value="loop" <?checked($options['face'][$field], "loop")?>>loop</option>
+<option value="switch" <?checked($options['face'][$field], "switch")?>>switch</option>
+<option value="play" <?checked($options['face'][$field], "play")?>>play</option>
+<option value="stop" <?checked($options['face'][$field], "stop")?>>stop</option>
+<option value="pause" <?checked($options['face'][$field], "pause")?>>pause</option>
+<option value="record" <?checked($options['face'][$field], "record")?>>record</option>
+<option value="to-end" <?checked($options['face'][$field], "to-end")?>>to-end</option>
+<option value="to-start" <?checked($options['face'][$field], "to-start")?>>to-start</option>
+<option value="fast-forward" <?checked($options['face'][$field], "fast-forward")?>>fast-forward</option>
+<option value="fast-backward" <?checked($options['face'][$field], "fast-backward")?>>fast-backward</option>
+<option value="progress-0" <?checked($options['face'][$field], "progress-0")?>>progress-0</option>
+<option value="progress-1" <?checked($options['face'][$field], "progress-1")?>>progress-1</option>
+<option value="progress-2" <?checked($options['face'][$field], "progress-2")?>>progress-2</option>
+<option value="progress-3" <?checked($options['face'][$field], "progress-3")?>>progress-3</option>
+<option value="target" <?checked($options['face'][$field], "target")?>>target</option>
+<option value="palette" <?checked($options['face'][$field], "palette")?>>palette</option>
+<option value="list" <?checked($options['face'][$field], "list")?>>list</option>
+<option value="list-add" <?checked($options['face'][$field], "list-add")?>>list-add</option>
+<option value="signal" <?checked($options['face'][$field], "signal")?>>signal</option>
+<option value="trophy" <?checked($options['face'][$field], "trophy")?>>trophy</option>
+<option value="battery" <?checked($options['face'][$field], "battery")?>>battery</option>
+<option value="back-in-time" <?checked($options['face'][$field], "back-in-time")?>>back-in-time</option>
+<option value="monitor" <?checked($options['face'][$field], "monitor")?>>monitor</option>
+<option value="mobile" <?checked($options['face'][$field], "mobile")?>>mobile</option>
+<option value="network" <?checked($options['face'][$field], "network")?>>network</option>
+<option value="cd" <?checked($options['face'][$field], "cd")?>>cd</option>
+<option value="inbox" <?checked($options['face'][$field], "inbox")?>>inbox</option>
+<option value="install" <?checked($options['face'][$field], "install")?>>install</option>
+<option value="globe" <?checked($options['face'][$field], "globe")?>>globe</option>
+<option value="cloud" <?checked($options['face'][$field], "cloud")?>>cloud</option>
+<option value="cloud-thunder" <?checked($options['face'][$field], "cloud-thunder")?>>cloud-thunder</option>
+<option value="flash" <?checked($options['face'][$field], "flash")?>>flash</option>
+<option value="moon" <?checked($options['face'][$field], "moon")?>>moon</option>
+<option value="flight" <?checked($options['face'][$field], "flight")?>>flight</option>
+<option value="paper-plane" <?checked($options['face'][$field], "paper-plane")?>>paper-plane</option>
+<option value="leaf" <?checked($options['face'][$field], "leaf")?>>leaf</option>
+<option value="lifebuoy" <?checked($options['face'][$field], "lifebuoy")?>>lifebuoy</option>
+<option value="mouse" <?checked($options['face'][$field], "mouse")?>>mouse</option>
+<option value="briefcase" <?checked($options['face'][$field], "briefcase")?>>briefcase</option>
+<option value="suitcase" <?checked($options['face'][$field], "suitcase")?>>suitcase</option>
+<option value="dot" <?checked($options['face'][$field], "dot")?>>dot</option>
+<option value="dot-2" <?checked($options['face'][$field], "dot-2")?>>dot-2</option>
+<option value="dot-3" <?checked($options['face'][$field], "dot-3")?>>dot-3</option>
+<option value="brush" <?checked($options['face'][$field], "brush")?>>brush</option>
+<option value="magnet" <?checked($options['face'][$field], "magnet")?>>magnet</option>
+<option value="infinity" <?checked($options['face'][$field], "infinity")?>>infinity</option>
+<option value="erase" <?checked($options['face'][$field], "erase")?>>erase</option>
+<option value="chart-pie" <?checked($options['face'][$field], "chart-pie")?>>chart-pie</option>
+<option value="chart-line" <?checked($options['face'][$field], "chart-line")?>>chart-line</option>
+<option value="chart-bar" <?checked($options['face'][$field], "chart-bar")?>>chart-bar</option>
+<option value="chart-area" <?checked($options['face'][$field], "chart-area")?>>chart-area</option>
+<option value="tape" <?checked($options['face'][$field], "tape")?>>tape</option>
+<option value="graduation-cap" <?checked($options['face'][$field], "graduation-cap")?>>graduation-cap</option>
+<option value="language" <?checked($options['face'][$field], "language")?>>language</option>
+<option value="ticket" <?checked($options['face'][$field], "ticket")?>>ticket</option>
+<option value="water" <?checked($options['face'][$field], "water")?>>water</option>
+<option value="droplet" <?checked($options['face'][$field], "droplet")?>>droplet</option>
+<option value="air" <?checked($options['face'][$field], "air")?>>air</option>
+<option value="credit-card" <?checked($options['face'][$field], "credit-card")?>>credit-card</option>
+<option value="floppy" <?checked($options['face'][$field], "floppy")?>>floppy</option>
+<option value="clipboard" <?checked($options['face'][$field], "clipboard")?>>clipboard</option>
+<option value="megaphone" <?checked($options['face'][$field], "megaphone")?>>megaphone</option>
+<option value="database" <?checked($options['face'][$field], "database")?>>database</option>
+<option value="drive" <?checked($options['face'][$field], "drive")?>>drive</option>
+<option value="bucket" <?checked($options['face'][$field], "bucket")?>>bucket</option>
+<option value="thermometer" <?checked($options['face'][$field], "thermometer")?>>thermometer</option>
+<option value="key" <?checked($options['face'][$field], "key")?>>key</option>
+<option value="flow-cascade" <?checked($options['face'][$field], "flow-cascade")?>>flow-cascade</option>
+<option value="flow-branch" <?checked($options['face'][$field], "flow-branch")?>>flow-branch</option>
+<option value="flow-tree" <?checked($options['face'][$field], "flow-tree")?>>flow-tree</option>
+<option value="flow-line" <?checked($options['face'][$field], "flow-line")?>>flow-line</option>
+<option value="flow-parallel" <?checked($options['face'][$field], "flow-parallel")?>>flow-parallel</option>
+<option value="rocket" <?checked($options['face'][$field], "rocket")?>>rocket</option>
+<option value="gauge" <?checked($options['face'][$field], "gauge")?>>gauge</option>
+<option value="traffic-cone" <?checked($options['face'][$field], "traffic-cone")?>>traffic-cone</option>
+<option value="cc" <?checked($options['face'][$field], "cc")?>>cc</option>
+<option value="cc-by" <?checked($options['face'][$field], "cc-by")?>>cc-by</option>
+<option value="cc-nc" <?checked($options['face'][$field], "cc-nc")?>>cc-nc</option>
+<option value="cc-nc-eu" <?checked($options['face'][$field], "cc-nc-eu")?>>cc-nc-eu</option>
+<option value="cc-nc-jp" <?checked($options['face'][$field], "cc-nc-jp")?>>cc-nc-jp</option>
+<option value="cc-sa" <?checked($options['face'][$field], "cc-sa")?>>cc-sa</option>
+<option value="cc-nd" <?checked($options['face'][$field], "cc-nd")?>>cc-nd</option>
+<option value="cc-pd" <?checked($options['face'][$field], "cc-pd")?>>cc-pd</option>
+<option value="cc-zero" <?checked($options['face'][$field], "cc-zero")?>>cc-zero</option>
+<option value="cc-share" <?checked($options['face'][$field], "cc-share")?>>cc-share</option>
+<option value="cc-remix" <?checked($options['face'][$field], "cc-remix")?>>cc-remix</option>
+<option value="github" <?checked($options['face'][$field], "github")?>>github</option>
+<option value="github-circled" <?checked($options['face'][$field], "github-circled")?>>github-circled</option>
+<option value="flickr" <?checked($options['face'][$field], "flickr")?>>flickr</option>
+<option value="flickr-circled" <?checked($options['face'][$field], "flickr-circled")?>>flickr-circled</option>
+<option value="vimeo" <?checked($options['face'][$field], "vimeo")?>>vimeo</option>
+<option value="vimeo-circled" <?checked($options['face'][$field], "vimeo-circled")?>>vimeo-circled</option>
+<option value="twitter" <?checked($options['face'][$field], "twitter")?>>twitter</option>
+<option value="twitter-circled" <?checked($options['face'][$field], "twitter-circled")?>>twitter-circled</option>
+<option value="facebook" <?checked($options['face'][$field], "facebook")?>>facebook</option>
+<option value="facebook-circled" <?checked($options['face'][$field], "facebook-circled")?>>facebook-circled</option>
+<option value="facebook-squared" <?checked($options['face'][$field], "facebook-squared")?>>facebook-squared</option>
+<option value="gplus" <?checked($options['face'][$field], "gplus")?>>gplus</option>
+<option value="gplus-circled" <?checked($options['face'][$field], "gplus-circled")?>>gplus-circled</option>
+<option value="pinterest" <?checked($options['face'][$field], "pinterest")?>>pinterest</option>
+<option value="pinterest-circled" <?checked($options['face'][$field], "pinterest-circled")?>>pinterest-circled</option>
+<option value="tumblr" <?checked($options['face'][$field], "tumblr")?>>tumblr</option>
+<option value="tumblr-circled" <?checked($options['face'][$field], "tumblr-circled")?>>tumblr-circled</option>
+<option value="linkedin" <?checked($options['face'][$field], "linkedin")?>>linkedin</option>
+<option value="linkedin-circled" <?checked($options['face'][$field], "linkedin-circled")?>>linkedin-circled</option>
+<option value="dribbble" <?checked($options['face'][$field], "dribbble")?>>dribbble</option>
+<option value="dribbble-circled" <?checked($options['face'][$field], "dribbble-circled")?>>dribbble-circled</option>
+<option value="stumbleupon" <?checked($options['face'][$field], "stumbleupon")?>>stumbleupon</option>
+<option value="stumbleupon-circled" <?checked($options['face'][$field], "stumbleupon-circled")?>>stumbleupon-circled</option>
+<option value="lastfm" <?checked($options['face'][$field], "lastfm")?>>lastfm</option>
+<option value="lastfm-circled" <?checked($options['face'][$field], "lastfm-circled")?>>lastfm-circled</option>
+<option value="rdio" <?checked($options['face'][$field], "rdio")?>>rdio</option>
+<option value="rdio-circled" <?checked($options['face'][$field], "rdio-circled")?>>rdio-circled</option>
+<option value="spotify" <?checked($options['face'][$field], "spotify")?>>spotify</option>
+<option value="spotify-circled" <?checked($options['face'][$field], "spotify-circled")?>>spotify-circled</option>
+<option value="qq" <?checked($options['face'][$field], "qq")?>>qq</option>
+<option value="instagram" <?checked($options['face'][$field], "instagram")?>>instagram</option>
+<option value="dropbox" <?checked($options['face'][$field], "dropbox")?>>dropbox</option>
+<option value="evernote" <?checked($options['face'][$field], "evernote")?>>evernote</option>
+<option value="flattr" <?checked($options['face'][$field], "flattr")?>>flattr</option>
+<option value="skype" <?checked($options['face'][$field], "skype")?>>skype</option>
+<option value="skype-circled" <?checked($options['face'][$field], "skype-circled")?>>skype-circled</option>
+<option value="renren" <?checked($options['face'][$field], "renren")?>>renren</option>
+<option value="sina-weibo" <?checked($options['face'][$field], "sina-weibo")?>>sina-weibo</option>
+<option value="paypal" <?checked($options['face'][$field], "paypal")?>>paypal</option>
+<option value="picasa" <?checked($options['face'][$field], "picasa")?>>picasa</option>
+<option value="soundcloud" <?checked($options['face'][$field], "soundcloud")?>>soundcloud</option>
+<option value="mixi" <?checked($options['face'][$field], "mixi")?>>mixi</option>
+<option value="behance" <?checked($options['face'][$field], "behance")?>>behance</option>
+<option value="google-circles" <?checked($options['face'][$field], "google-circles")?>>google-circles</option>
+<option value="vkontakte" <?checked($options['face'][$field], "vkontakte")?>>vkontakte</option>
+<option value="smashing" <?checked($options['face'][$field], "smashing")?>>smashing</option>
+<option value="sweden" <?checked($options['face'][$field], "sweden")?>>sweden</option>
+<option value="db-shape" <?checked($options['face'][$field], "db-shape")?>>db-shape</option>
+<option value="up-thin" <?checked($options['face'][$field], "up-thin")?>>up-thin</option>
