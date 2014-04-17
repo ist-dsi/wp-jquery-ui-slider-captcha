@@ -6,12 +6,15 @@
   padding: 10px 20px
   +rect-radius()
 
+#form_options_container
+  position: relative
+
 #form_options_container > fieldset
   &:first-child
     visibility: visible
   &:not(:first-child)
+    position: absolute
     visibility: hidden
-    height: 0
 
 
 label.label-radio + label.label-radio
