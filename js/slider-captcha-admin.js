@@ -28,6 +28,14 @@
 		$( '#form_options_container input, #form_options_container select').change(function () {
 			$( '#slider_captcha_form_selector' ).change();
 		});
+
+		$( '[name^=slider_type]' ).change(function () {
+			if( 'filled' == $( this ).val() ) {
+				$( this ).closest( 'p' ).next().slideDown().next().slideDown();
+			} else {
+				$( this ).closest( 'p' ).next().slideUp().next().slideUp();
+			}
+		})
 	})
 
 	var parseSliderCaptchaSettings = function ( el ) {
