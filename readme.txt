@@ -4,7 +4,7 @@ Donate link: https://dsi.tecnico.ulisboa.pt
 Tags: slider, captcha, ui, comment, responsive, spam, antispam, jquery, jquery-ui
 Requires at least: 3.0
 Tested up to: 3.9
-Stable tag: 0.5.3
+Stable tag: 0.5.4
 License: GPLv3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -104,6 +104,9 @@ In the upcoming versions, a Settings panel will be added to allow easy costumiza
 1. The default slider on the WordPress Twenty Fourteen theme.
 
 == Changelog ==
+
+= 0.5.4 =
+* Fixed bug with wrong settings on Comment Form captcha.
 
 = 0.5.2 =
 * Added `containerClass` setting to allow a custom class name to the container
