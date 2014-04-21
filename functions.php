@@ -38,7 +38,6 @@ function slider_get_slider_options($slider_name) {
 function slider_update_slider($slider_name, array $options) {
 	global $sliderCaptcha;
 	return $sliderCaptcha->update_slider($slider_name, $options);
-
 }
 
 

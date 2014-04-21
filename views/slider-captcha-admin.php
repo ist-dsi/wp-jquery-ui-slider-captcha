@@ -1,11 +1,7 @@
 <?php
-var_dump(slider_get_slider_options('general'));
 slider_update_slider("comments" , array('width'=>"100px", 'face'=>array('entypoStart'=>'user')));
-var_dump(slider_get_slider_options('comments'));
-
 ?>
 <fieldset>
-	<h3><?php _e( 'Select the option to configure form' ,'slider-captcha') ?></h3>
 	<p><?php _e( 'Slider activation should take place in individual form option. Individual slider settings will overide general options for each form.', 'slider-captcha' ); ?></p>
    	<select id="slider_captcha_form_selector">
 		<?foreach($this->captcha_locations as $machine=>$location):?>
@@ -19,56 +15,57 @@ var_dump(slider_get_slider_options('comments'));
 		?>
 		<fieldset id="<?=$machine?>_options_container">
 			<fieldset class="general_settings_container">
+				<h2><?=sprintf( __( '%s', 'slider-captcha'), $location )?></h2>
 				<?php if ( $i ) : ?>
-				<h3><?=sprintf( __( '%s %s activation', 'slider-captcha'), $location, __('Slider Captcha', 'slider-captcha') ); ?></h3>
+				<h3><?=sprintf( __( '%s activation', 'slider-captcha'), __( 'Slider Captcha', 'slider-captcha') )?></h3>
 				<p>
 					<label for="<?=$machine?>_slider_enable" class="label-radio">
-						<input value="1" type="radio" name="slider_enable_[<?=$machine?>]" id="<?=$machine?>_slider_enable" checked="checked"> <span><?php _e( 'Enabled' ,'slider_captcha'); ?></span>
+						<input value="1" type="radio" name="slider_enable[<?=$machine?>]" id="<?=$machine?>_slider_enable" checked="checked"> <span><?php _e( 'Enabled' ,'slider_captcha'); ?></span>
 					</label>
 					<label for="<?=$machine?>_slider_disable" class="label-radio">
-						<input value="0" type="radio" name="slider_enable_[<?=$machine?>]" id="<?=$machine?>_slider_disable"> <span><?php _e( 'Disabled' ,'slider_captcha'); ?></span>
+						<input value="0" type="radio" name="slider_enable[<?=$machine?>]" id="<?=$machine?>_slider_disable"> <span><?php _e( 'Disabled' ,'slider_captcha'); ?></span>
 					</label>
 				</p>
 				<?php else: $i = 1; endif; ?>
 
 				<h3><?php _e( 'Type', 'slider-captcha' ); ?></h3>
 				<p>
-					<label for="<?=$machine?>_admin_slider_type_normal" class="label-radio">
-						<input value="normal" type="radio" name="slider_type_normal[<?=$machine?>]" id="<?=$machine?>_slider_type_normal" value="sidebar" <?=($slider['type']=='normal'|| !isset($slider['type'])) ? 'checked="checked"' : ''?>> <span><?php _e( 'Normal' ,'slider_captcha'); ?></span>
+					<label for="<?=$machine?>_slider_type_normal" class="label-radio">
+						<input value="normal" type="radio" name="slider_type[<?=$machine?>]" id="<?=$machine?>_slider_type_normal" <?=($slider['type']=='normal'|| !isset($slider['type'])) ? 'checked="checked"' : ''?>> <span><?php _e( 'Normal' ,'slider_captcha'); ?></span>
 					</label>
-					<label for="<?=$machine?>_admin_slider_type_filled" class="label-radio">
-						<input value="filled" type="radio" name="slider_type_filled[<?=$machine?>]" id="<?=$machine?>_slider_type_filled" value="sidebar" <?=checked($slider['type'],'filled')?> <span><?php _e( 'Filled' ,'slider_captcha'); ?></span>
+					<label for="<?=$machine?>_slider_type_filled" class="label-radio">
+						<input value="filled" type="radio" name="slider_type[<?=$machine?>]" id="<?=$machine?>_slider_type_filled" <?=checked($slider['type'],'filled')?>> <span><?php _e( 'Filled' ,'slider_captcha'); ?></span>
 					</label>
 				</p>
 				<h4><?php _e( 'Animation type', 'slider-captcha' ); ?></h4>
 				<p>
 					<label for="<?=$machine?>_slider_animation_type_swipe" class="label-radio">
-						<input value="swipe" type="radio" name="slider_animation_type_[<?=$machine?>]" id="<?=$machine?>_slider_animation_type_swipe" checked="checked"> <span><?php _e( 'Swipe' ,'slider_captcha'); ?></span>
+						<input value="swipe" type="radio" name="slider_animation_type[<?=$machine?>]" id="<?=$machine?>_slider_animation_type_swipe" checked="checked"> <span><?php _e( 'Swipe' ,'slider_captcha'); ?></span>
 					</label>
 					<label for="<?=$machine?>_slider_animation_type_overlap" class="label-radio">
-						<input value="overlap" type="radio" name="slider_animation_type_[<?=$machine?>]" id="<?=$machine?>_slider_animation_type_overlap"> <span><?php _e( 'Overlap' ,'slider_captcha'); ?></span>
+						<input value="overlap" type="radio" name="slider_animation_type[<?=$machine?>]" id="<?=$machine?>_slider_animation_type_overlap"> <span><?php _e( 'Overlap' ,'slider_captcha'); ?></span>
 					</label>
 					<label for="<?=$machine?>_slider_animation_type_overlap_swipe" class="label-radio">
-						<input value="swipe_overlap" type="radio" name="slider_animation_type_[<?=$machine?>]" id="<?=$machine?>_slider_animation_type_overlap_swipe"> <span><?php _e( 'Swipe & overlap' ,'slider_captcha'); ?></span>
+						<input value="swipe_overlap" type="radio" name="slider_animation_type[<?=$machine?>]" id="<?=$machine?>_slider_animation_type_overlap_swipe"> <span><?php _e( 'Swipe & overlap' ,'slider_captcha'); ?></span>
 					</label>
 				</p>				
 				<h3><?php _e( 'Dimensions', 'slider-captcha' ); ?></h3>
 				<p>
 					<label for="<?=$machine?>_slider_width"><?php _e( 'Width', 'slider-captcha') ?></label> &times; <label for="<?=$machine?>_slider_height"><?php _e( 'height:', 'slider-captcha') ?></label>
-					<input value="<?=$slider['width']?>" class="number_input" type="text" name="slider_width[<?=$machine?>][<?=$machine?>]" id="<?=$machine?>_slider_width" value="" placeholder="<?php _e( '100%', 'slider-captcha') ?>">
+					<input value="<?=$slider['width']?>" class="number_input" type="text" name="slider_width[<?=$machine?>]" id="<?=$machine?>_slider_width" placeholder="<?php _e( '100%', 'slider-captcha') ?>">
 					<span class="units"><?php _e( 'px (or %)', 'slider-captcha') ?></span>
 					&times;
-					<input value="<?=$slider['height']?>" class="number_input" type="number" name="slider_height[<?=$machine?>][<?=$machine?>]" id="<?=$machine?>_slider_height" value="" placeholder="<?php _e( '46', 'slider-captcha') ?>">
+					<input value="<?=$slider['height']?>" class="number_input" type="number" name="slider_height[<?=$machine?>]" id="<?=$machine?>_slider_height" placeholder="<?php _e( '46', 'slider-captcha') ?>">
 					<span class="units"><?php _e( 'px', 'slider-captcha') ?></span>
 				</p>
 				<h3><?php _e( 'Hint text', 'slider-captcha' ); ?></h3>
 				<p class="hint_text">
 					<label for="<?=$machine?>_hint_text_before_unlock"><?php _e( 'Before unlock', 'slider-captcha' ); ?></label>
-					<input value="<?=$slider['hintText']?>" type="text" name="hint_text_before_unlock[<?=$machine?>]" id="<?=$machine?>_hint_text_before_unlock" value="" placeholder="<?php _e( 'Swipe to Unlock', 'slider-captcha') ?>">
+					<input value="<?=$slider['hintText']?>" type="text" name="hint_text_before_unlock[<?=$machine?>]" id="<?=$machine?>_hint_text_before_unlock" placeholder="<?php _e( 'Swipe to Unlock', 'slider-captcha') ?>">
 				</p>
 				<p class="hint_text">
 					<label for="<?=$machine?>_hint_text_after_unlock"><?php _e( 'and after unlock', 'slider-captcha') ?></label>
-					<input value="<?=$slider['textAfterUnlock']?>" type="text" name="hint_text_after_unlock[<?=$machine?>]" id="<?=$machine?>_hint_text_after_unlock" value="" placeholder="<?php _e( 'Unlocked', 'slider-captcha') ?>">
+					<input value="<?=$slider['textAfterUnlock']?>" type="text" name="hint_text_after_unlock[<?=$machine?>]" id="<?=$machine?>_hint_text_after_unlock" placeholder="<?php _e( 'Unlocked', 'slider-captcha') ?>">
 				</p>
 			</fieldset>
 			<fieldset class="slider_styles_container">
