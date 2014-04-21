@@ -6,6 +6,9 @@
   padding: 10px 20px
   +rect-radius()
 
+p#general_slider + p
+  display: none
+
 #form_options_container
   position: relative
 
@@ -34,9 +37,7 @@ fieldset
 fieldset.slider_styles_container
   & > h3
     margin-bottom: 0
-  & > fieldset:first-child
-    float: left
-  & > fieldset
+  & > fieldset.column_presentation
     float: left
     width: 50%
 

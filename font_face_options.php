@@ -1,3 +1,4 @@
+<option value="">Select one icon face</option>
 <option value="note" <?selected($options['face'][$field], "note")?>>note</option>
 <option value="logo-db" <?selected($options['face'][$field], "logo-db")?>>logo-db</option>
 <option value="music" <?selected($options['face'][$field], "music")?>>music</option>
