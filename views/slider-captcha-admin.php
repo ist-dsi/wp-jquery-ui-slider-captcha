@@ -111,7 +111,7 @@ endif;?>
 				<h4 <?=($slider['type'] != 'filled' ? 'style="display: none;"' : '')?> ><?php _e( 'Animation type', 'slider_captcha' ); ?></h4>
 				<p <?=($slider['type'] != 'filled' ? 'style="display: none;"' : '')?>>
 					<label for="<?=$machine?>_slider_animation_type_overlap" class="label-radio">
-						<input value="overlap" type="radio" name="<?=$machine?>[slider_animation_type]" id="<?=$machine?>_slider_animation_type_overlap" <?=checked($slider['textFeedbackAnimation'],'overlap')?>> <span><?php _e( 'Overlap' ,'slider_captcha'); ?></span>
+						<input value="overlap" type="radio" name="<?=$machine?>[slider_animation_type]" id="<?=$machine?>_slider_animation_type_overlap" <?=($slider['textFeedbackAnimation']=='overlap' || ($slider['textFeedbackAnimation']=='' && $machine=='general')) ? 'checked="checked"' : ''?>> <span><?php _e( 'Overlap' ,'slider_captcha'); ?></span>
 					</label>
 					<label for="<?=$machine?>_slider_animation_type_swipe" class="label-radio">
 						<input value="swipe" type="radio" name="<?=$machine?>[slider_animation_type]" id="<?=$machine?>_slider_animation_type_swipe" <?=checked($slider['textFeedbackAnimation'],'swipe')?> > <span><?php _e( 'Swipe' ,'slider_captcha'); ?></span>
