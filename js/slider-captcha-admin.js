@@ -2,6 +2,16 @@
 
 	$(document).ready( function () {
 
+		$('.color_input').css('vertical-align', 'middle').wpColorPicker({
+			change: function(event, ui) {
+				$( '#slider_captcha_form_selector' ).change();
+			},
+			clear: function() {
+				$( '#slider_captcha_form_selector' ).change();
+			},
+			palettes: false
+		});
+
 		$( '#slider_captcha_form_selector' ).change(function () {
 			$( '#form_options_container > fieldset' ).css({'visibility': 'hidden', 'position': 'absolute'}).height( 0 );
 			$( '#' + $(this).val() + '_options_container' ).css({'visibility': 'visible', 'position': 'relative'}).height( 'auto' );

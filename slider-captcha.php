@@ -220,7 +220,7 @@ class SliderCaptcha {
 	    <div class="wrap">
 	        <?php screen_icon(); ?>
 			<h2><?php _e( 'Slider Captcha Settings', 'slider_captcha' ) ?></h2>
-	        <form method="post" action="#">
+	        <form method="post" action="">
 				<?php include( "views/slider-captcha-admin.php" ); ?>
 	        </form>
 		</div>
@@ -229,6 +229,9 @@ class SliderCaptcha {
 
 	public function register_admin_scripts($hook) {
 		if( $hook == "settings_page_slider-captcha-setting" ) {
+
+    		wp_enqueue_script('wp-color-picker');
+    		wp_enqueue_style( 'wp-color-picker' );
 
 			wp_enqueue_script( 'slider-captcha-admin', plugins_url( '/js/slider-captcha-admin.js', __FILE__), array( 'jquery' ), $plugin_version );
 

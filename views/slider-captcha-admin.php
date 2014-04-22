@@ -145,7 +145,6 @@ endif;?>
 					<p>
 						<label for="<?=$machine?>_slider_background_color"><?php _e( 'Background color', 'slider_captcha' ); ?></label>
 						<input value="<?=$slider['styles']['backgroundColor']?>" class="color_input" type="text" name="<?=$machine?>[slider_background_color]" id="<?=$machine?>_slider_background_color" value="" placeholder="">
-						<span class="units"><?php _e( '(hex)', 'slider_captcha' ); ?></span>
 					</p>
 					<p>
 						<label for="<?=$machine?>_hint_text_size_unlock"><?php _e( 'Hint text size', 'slider_captcha' ); ?></label>
@@ -164,12 +163,10 @@ endif;?>
 					<p>
 						<label for="<?=$machine?>_knob_color_before_unlock"><?php _e( 'Knob color', 'slider_captcha' ); ?></label>
 						<input value="<?=$slider['styles']['knobColor']?>" class="color_input" type="text" name="<?=$machine?>[knob_color_before_unlock]" id="<?=$machine?>_knob_color_before_unlock" value="" placeholder="">
-						<span class="units"><?php _e( '(hex)', 'slider_captcha' ); ?></span>
 					</p>
 					<p>
 						<label for="<?=$machine?>_knob_text_color_before_unlock"><?php _e( 'Knob text color', 'slider_captcha' ); ?></label>
 						<input value="<?=$slider['face']['textColor']?>" type="text" class="color_input" name="<?=$machine?>[knob_text_color_before_unlock]" id="<?=$machine?>_knob_text_color_before_unlock" value="" placeholder="">
-						<span class="units"><?php _e( '(hex)', 'slider_captcha' ); ?></span>
 					</p>
 					<!--<p>
 						<label for="<?=$machine?>_knob_text_size_before_unlock"><?php _e( 'Knob text size', 'slider_captcha' ); ?></label>
@@ -187,7 +184,6 @@ endif;?>
 					<p>
 						<label for="<?=$machine?>_hint_text_color_before_unlock"><?php _e( 'Hint text color', 'slider_captcha' ); ?></label>
 						<input value="<?=$slider['styles']['textColor']?>" type="text" class="color_input" name="<?=$machine?>[hint_text_color_before_unlock]" id="<?=$machine?>_hint_text_color_before_unlock" value="" placeholder="">
-						<span class="units"><?php _e( '(hex)', 'slider_captcha' ); ?></span>
 					</p>
 				</fieldset>
 				<fieldset class="column_presentation">
@@ -201,12 +197,10 @@ endif;?>
 					<p>
 						<label for="<?=$machine?>_knob_color_after_unlock"><?php _e( 'Knob color', 'slider_captcha' ); ?></label>
 						<input value="<?=$slider['styles']['knobColorAfterUnlock']?>" class="color_input" type="text" name="<?=$machine?>[knob_color_after_unlock]" id="<?=$machine?>_knob_color_after_unlock" value="" placeholder="">
-						<span class="units"><?php _e( '(hex)', 'slider_captcha' ); ?></span>
 					</p>
 					<p>
 						<label for="<?=$machine?>_knob_text_color_after_unlock"><?php _e( 'Knob text color', 'slider_captcha' ); ?></label>
 						<input value="<?=$slider['face']['textColorAfterUnlock']?>" type="text" class="color_input" name="<?=$machine?>[knob_text_color_after_unlock]" id="<?=$machine?>_knob_text_color_after_unlock" value="" placeholder="">
-						<span class="units"><?php _e( '(hex)', 'slider_captcha' ); ?></span>
 					</p>
 					<!--<p>
 						<label for="<?=$machine?>_knob_text_size_after_unlock"><?php _e( 'Knob text size', 'slider_captcha' ); ?></label>
@@ -224,7 +218,6 @@ endif;?>
 					<p>
 						<label for="<?=$machine?>_hint_text_color_after_unlock"><?php _e( 'Hint text color', 'slider_captcha' ); ?></label>
 						<input value="<?=$slider['styles']['textColorAfterUnlock']?>" type="text" class="color_input" name="<?=$machine?>[hint_text_color_after_unlock]" id="<?=$machine?>_hint_text_color_after_unlock" value="" placeholder="">
-						<span class="units"><?php _e( '(hex)', 'slider_captcha' ); ?></span>
 					</p>
 				</fieldset>
 			</fieldset>

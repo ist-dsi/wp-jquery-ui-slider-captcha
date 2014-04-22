@@ -62,3 +62,7 @@ fieldset.slider_styles_container > fieldset.column_presentation {
 
 .units {
   color: #888888; }
+
+label + div.wp-picker-container {
+  vertical-align: middle;
+  margin-left: 5px; }
