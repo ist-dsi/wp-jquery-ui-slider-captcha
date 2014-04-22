@@ -26,7 +26,7 @@ foreach($_POST as $machine => $post) {
 	if($post['hint_text_before_unlock'] != '')
 		$new_array['hintText'] = $post['hint_text_before_unlock'];
 	if($post['hint_text_after_unlock'] != '')
-		$new_array['textAfterUnlock'] = $post['hint_text_after_unlock'];
+		$new_array['hintTextAfterUnlock'] = $post['hint_text_after_unlock'];
 
 	//Save the general styles
 	if($post['slider_background_color'] != '')
@@ -36,35 +36,35 @@ foreach($_POST as $machine => $post) {
 
 	//Save before unlock styles
 	if($post['knob_icon_face_before_unlock'] != '')
-		$new_array['face']['entypoStart'] = $post['knob_icon_face_before_unlock'];
+		$new_array['face']['icon'] = $post['knob_icon_face_before_unlock'];
 	if($post['knob_color_before_unlock'] != '')
 		$new_array['styles']['knobColor'] = $post['knob_color_before_unlock'];
 	if($post['knob_text_color_before_unlock'] != '')
-		$new_array['face']['textColorStart'] = $post['knob_text_color_before_unlock'];
+		$new_array['face']['textColor'] = $post['knob_text_color_before_unlock'];
 	if($post['knob_text_size_before_unlock'] != '')
-		$new_array['face']['textSizeStart'] = $post['knob_text_size_before_unlock'];
+		$new_array['face']['textSize'] = $post['knob_text_size_before_unlock'];
 	if($post['knob_top_offset_before_unlock'] != '')
-		$new_array['face']['topStart'] = $post['knob_top_offset_before_unlock'];
+		$new_array['face']['top'] = $post['knob_top_offset_before_unlock'];
 	if($post['knob_right_offset_before_unlock'] != '')
-		$new_array['face']['rightStart'] = $post['knob_right_offset_before_unlock'];
+		$new_array['face']['right'] = $post['knob_right_offset_before_unlock'];
 	if($post['hint_text_color_before_unlock'] != '')
 		$new_array['styles']['textColor'] = $post['hint_text_color_before_unlock'];
 
 	//Save after unlock styles
 	if($post['knob_icon_face_after_unlock'] != '')
-		$new_array['face']['entypoEnd'] = $post['knob_icon_face_after_unlock'];
+		$new_array['face']['iconAfterUnlock'] = $post['knob_icon_face_after_unlock'];
 	if($post['knob_color_after_unlock'] != '')
-		$new_array['styles']['disabledKnobColor'] = $post['knob_color_after_unlock'];
+		$new_array['styles']['knobColorAfterUnlock'] = $post['knob_color_after_unlock'];
 	if($post['knob_text_color_after_unlock'] != '')
-		$new_array['face']['textColorEnd'] = $post['knob_text_color_after_unlock'];
+		$new_array['face']['textColorAfterUnlock'] = $post['knob_text_color_after_unlock'];
 	if($post['knob_text_size_after_unlock'] != '')
-		$new_array['face']['textSizeEnd'] = $post['knob_text_size_after_unlock'];
+		$new_array['face']['textSizeAfterUnlock'] = $post['knob_text_size_after_unlock'];
 	if($post['knob_top_offset_after_unlock'] != '')
-		$new_array['face']['topEnd'] = $post['knob_top_offset_after_unlock'];
+		$new_array['face']['topAfterUnlock'] = $post['knob_top_offset_after_unlock'];
 	if($post['knob_right_offset_after_unlock'] != '')
-		$new_array['face']['rightEnd'] = $post['knob_right_offset_after_unlock'];
+		$new_array['face']['rightAfterUnlock'] = $post['knob_right_offset_after_unlock'];
 	if($post['hint_text_color_after_unlock'] != '')
-		$new_array['styles']['unlockTextColor'] = $post['hint_text_color_after_unlock'];
+		$new_array['styles']['textColorAfterUnlock'] = $post['hint_text_color_after_unlock'];
 
 
 	slider_update_slider($machine,$new_array);
@@ -136,7 +136,7 @@ endif;?>
 				</p>
 				<p class="hint_text">
 					<label for="<?=$machine?>_hint_text_after_unlock"><?php _e( 'and after unlock', 'slider_captcha') ?></label>
-					<input value="<?=$slider['textAfterUnlock']?>" type="text" name="<?=$machine?>[hint_text_after_unlock]" id="<?=$machine?>_hint_text_after_unlock" placeholder="<?php _e( 'Unlocked', 'slider_captcha') ?>">
+					<input value="<?=$slider['hintTextAfterUnlock']?>" type="text" name="<?=$machine?>[hint_text_after_unlock]" id="<?=$machine?>_hint_text_after_unlock" placeholder="<?php _e( 'Unlocked', 'slider_captcha') ?>">
 				</p>
 			</fieldset>
 			<fieldset class="slider_styles_container">
@@ -158,7 +158,7 @@ endif;?>
 					<p>
 						<label for="<?=$machine?>_knob_icon_face_before_unlock"><?php _e( 'Icon face', 'slider_captcha' ); ?></label>
 						<select name="<?=$machine?>[knob_icon_face_before_unlock]" id="<?=$machine?>_knob_icon_face_before_unlock">
-							<?php _slider_draw_fontface_options('entypoStart',$slider) ?>
+							<?php _slider_draw_fontface_options('icon',$slider) ?>
 						</select>
 					</p>
 					<p>
@@ -168,20 +168,20 @@ endif;?>
 					</p>
 					<p>
 						<label for="<?=$machine?>_knob_text_color_before_unlock"><?php _e( 'Knob text color', 'slider_captcha' ); ?></label>
-						<input value="<?=$slider['face']['textColorStart']?>" type="text" class="color_input" name="<?=$machine?>[knob_text_color_before_unlock]" id="<?=$machine?>_knob_text_color_before_unlock" value="" placeholder="">
+						<input value="<?=$slider['face']['textColor']?>" type="text" class="color_input" name="<?=$machine?>[knob_text_color_before_unlock]" id="<?=$machine?>_knob_text_color_before_unlock" value="" placeholder="">
 						<span class="units"><?php _e( '(hex)', 'slider_captcha' ); ?></span>
 					</p>
 					<!--<p>
 						<label for="<?=$machine?>_knob_text_size_before_unlock"><?php _e( 'Knob text size', 'slider_captcha' ); ?></label>
-						<input value="<?=$slider['face']['textSizeStart']?>" type="number" class="number_input" name="<?=$machine?>[knob_text_size_before_unlock]" id="<?=$machine?>_knob_text_size_before_unlock" value="" placeholder="">
+						<input value="<?=$slider['face']['textSize']?>" type="number" class="number_input" name="<?=$machine?>[knob_text_size_before_unlock]" id="<?=$machine?>_knob_text_size_before_unlock" value="" placeholder="">
 						<span class="units"><?php _e( 'px', 'slider_captcha' ); ?></span>
 					</p>-->
 					<p>
 						<label for="<?=$machine?>_knob_top_offset_before_unlock"><?php _e( 'Offset ( top &times; right)', 'slider_captcha' ); ?></label>
-						<input value="<?=$slider['face']['topStart']?>" type="number" class="number_input" name="<?=$machine?>[knob_top_offset_before_unlock]" id="<?=$machine?>_knob_top_offset_before_unlock" value="" placeholder="0">
+						<input value="<?=$slider['face']['top']?>" type="number" class="number_input" name="<?=$machine?>[knob_top_offset_before_unlock]" id="<?=$machine?>_knob_top_offset_before_unlock" value="" placeholder="0">
 						<span class="units"><?php _e( 'px', 'slider_captcha' ); ?></span>
 						&times;
-						<input value="<?=$slider['face']['rightStart']?>" type="number" class="number_input" name="<?=$machine?>[knob_right_offset_before_unlock]" value="" placeholder="0">
+						<input value="<?=$slider['face']['right']?>" type="number" class="number_input" name="<?=$machine?>[knob_right_offset_before_unlock]" value="" placeholder="0">
 						<span class="units"><?php _e( 'px', 'slider_captcha' ); ?></span>
 					</p>
 					<p>
@@ -195,35 +195,35 @@ endif;?>
 					<p>
 						<label for="<?=$machine?>_knob_icon_face_after_unlock"><?php _e( 'Icon face', 'slider_captcha' ); ?></label>
 						<select name="<?=$machine?>[knob_icon_face_after_unlock]" id="<?=$machine?>_knob_icon_face_after_unlock">
-							<?php _slider_draw_fontface_options('entypoEnd',$slider) ?>
+							<?php _slider_draw_fontface_options('iconAfterUnlock',$slider) ?>
 						</select>
 					</p>
 					<p>
 						<label for="<?=$machine?>_knob_color_after_unlock"><?php _e( 'Knob color', 'slider_captcha' ); ?></label>
-						<input value="<?=$slider['styles']['disabledKnobColor']?>" class="color_input" type="text" name="<?=$machine?>[knob_color_after_unlock]" id="<?=$machine?>_knob_color_after_unlock" value="" placeholder="">
+						<input value="<?=$slider['styles']['knobColorAfterUnlock']?>" class="color_input" type="text" name="<?=$machine?>[knob_color_after_unlock]" id="<?=$machine?>_knob_color_after_unlock" value="" placeholder="">
 						<span class="units"><?php _e( '(hex)', 'slider_captcha' ); ?></span>
 					</p>
 					<p>
 						<label for="<?=$machine?>_knob_text_color_after_unlock"><?php _e( 'Knob text color', 'slider_captcha' ); ?></label>
-						<input value="<?=$slider['face']['textColorEnd']?>" type="text" class="color_input" name="<?=$machine?>[knob_text_color_after_unlock]" id="<?=$machine?>_knob_text_color_after_unlock" value="" placeholder="">
+						<input value="<?=$slider['face']['textColorAfterUnlock']?>" type="text" class="color_input" name="<?=$machine?>[knob_text_color_after_unlock]" id="<?=$machine?>_knob_text_color_after_unlock" value="" placeholder="">
 						<span class="units"><?php _e( '(hex)', 'slider_captcha' ); ?></span>
 					</p>
 					<!--<p>
 						<label for="<?=$machine?>_knob_text_size_after_unlock"><?php _e( 'Knob text size', 'slider_captcha' ); ?></label>
-						<input value="<?=$slider['face']['textSizeEnd']?>" type="text" class="number_input" name="<?=$machine?>[knob_text_size_after_unlock]" id="<?=$machine?>_knob_text_size_after_unlock" value="" placeholder="">
+						<input value="<?=$slider['face']['textSizeAfterUnlock']?>" type="text" class="number_input" name="<?=$machine?>[knob_text_size_after_unlock]" id="<?=$machine?>_knob_text_size_after_unlock" value="" placeholder="">
 						<span class="units"><?php _e( 'px', 'slider_captcha' ); ?></span>
 					</p>-->
 					<p>
 						<label for="<?=$machine?>_knob_top_offset_after_unlock"><?php _e( 'Offset ( top &times; right)', 'slider_captcha' ); ?></label>
-						<input value="<?=$slider['face']['topEnd']?>" type="number" class="number_input" name="<?=$machine?>[knob_top_offset_after_unlock]" id="<?=$machine?>_knob_top_offset_after_unlock" value="" placeholder="0">
+						<input value="<?=$slider['face']['topAfterUnlock']?>" type="number" class="number_input" name="<?=$machine?>[knob_top_offset_after_unlock]" id="<?=$machine?>_knob_top_offset_after_unlock" value="" placeholder="0">
 						<span class="units"><?php _e( 'px', 'slider_captcha' ); ?></span>
 						&times;
-						<input value="<?=$slider['face']['rightEnd']?>" type="number" class="number_input" name="<?=$machine?>[knob_right_offset_after_unlock]" value="" placeholder="0">
+						<input value="<?=$slider['face']['rightAfterUnlock']?>" type="number" class="number_input" name="<?=$machine?>[knob_right_offset_after_unlock]" value="" placeholder="0">
 						<span class="units"><?php _e( 'px', 'slider_captcha' ); ?></span>
 					</p>
 					<p>
 						<label for="<?=$machine?>_hint_text_color_after_unlock"><?php _e( 'Hint text color', 'slider_captcha' ); ?></label>
-						<input value="<?=$slider['styles']['unlockTextColor']?>" type="text" class="color_input" name="<?=$machine?>[hint_text_color_after_unlock]" id="<?=$machine?>_hint_text_color_after_unlock" value="" placeholder="">
+						<input value="<?=$slider['styles']['textColorAfterUnlock']?>" type="text" class="color_input" name="<?=$machine?>[hint_text_color_after_unlock]" id="<?=$machine?>_hint_text_color_after_unlock" value="" placeholder="">
 						<span class="units"><?php _e( '(hex)', 'slider_captcha' ); ?></span>
 					</p>
 				</fieldset>
@@ -245,16 +245,16 @@ endif;?>
 
 	$settings = array(
 		'hintText' => 'Swipe to save changes',
-		'textAfterUnlock' => 'Saving changes',
+		'hintTextAfterUnlock' => 'Saving changes',
 		'hintTextSize' => '13px',
 		'styles' => array(
 			'width' => '300px',
 			'height' => '38px',
-			'disabledKnobColor' => $colors[0],
+			'knobColorAfterUnlock' => $colors[0],
 			'knobColor' => $colors[1],
 			'backgroundColor' => $colors[2],
 			'textColor' => '#fff',
-			'unlockTextColor' => '#fff'
+			'textColorAfterUnlock' => '#fff'
 		),
 		'events' => array( 'submitAfterUnlock' => '1')
 	);

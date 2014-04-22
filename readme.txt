@@ -47,25 +47,25 @@ The `$params` is an array where you can costumize the Slider Captcha, acording t
 	textFeedbackAnimation: 'swipe_overlap',
 	hintText: "Swipe to submit",
 	hintTextSize: '12px',
-	textAfterUnlock: 'You can submit now',
+	hintTextAfterUnlock: 'You can submit now',
 	styles: {
 		knobColor: "#5CDF3B",
-		disabledKnobColor: "#000000",
+		knobColorAfterUnlock: "#000000",
 		backgroundColor: "#444",
 		textColor: "#fff",
-		unlockTextColor: "#fff",
+		textColorAfterUnlock: "#fff",
 		width: '90%',
 		height: '35px'
 	},
 	face: {
-		topStart: 4,
-		rightStart: 9,
-		entypoStart: 'right-thin',
-		textColorStart: '#ddd',
-		textColorEnd: '#5CDF3B',
-		topEnd: 3,
-		rightEnd: 9,				
-		entypoEnd: 'flag'
+		top: 4,
+		right: 9,
+		icon: 'right-thin',
+		textColor: '#ddd',
+		textColorAfterUnlock: '#5CDF3B',
+		topAfterUnlock: 3,
+		rightAfterUnlock: 9,				
+		iconAfterUnlock: 'flag'
 	},
 	events: {
 		afterUnlock: function () {

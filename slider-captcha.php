@@ -79,7 +79,7 @@ class SliderCaptcha {
 		//Slider default settings
 		$this->js_settings = array(
 			'hintText' => __('Swipe to Validate','slider_captcha'),
-			'textAfterUnlock' => __("You can now Submit",'slider_captcha'),
+			'hintTextAfterUnlock' => __("You can now Submit",'slider_captcha'),
 			'events' => array(
 				'validateOnServer' => true,
 				),
