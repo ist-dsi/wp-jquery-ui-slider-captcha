@@ -109,7 +109,7 @@ class SliderCaptcha {
 
 	public function hook_validate_slider($comment_data) {
 		$validateOnServer = $_POST['slider_captcha_validated'];
-		if( $validateOnServer != 1)
+		if( $validateOnServer != 1 && !is_admin())
 			wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation... Please make sure you have Javascript enabled on your browser.",'slider_captcha'));
 		return $comment_data;
 	}
