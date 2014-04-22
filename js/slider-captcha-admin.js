@@ -21,7 +21,7 @@
 				individual_options = parseSliderCaptchaSettings( $( '#form_options_container > fieldset#' +  $(this).val() + '_options_container' ) );
 
 			$( '#general_slider' ).next().slideUp();
-			$( '#general_slider' ).empty().sliderCaptcha( $.extend({}, general_options, individual_options ) );
+			$( '#general_slider' ).empty().sliderCaptcha( $.extend(true, {}, general_options, individual_options ) );
 
 		});
 
@@ -81,6 +81,9 @@
 			if ( '' != form_object.find( '[name^=slider_height]' ).val() )
 				styles['height'] = form_object.find( '[name^=slider_height]' ).val() + 'px';
 
+			if ( '' != form_object.find( '[name^=knob_text_size_before_unlock]' ).val() )
+				face['textSizeStart'] = form_object.find( '[name^=knob_text_size_before_unlock]' ).val() + 'px';
+
 			if ( '' != form_object.find( '[name^=knob_top_offset_before_unlock]' ).val() )
 				face['topStart'] = form_object.find( '[name^=knob_top_offset_before_unlock]' ).val() + 'px';
 
@@ -92,6 +95,9 @@
 
 			if ( '' != form_object.find( '[name^=knob_text_color_before_unlock]' ).val() )
 				face['textColorStart'] = form_object.find( '[name^=knob_text_color_before_unlock]' ).val();
+
+			if ( '' != form_object.find( '[name^=knob_text_size_after_unlock]' ).val() )
+				face['textSizeEnd'] = form_object.find( '[name^=knob_text_size_after_unlock]' ).val() + 'px';
 
 			if ( '' != form_object.find( '[name^=knob_text_color_after_unlock]' ).val() )
 				face['textColorEnd'] = form_object.find( '[name^=knob_text_color_after_unlock]' ).val();
