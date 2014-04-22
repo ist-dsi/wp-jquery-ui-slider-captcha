@@ -78,11 +78,11 @@ class SliderCaptcha {
 		$this->sliders = get_option('slider_captcha_sliders',$default_sliders);
 
 		$this->captcha_locations = array(
-				'general' 	    	=> __( 'General options' ,'slider-captcha'),
-				'comments'			=> __( 'Comments form' ,'slider-captcha'),
-				'registration'		=> __( 'Registration form' ,'slider-captcha'),
-				'reset_password' 	=> __( 'Reset password form' ,'slider-captcha'),
-				'login' 			=> __( 'Login form', 'slider-captcha'),
+				'general' 	    	=> __( 'General options' ,_after),
+				'comments'			=> __( 'Comments form' ,_after),
+				'registration'		=> __( 'Registration form' ,_after),
+				'reset_password' 	=> __( 'Reset password form' ,_after),
+				'login' 			=> __( 'Login form', _after),
 			);
 	}
 
