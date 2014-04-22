@@ -68,6 +68,7 @@ class SliderCaptcha {
 			);
 		$this->settings = array(
 			'containerClass' => null,
+			'enabled' => 1,
 			);
 
 		$default_sliders = array(
