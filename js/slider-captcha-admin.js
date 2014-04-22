@@ -29,7 +29,7 @@
 			$( '#slider_captcha_form_selector' ).change();
 		});
 
-		$( '[name^=slider_type]' ).change(function () {
+		$( '[name*="[slider_type]"]' ).change(function () {
 			if( 'filled' == $( this ).val() ) {
 				$( this ).closest( 'p' ).next().slideDown().next().slideDown();
 			} else {
@@ -48,68 +48,68 @@
 			face = {},
 			events = {};
 
-			obj['type'] = form_object.find( '[name^=slider_type]:checked' ).val();
-			obj['textFeedbackAnimation'] = form_object.find( '[name^=slider_animation_type]:checked' ).val();
+			obj['type'] = form_object.find( '[name*="[slider_type]"]:checked' ).val();
+			obj['textFeedbackAnimation'] = form_object.find( '[name*="[slider_animation_type]"]:checked' ).val();
 			
-			if( '' != form_object.find( '[name^=hint_text_before_unlock]' ).val() )
-				obj['hintText'] = form_object.find( '[name^=hint_text_before_unlock]' ).val();
+			if( '' != form_object.find( '[name*="[hint_text_before_unlock]"]' ).val() )
+				obj['hintText'] = form_object.find( '[name*="[hint_text_before_unlock]"]' ).val();
 			
-			if( '' != form_object.find( '[name^=hint_text_size_unlock]' ).val() )
-				obj['hintTextSize'] = form_object.find( '[name^=hint_text_size_unlock]' ).val() + 'px';
+			if( '' != form_object.find( '[name*="[hint_text_size_unlock]"]' ).val() )
+				obj['hintTextSize'] = form_object.find( '[name*="[hint_text_size_unlock]"]' ).val() + 'px';
 			
-			if ( '' != form_object.find( '[name^=hint_text_after_unlock]' ).val() ) 
-				obj['textAfterUnlock'] = form_object.find( '[name^=hint_text_after_unlock]' ).val();
+			if ( '' != form_object.find( '[name*="[hint_text_after_unlock]"]' ).val() ) 
+				obj['textAfterUnlock'] = form_object.find( '[name*="[hint_text_after_unlock]"]' ).val();
 
-			if ( '' != form_object.find( '[name^=knob_color_before_unlock]' ).val() ) 
-				styles['knobColor'] = form_object.find( '[name^=knob_color_before_unlock]' ).val();
+			if ( '' != form_object.find( '[name*="[knob_color_before_unlock]"]' ).val() ) 
+				styles['knobColor'] = form_object.find( '[name*="[knob_color_before_unlock]"]' ).val();
 
-			if ( '' != form_object.find( '[name^=knob_color_after_unlock]' ).val() )
-				styles['disabledKnobColor'] = form_object.find( '[name^=knob_color_after_unlock]' ).val();
+			if ( '' != form_object.find( '[name*="[knob_color_after_unlock]"]' ).val() )
+				styles['disabledKnobColor'] = form_object.find( '[name*="[knob_color_after_unlock]"]' ).val();
 
-			if ( '' != form_object.find( '[name^=slider_background_color]' ).val() )
-				styles['backgroundColor'] = form_object.find( '[name^=slider_background_color]' ).val();
+			if ( '' != form_object.find( '[name*="[slider_background_color]"]' ).val() )
+				styles['backgroundColor'] = form_object.find( '[name*="[slider_background_color]"]' ).val();
 
-			if ( '' != form_object.find( '[name^=hint_text_color_before_unlock]' ).val() )
-				styles['textColor'] = form_object.find( '[name^=hint_text_color_before_unlock]' ).val();
+			if ( '' != form_object.find( '[name*="[hint_text_color_before_unlock]"]' ).val() )
+				styles['textColor'] = form_object.find( '[name*="[hint_text_color_before_unlock]"]' ).val();
 
-			if ( '' != form_object.find( '[name^=hint_text_color_after_unlock]' ).val() )
-				styles['unlockTextColor'] = form_object.find( '[name^=hint_text_color_after_unlock]' ).val();
+			if ( '' != form_object.find( '[name*="[hint_text_color_after_unlock]"]' ).val() )
+				styles['unlockTextColor'] = form_object.find( '[name*="[hint_text_color_after_unlock]"]' ).val();
 			
-			if ( '' != form_object.find( '[name^=slider_width]' ).val() )
-				styles['width'] = form_object.find( '[name^=slider_width]' ).val();
+			if ( '' != form_object.find( '[name*="[slider_width]"]' ).val() )
+				styles['width'] = form_object.find( '[name*="[slider_width]"]' ).val();
 
-			if ( '' != form_object.find( '[name^=slider_height]' ).val() )
-				styles['height'] = form_object.find( '[name^=slider_height]' ).val() + 'px';
+			if ( '' != form_object.find( '[name*="[slider_height]"]' ).val() )
+				styles['height'] = form_object.find( '[name*="[slider_height]"]' ).val() + 'px';
 
-			if ( '' != form_object.find( '[name^=knob_text_size_before_unlock]' ).val() )
-				face['textSizeStart'] = form_object.find( '[name^=knob_text_size_before_unlock]' ).val() + 'px';
+			if ( '' != form_object.find( '[name*="[knob_text_size_before_unlock]"]' ).val() )
+				face['textSizeStart'] = form_object.find( '[name*="[knob_text_size_before_unlock]"]' ).val() + 'px';
 
-			if ( '' != form_object.find( '[name^=knob_top_offset_before_unlock]' ).val() )
-				face['topStart'] = form_object.find( '[name^=knob_top_offset_before_unlock]' ).val() + 'px';
+			if ( '' != form_object.find( '[name*="[knob_top_offset_before_unlock]"]' ).val() )
+				face['topStart'] = form_object.find( '[name*="[knob_top_offset_before_unlock]"]' ).val() + 'px';
 
-			if ( '' != form_object.find( '[name^=knob_right_offset_before_unlock]' ).val() )
-				face['rightStart'] = form_object.find( '[name^=knob_right_offset_before_unlock]' ).val() + 'px';
+			if ( '' != form_object.find( '[name*="[knob_right_offset_before_unlock]"]' ).val() )
+				face['rightStart'] = form_object.find( '[name*="[knob_right_offset_before_unlock]"]' ).val() + 'px';
 
-			if ( '' != form_object.find( '[name^=knob_icon_face_before_unlock]' ).val() )
-				face['entypoStart'] = form_object.find( '[name^=knob_icon_face_before_unlock]' ).val();
+			if ( '' != form_object.find( '[name*="[knob_icon_face_before_unlock]"]' ).val() )
+				face['entypoStart'] = form_object.find( '[name*="[knob_icon_face_before_unlock]"]' ).val();
 
-			if ( '' != form_object.find( '[name^=knob_text_color_before_unlock]' ).val() )
-				face['textColorStart'] = form_object.find( '[name^=knob_text_color_before_unlock]' ).val();
+			if ( '' != form_object.find( '[name*="[knob_text_color_before_unlock]"]' ).val() )
+				face['textColorStart'] = form_object.find( '[name*="[knob_text_color_before_unlock]"]' ).val();
 
-			if ( '' != form_object.find( '[name^=knob_text_size_after_unlock]' ).val() )
-				face['textSizeEnd'] = form_object.find( '[name^=knob_text_size_after_unlock]' ).val() + 'px';
+			if ( '' != form_object.find( '[name*="[knob_text_size_after_unlock]"]' ).val() )
+				face['textSizeEnd'] = form_object.find( '[name*="[knob_text_size_after_unlock]"]' ).val() + 'px';
 
-			if ( '' != form_object.find( '[name^=knob_text_color_after_unlock]' ).val() )
-				face['textColorEnd'] = form_object.find( '[name^=knob_text_color_after_unlock]' ).val();
+			if ( '' != form_object.find( '[name*="[knob_text_color_after_unlock]"]' ).val() )
+				face['textColorEnd'] = form_object.find( '[name*="[knob_text_color_after_unlock]"]' ).val();
 
-			if ( '' != form_object.find( '[name^=knob_top_offset_after_unlock]' ).val() )
-				face['topEnd'] = form_object.find( '[name^=knob_top_offset_after_unlock]' ).val() + 'px';
+			if ( '' != form_object.find( '[name*="[knob_top_offset_after_unlock]"]' ).val() )
+				face['topEnd'] = form_object.find( '[name*="[knob_top_offset_after_unlock]"]' ).val() + 'px';
 
-			if ( '' != form_object.find( '[name^=knob_right_offset_after_unlock]' ).val() )
-				face['rightEnd'] = form_object.find( '[name^=knob_right_offset_after_unlock]' ).val() + 'px';
+			if ( '' != form_object.find( '[name*="[knob_right_offset_after_unlock]"]' ).val() )
+				face['rightEnd'] = form_object.find( '[name*="[knob_right_offset_after_unlock]"]' ).val() + 'px';
 
-			if ( '' != form_object.find( '[name^=knob_icon_face_after_unlock]' ).val() )
-				face['entypoEnd'] = form_object.find( '[name^=knob_icon_face_after_unlock]' ).val();
+			if ( '' != form_object.find( '[name*="[knob_icon_face_after_unlock]"]' ).val() )
+				face['entypoEnd'] = form_object.find( '[name*="[knob_icon_face_after_unlock]"]' ).val();
 			
 			events['validateOnServer'] = 1;
 			events['afterUnlock'] = function () {
