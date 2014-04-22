@@ -102,7 +102,7 @@ endif;?>
 				<h3><?php _e( 'Type', 'slider_captcha' ); ?></h3>
 				<p>
 					<label for="<?=$machine?>_slider_type_normal" class="label-radio">
-						<input value="normal" type="radio" name="<?=$machine?>[slider_type]" id="<?=$machine?>_slider_type_normal" <?=($slider['type']=='normal') ? 'checked="checked"' : ''?>> <span><?php _e( 'Normal' ,'slider_captcha'); ?></span>
+						<input value="normal" type="radio" name="<?=$machine?>[slider_type]" id="<?=$machine?>_slider_type_normal" <?=($slider['type']=='normal' || ($slider['type']=='' && $machine=='general')) ? 'checked="checked"' : ''?>> <span><?php _e( 'Normal' ,'slider_captcha'); ?></span>
 					</label>
 					<label for="<?=$machine?>_slider_type_filled" class="label-radio">
 						<input value="filled" type="radio" name="<?=$machine?>[slider_type]" id="<?=$machine?>_slider_type_filled" <?=checked($slider['type'],'filled')?>> <span><?php _e( 'Filled' ,'slider_captcha'); ?></span>

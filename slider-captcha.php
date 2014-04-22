@@ -41,12 +41,6 @@ class SliderCaptcha {
 		// Load all the scripts required
 		add_action( 'wp_enqueue_scripts', array(&$this, 'register_scripts' ));
 
-		// Draw the captcha on the comment form
-		add_action('comment_form', array($this,'render_slider_on_comments'));
-
-		// Validate the captcha after comment is made
-		add_filter('preprocess_comment', array($this, 'hook_validate_slider'));
-
 		// Admin register function
 		add_action( 'admin_menu', array( $this, 'register_menus' ), 49);
 		add_action( 'admin_head', 'admin_color_scheme');
@@ -54,6 +48,30 @@ class SliderCaptcha {
 		// Load front-end srcipts for live preview		
 		add_action( 'admin_enqueue_scripts', array(&$this, 'register_scripts' ));
 		add_action( 'admin_enqueue_scripts', array(&$this, 'register_admin_scripts'));
+
+	}
+
+	function init_hooks() {
+		//Comments hook
+		if( $this->is_slider_enabled('comments') ) {
+			// Draw the captcha on the comment form
+			add_action('comment_form', array($this,'render_slider_on_comments'));
+			// Validate the captcha after comment is made
+			add_filter('preprocess_comment', array($this, 'validate_comment_slider'));
+		}
+
+		//Registration hook
+		if( $this->is_slider_enabled('registration') ) {
+			add_action( 'register_form', array(&$this, 'render_slider_on_register') );
+			add_action( 'register_post', array(&$this, 'validate_register_slider'),  10, 3 );
+			add_action( 'signup_extra_fields', array(&$this, 'render_slider_on_register') );
+		}
+
+		//Load the css and styles on the login form	
+		if ($this->is_slider_enabled('login') || $this->is_slider_enabled('registration')) {
+			add_action( 'login_enqueue_scripts', array(&$this, 'register_scripts' ));
+			add_action( 'login_enqueue_scripts', array(&$this, 'register_admin_scripts'));
+		}
 
 	}
 
@@ -75,8 +93,11 @@ class SliderCaptcha {
 			'general' => array_merge( 
 				array_merge($this->js_settings, $this->settings),
 				array('enabled' => 0)),
-			'comments' => array( 'enabled' => 1 ),
 			);
+
+		$default_sliders['comments'] = array_merge($default_sliders['general'], array(
+				'enabled' => 1,
+			));
 
 		$this->sliders = get_option('slider_captcha_sliders',$default_sliders);
 
@@ -87,6 +108,9 @@ class SliderCaptcha {
 				'reset_password' 	=> __( 'Reset password form' ,'slider_captcha'),
 				'login' 			=> __( 'Login form', 'slider_captcha'),
 			);
+
+		// Init all the hooks
+		$this->init_hooks();
 	}
 
 	function admin_color_scheme() {
@@ -126,7 +150,6 @@ class SliderCaptcha {
 	 * @return echos the code
 	 */
 	public function render_slider_on_comments($post_id) {
-
 		?>
 		<script type="text/javascript">
 		jQuery(function($) {
@@ -134,20 +157,47 @@ class SliderCaptcha {
 
 				if($("#commentform .form-submit").before('<p id="auto_slidercaptcha"></p>')) {
 					//Load the slider captcha
-					$("#auto_slidercaptcha").sliderCaptcha(<?=json_encode($this->settings)?>);
+					$("#auto_slidercaptcha").sliderCaptcha(<?=json_encode($this->get_slider('comments'))?>);
 				}
 			});
 		});
 		</script>
 		<?
 	}
-	
 
-	public function hook_validate_slider($comment_data) {
+	public function validate_comment_slider($comment_data) {
 		$validateOnServer = $_POST['slider_captcha_validated'];
 		if( $validateOnServer != 1)
 			wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation... Please make sure you have Javascript enabled on your browser.",'slider_captcha'));
 		return $comment_data;
+	}
+
+
+	public function render_slider_on_register() {
+		?>
+		<p><div id="register_slider_captcha"></div></p>
+		<script type="text/javascript">
+		jQuery(function($) {
+			$( document ).ready(function() {
+					//Load the slider captcha
+					$("#register_slider_captcha").sliderCaptcha(<?=json_encode($this->get_slider('registration'))?>);
+			});
+		});
+		</script>
+		<?
+
+		return true;
+	} 
+	
+	public function validate_register_slider($login, $email, $errors) {
+	
+		/* If someone tryies to hack */
+		if ( $_REQUEST['slider_captcha_validated'] != 1 ) {
+			$errors->add( 'slider_captcha_missing', __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation... Please make sure you have Javascript enabled on your browser.",'slider_captcha') );
+			return $errors;
+		}
+
+		return $errors ;
 	}
 
 	/**
@@ -221,6 +271,11 @@ class SliderCaptcha {
 
 	public function get_json_settings($slider) {
 		return json_encode($this->get_slider($slider));
+	}
+
+	public function is_slider_enabled($slider) {
+		$sliders = $this->get_sliders();
+		return isset($sliders[$slider]['enabled']) && $sliders[$slider]['enabled'] == 1; 
 	}
 }
 
