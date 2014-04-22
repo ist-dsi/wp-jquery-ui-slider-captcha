@@ -2,7 +2,7 @@
 Contributors: vaurdan, jpargana
 Donate link: https://dsi.tecnico.ulisboa.pt
 Tags: slider, captcha, ui, comment, comments, responsive, spam, antispam, anti-spam, jquery, jquery-ui, plugin
-Requires at least: 3.0
+Requires at least: 3.5
 Tested up to: 3.9
 Stable tag: 0.5.3
 License: GPLv3

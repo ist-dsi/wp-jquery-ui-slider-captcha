@@ -73,8 +73,8 @@ foreach($_POST as $machine => $post) {
 
 endif;?>
 <fieldset>
-	<p><?php _e( 'Slider activation should take place in individual form option. Individual slider settings will overide general options for each form.', 'slider_captcha' ); ?></p>
-   	<select id="slider_captcha_form_selector">
+	<p><?php _e( 'Slider activation should take place in individual form option. Individual slider settings will overide general options for each form. By default, comments form slider captcha is active. All other slider captcha still disabled until individual activation.', 'slider_captcha' ); ?></p>
+   	<select id="slider_captcha_form_selector" style="width: 200px;">
 		<?foreach($this->captcha_locations as $machine=>$location):?>
 			<option value="<?=$machine?>"><?=$location?></option>
 		<?endforeach?>
@@ -148,7 +148,7 @@ endif;?>
 					</p>
 					<p>
 						<label for="<?=$machine?>_hint_text_size_unlock"><?php _e( 'Hint text size', 'slider_captcha' ); ?></label>
-						<input value="<?=$slider['hintTextSize']?>" type="number" class="number_input" name="<?=$machine?>[hint_text_size_unlock]" id="<?=$machine?>_hint_text_size_unlock" value="" placeholder="">
+						<input value="<?=$slider['hintTextSize']?>" type="number" class="number_input" name="<?=$machine?>[hint_text_size_unlock]" id="<?=$machine?>_hint_text_size_unlock" value="" placeholder="16">
 						<span class="units"><?php _e( 'px', 'slider_captcha' ); ?></span>
 					</p>
 				</fieldset>
@@ -156,7 +156,7 @@ endif;?>
 					<h4><?php _e( 'Before unlock', 'slider_captcha' ); ?></h4>
 					<p>
 						<label for="<?=$machine?>_knob_icon_face_before_unlock"><?php _e( 'Icon face', 'slider_captcha' ); ?></label>
-						<select name="<?=$machine?>[knob_icon_face_before_unlock]" id="<?=$machine?>_knob_icon_face_before_unlock">
+						<select name="<?=$machine?>[knob_icon_face_before_unlock]" id="<?=$machine?>_knob_icon_face_before_unlock" style="width: 180px;">
 							<?php _slider_draw_fontface_options('icon',$slider) ?>
 						</select>
 					</p>
@@ -190,7 +190,7 @@ endif;?>
 					<h4><?php _e( 'After unlock', 'slider_captcha' ); ?></h4>
 					<p>
 						<label for="<?=$machine?>_knob_icon_face_after_unlock"><?php _e( 'Icon face', 'slider_captcha' ); ?></label>
-						<select name="<?=$machine?>[knob_icon_face_after_unlock]" id="<?=$machine?>_knob_icon_face_after_unlock">
+						<select name="<?=$machine?>[knob_icon_face_after_unlock]" id="<?=$machine?>_knob_icon_face_after_unlock" style="width: 180px;">
 							<?php _slider_draw_fontface_options('iconAfterUnlock',$slider) ?>
 						</select>
 					</p>

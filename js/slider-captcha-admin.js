@@ -2,6 +2,8 @@
 
 	$(document).ready( function () {
 
+		$('select').select2();
+
 		$('.color_input').css('vertical-align', 'middle').wpColorPicker({
 			change: function(event, ui) {
 				$( '#slider_captcha_form_selector' ).change();
