@@ -171,11 +171,11 @@ endif;?>
 						<input value="<?=$slider['face']['textColorStart']?>" type="text" class="color_input" name="<?=$machine?>[knob_text_color_before_unlock]" id="<?=$machine?>_knob_text_color_before_unlock" value="" placeholder="">
 						<span class="units"><?php _e( '(hex)', 'slider_captcha' ); ?></span>
 					</p>
-					<p>
+					<!--<p>
 						<label for="<?=$machine?>_knob_text_size_before_unlock"><?php _e( 'Knob text size', 'slider_captcha' ); ?></label>
 						<input value="<?=$slider['face']['textSizeStart']?>" type="number" class="number_input" name="<?=$machine?>[knob_text_size_before_unlock]" id="<?=$machine?>_knob_text_size_before_unlock" value="" placeholder="">
 						<span class="units"><?php _e( 'px', 'slider_captcha' ); ?></span>
-					</p>
+					</p>-->
 					<p>
 						<label for="<?=$machine?>_knob_top_offset_before_unlock"><?php _e( 'Offset ( top &times; right)', 'slider_captcha' ); ?></label>
 						<input value="<?=$slider['face']['topStart']?>" type="number" class="number_input" name="<?=$machine?>[knob_top_offset_before_unlock]" id="<?=$machine?>_knob_top_offset_before_unlock" value="" placeholder="0">
@@ -208,11 +208,11 @@ endif;?>
 						<input value="<?=$slider['face']['textColorEnd']?>" type="text" class="color_input" name="<?=$machine?>[knob_text_color_after_unlock]" id="<?=$machine?>_knob_text_color_after_unlock" value="" placeholder="">
 						<span class="units"><?php _e( '(hex)', 'slider_captcha' ); ?></span>
 					</p>
-					<p>
+					<!--<p>
 						<label for="<?=$machine?>_knob_text_size_after_unlock"><?php _e( 'Knob text size', 'slider_captcha' ); ?></label>
 						<input value="<?=$slider['face']['textSizeEnd']?>" type="text" class="number_input" name="<?=$machine?>[knob_text_size_after_unlock]" id="<?=$machine?>_knob_text_size_after_unlock" value="" placeholder="">
 						<span class="units"><?php _e( 'px', 'slider_captcha' ); ?></span>
-					</p>
+					</p>-->
 					<p>
 						<label for="<?=$machine?>_knob_top_offset_after_unlock"><?php _e( 'Offset ( top &times; right)', 'slider_captcha' ); ?></label>
 						<input value="<?=$slider['face']['topEnd']?>" type="number" class="number_input" name="<?=$machine?>[knob_top_offset_after_unlock]" id="<?=$machine?>_knob_top_offset_after_unlock" value="" placeholder="0">
