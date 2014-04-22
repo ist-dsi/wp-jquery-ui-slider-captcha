@@ -72,17 +72,20 @@ class SliderCaptcha {
 			);
 
 		$default_sliders = array(
-			'general' => array_merge($this->js_settings, $this->settings),
+			'general' => array_merge( 
+				array_merge($this->js_settings, $this->settings),
+				array('enabled' => 0)),
+			'comments' => array( 'enabled' => 1 ),
 			);
 
 		$this->sliders = get_option('slider_captcha_sliders',$default_sliders);
 
 		$this->captcha_locations = array(
-				'general' 	    	=> __( 'General options' ,_after),
-				'comments'			=> __( 'Comments form' ,_after),
-				'registration'		=> __( 'Registration form' ,_after),
-				'reset_password' 	=> __( 'Reset password form' ,_after),
-				'login' 			=> __( 'Login form', _after),
+				'general' 	    	=> __( 'General options' ,'slider_captcha'),
+				'comments'			=> __( 'Comments form' ,'slider_captcha'),
+				'registration'		=> __( 'Registration form' ,'slider_captcha'),
+				'reset_password' 	=> __( 'Reset password form' ,'slider_captcha'),
+				'login' 			=> __( 'Login form', 'slider_captcha'),
 			);
 	}
 
