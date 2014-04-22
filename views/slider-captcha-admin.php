@@ -101,6 +101,11 @@ slider_update_slider("comments" , array('width'=>"100px", 'face'=>array('entypoS
 						<span class="units"><?php _e( '(hex)', 'slider-captcha' ); ?></span>
 					</p>
 					<p>
+						<label for="<?=$machine?>_knob_text_size_before_unlock"><?php _e( 'Text size', 'slider-captcha' ); ?></label>
+						<input value="<?=$slider['face']['textSizeStart']?>" type="number" class="number_input" name="knob_text_size_before_unlock[<?=$machine?>]" id="<?=$machine?>_knob_text_size_before_unlock" value="" placeholder="">
+						<span class="units"><?php _e( 'px', 'slider-captcha' ); ?></span>
+					</p>
+					<p>
 						<label for="<?=$machine?>_knob_top_offset_before_unlock"><?php _e( 'Offset ( top &times; right)', 'slider-captcha' ); ?></label>
 						<input value="<?=$slider['face']['topStart']?>" type="number" class="number_input" name="knob_top_offset_before_unlock[<?=$machine?>]" id="<?=$machine?>_knob_top_offset_before_unlock" value="" placeholder="0">
 						<span class="units"><?php _e( 'px', 'slider-captcha' ); ?></span>
@@ -131,6 +136,11 @@ slider_update_slider("comments" , array('width'=>"100px", 'face'=>array('entypoS
 						<label for="<?=$machine?>_knob_text_color_after_unlock"><?php _e( 'Text color', 'slider-captcha' ); ?></label>
 						<input value="<?=$slider['styles']['unlockTextColor']?>" type="text" class="color_input" name="knob_text_color_after_unlock[<?=$machine?>]" id="<?=$machine?>_knob_text_color_after_unlock" value="" placeholder="">
 						<span class="units"><?php _e( '(hex)', 'slider-captcha' ); ?></span>
+					</p>
+					<p>
+						<label for="<?=$machine?>_knob_text_size_after_unlock"><?php _e( 'Text size', 'slider-captcha' ); ?></label>
+						<input value="<?=$slider['face']['textSizeEnd']?>" type="text" class="number_input" name="knob_text_size_after_unlock[<?=$machine?>]" id="<?=$machine?>_knob_text_size_after_unlock" value="" placeholder="">
+						<span class="units"><?php _e( 'px', 'slider-captcha' ); ?></span>
 					</p>
 					<p>
 						<label for="<?=$machine?>_knob_top_offset_after_unlock"><?php _e( 'Offset ( top &times; right)', 'slider-captcha' ); ?></label>
