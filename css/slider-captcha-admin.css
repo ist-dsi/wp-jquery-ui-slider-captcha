@@ -25,11 +25,13 @@ p#general_slider + p {
 #form_options_container {
   position: relative; }
 
-#form_options_container > fieldset:first-child {
-  visibility: visible; }
-#form_options_container > fieldset:not(:first-child) {
-  position: absolute;
-  visibility: hidden; }
+#form_options_container > fieldset {
+  float: left; }
+  #form_options_container > fieldset:first-child {
+    visibility: visible; }
+  #form_options_container > fieldset:not(:first-child) {
+    position: absolute;
+    visibility: hidden; }
 
 label.label-radio + label.label-radio {
   margin-left: 20px; }
