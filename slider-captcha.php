@@ -93,7 +93,7 @@ class SliderCaptcha {
 		//Slider default settings
 		$this->js_settings = array(
 			'hintText' => __('Swipe to Validate','slider_captcha'),
-			'textAfterUnlock' => __("You can now Submit",'slider_captcha'),
+			'hintTextAfterUnlock' => __("You can now Submit",'slider_captcha'),
 			'events' => array(
 				'validateOnServer' => true,
 				),
@@ -292,20 +292,25 @@ class SliderCaptcha {
 	}
 
 	public function create_admin_page() {
-	    //$this->options = get_option( 'my_option_name' );
-	    ?>
-	    <div class="wrap">
-	        <?php screen_icon(); ?>
+		?>
+		<div class="wrap">
+			<?php screen_icon(); ?>
 			<h2><?php _e( 'Slider Captcha Settings', 'slider_captcha' ) ?></h2>
-	        <form method="post" action="#">
+			<form method="post" action="">
 				<?php include( "views/slider-captcha-admin.php" ); ?>
-	        </form>
+			</form>
 		</div>
 		<?php
 	}
 
 	public function register_admin_scripts($hook) {
 		if( $hook == "settings_page_slider-captcha-setting" ) {
+
+			wp_enqueue_script('wp-color-picker');
+			wp_enqueue_style( 'wp-color-picker' );
+
+			wp_enqueue_script( 'select2-script', plugins_url('/js/select2/select2.js', __FILE__));
+			wp_enqueue_style( 'select2', plugins_url('/js/select2/select2.css', __FILE__));
 
 			wp_enqueue_script( 'slider-captcha-admin', plugins_url( '/js/slider-captcha-admin.js', __FILE__), array( 'jquery' ), $plugin_version );
 
