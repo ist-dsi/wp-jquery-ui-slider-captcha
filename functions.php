@@ -4,6 +4,39 @@
  */
 function slider_captcha($slider_name = 'general', $container = 'p', $settings = null) {
 	global $sliderCaptcha;
+
+	//If using the deprecated function
+	if(is_array($container))
+		return _deprectated_slider_captcha($slider_name,$container); 
+
+	if($settings == null)
+		$settings = $sliderCaptcha->get_slider($slider_name);
+	else
+		$settings = array_merge($sliderCaptcha->get_slider($slider_name), $settings);
+
+	$container_class = (isset($settings['containerClass']) && $settings['containerClass']!=NULL 
+		? 'class="' . $settings['containerClass'] . '"' : '');
+
+	?>
+		<<?=$container?> <?=$container_class?> id="slidercaptcha-<?=$slider_name?>"> </<?=$container?>>
+		<script type="text/javascript">
+		jQuery(function($) {
+			$( document ).ready(function() {
+				//Load the slider captcha
+				$("#slidercaptcha-<?=$slider_name?>").sliderCaptcha(<?=json_encode($settings)?>);
+			});
+		});
+		</script>
+	<?
+
+}
+
+/**
+ * This function is deprectated and its here to maintain the compatibilty for 0.5 -> 1.0 upgrade.
+ **/
+function _deprectated_slider_captcha($container = 'p', $settings = null) {
+	global $sliderCaptcha;
+
 	if($settings == null)
 		$settings = array_merge($sliderCaptcha->js_settings, $sliderCaptcha->settings);
 	else
@@ -12,13 +45,14 @@ function slider_captcha($slider_name = 'general', $container = 'p', $settings = 
 	$container_class = (isset($settings['containerClass']) && $settings['containerClass']!=NULL 
 		? 'class="' . $settings['containerClass'] . '"' : '');
 
+	$number=rand(0,23541);
 	?>
-		<<?=$container?> <?=$container_class?> id="slidercaptcha"> </<?=$container?>>
+		<<?=$container?> <?=$container_class?> id="slidercaptcha<?=$number?>"> </<?=$container?>>
 		<script type="text/javascript">
 		jQuery(function($) {
 			$( document ).ready(function() {
 				//Load the slider captcha
-				$("#slidercaptcha").sliderCaptcha(<?=json_encode($settings)?>);
+				$("#slidercaptcha<?=$number?>").sliderCaptcha(<?=json_encode($settings)?>);
 			});
 		});
 		</script>
