@@ -1,6 +1,3 @@
-#general_options_container {
-  width: 100%; }
-
 #form_options_container, #live_preview_container {
   background: white;
   margin-top: 20px;
@@ -29,7 +26,8 @@ p#general_slider + p {
   position: relative; }
 
 #form_options_container > fieldset {
-  float: left; }
+  float: left;
+  width: 100%; }
   #form_options_container > fieldset:first-child {
     visibility: visible; }
   #form_options_container > fieldset:not(:first-child) {
