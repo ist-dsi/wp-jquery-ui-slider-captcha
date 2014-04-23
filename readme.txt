@@ -1,7 +1,7 @@
 === Slider CAPTCHA ===
 Contributors: vaurdan, jpargana
 Donate link: https://dsi.tecnico.ulisboa.pt
-Tags: slider, captcha, ui, comment, comments, responsive, spam, antispam, anti-spam, jquery, jquery-ui, plugin
+Tags: slider, captcha, ui, comment, comments, responsive, spam, antispam, anti-spam, jquery, jquery-ui, plugin, registation, login, form, password reset, security, secure
 Requires at least: 3.5
 Tested up to: 3.9
 Stable tag: 1.0
