@@ -1,32 +1,33 @@
 === Slider CAPTCHA ===
 Contributors: vaurdan, jpargana
 Donate link: https://dsi.tecnico.ulisboa.pt
-Tags: slider, captcha, ui, comment, responsive, spam, antispam, jquery, jquery-ui
-Requires at least: 3.0
+Tags: slider, captcha, ui, comment, comments, responsive, spam, antispam, anti-spam, jquery, jquery-ui, plugin
+Requires at least: 3.5
 Tested up to: 3.9
-Stable tag: 0.5.4
+Stable tag: 1.0
 License: GPLv3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
-Slider CAPTCHA is a WordPress plugin that will allow you to replace or add a CAPTCHA field to the comment form.
+Slider CAPTCHA is a WordPress plugin that will allow you to replace or add a CAPTCHA field to any WordPress form.
 
 == Description ==
 
-Using Slider CAPTCHA, you can replace or add a CAPTCHA to your WordPress forms. By default, Slider CAPTCHA will try to add a CAPTCHA to your templates' comment form.
+Using Slider CAPTCHA, you can replace or add a CAPTCHA to your WordPress forms. By default, Slider CAPTCHA will add a CAPTCHA to your templates' comment form. You can also add sliders to the Registration form, Password Recovery form and the Login form.
 
-You can also use `slider_captcha()` function to insert a CAPTCHA wherever you want, and fully costumize your CAPTCHA.
+Besides, you can use the `slider_captcha()` function to insert a Slider CAPTCHA wherever you want, and fully costumize it.
 
-At the moment, this plugin is really simple and basic, but in the upcoming versions, a Settings page will be added and you will be able to create your own sliders.
+With our brand new Settings page, you can now fully custumize every Slider on your WordPress installation and live preview the result. In the upcoming version, you will be able to create your own slider. At the moment, if you want to create your own custom slider you should use the `slider_captcha()`. Check the FAQ for more info.
 
 == Installation ==
 
 1. Install Slider CAPTCHA either via the WordPress.org plugin directory, or by uploading the files to your server (`/wp-content/plugins/`) 
 2. Activation can be made in 'Plugins' menu
-3. Have fun.
+3. Configure and enable the sliders you want to have on your website.
+4. Have fun.
 
 **Did you know...** If you can't see any CAPTCHA on your Comment's page, you must edit comments.php of your template and add the following code in the position that you want to have your CAPTCHA.
 `<?php if(function_exists('slider_captcha'))
-	slider_captcha();
+	slider_captcha('comments');
 ?>`
 
 == Frequently Asked Questions ==
@@ -35,11 +36,20 @@ At the moment, this plugin is really simple and basic, but in the upcoming versi
 
 That's probabily because of the way your theme is built. You will have to edit your comments.php of your template and add the following code in the position that you want to have your CAPTCHA.
 `<?php if(function_exists('slider_captcha'))
-	slider_captcha();
+	slider_captcha('comments');
 ?>`
 
 = What if I want to add another Slider? Can I costumize it? =
-Sure, you can use the `slider_captcha($container, $params)` function to insert a new Slider Captcha.
+Yes, at the moment you have four places where you can place automaticly your Slider CAPTCHA:
+* The comment form, enabled by default;
+* The user registration form;
+* The lost password form;
+* The user login form.
+
+You can costumize each of this sliders, or use the General Settings to have your settings all across your sliders.
+
+If you want to insert your slider in any another position, you can use  the `slider_captcha($slider_name, $container, $params)` function to insert a new Slider CAPTCHA.
+The `$slider_name` is the name of your slider. You can also use 'general', 'registration', 'comments', 'login', 'reset_password' if you want to use any of the existing themes.
 The `$container` is the container where your CAPTCHA will be placed. By default it is "p".
 The `$params` is an array where you can costumize the Slider Captcha, acording to this:
 `{
@@ -47,36 +57,30 @@ The `$params` is an array where you can costumize the Slider Captcha, acording t
 	textFeedbackAnimation: 'swipe_overlap',
 	hintText: "Swipe to submit",
 	hintTextSize: '12px',
-	textAfterUnlock: 'You can submit now',
+	hintTextAfterUnlock: 'You can submit now',
 	styles: {
 		knobColor: "#5CDF3B",
-		disabledKnobColor: "#000000",
+		knobColorAfterUnlock: "#000000",
 		backgroundColor: "#444",
 		textColor: "#fff",
-		unlockTextColor: "#fff",
+		textColorAfterUnlock: "#fff",
 		width: '90%',
 		height: '35px'
 	},
 	face: {
-		topStart: 4,
-		rightStart: 9,
-		entypoStart: 'right-thin',
-		textColorStart: '#ddd',
-		textColorEnd: '#5CDF3B',
-		topEnd: 3,
-		rightEnd: 9,				
-		entypoEnd: 'flag'
+		top: 4,
+		right: 9,
+		icon: 'right-thin',
+		textColor: '#ddd',
+		textColorAfterUnlock: '#5CDF3B',
+		topAfterUnlock: 3,
+		rightAfterUnlock: 9,				
+		iconAfterUnlock: 'flag'
 	},
 	events: {
-		afterUnlock: function () {
-			console.log("afterUnlock event");
-		},
-		beforeUnlock: function () {
-			console.log("afterSubmit event");
-		},
-		beforeSubmit: function () {
-			console.log("beforeSubmit event");
-		},
+		afterUnlock: function () {	},
+		beforeUnlock: function () {	},
+		beforeSubmit: function () {	},
 		submitAfterUnlock: 0,
 		validateOnServer: 1,
 		validateOnServerParamName: "my_form_param_name"
@@ -94,16 +98,33 @@ For instance, if you want to change your hint text and your width, you must send
 To add a class to the container, you can use `'containerClass' => 'nameoftheclass' on your $params array.
 
 = How do I change the appearence of the comment form Slider Captcha? =
-If you want to change the appearance of your default CAPTCHA, at the moment you need to, either edit the .css (.scss provided), or to edit the slider_captcha.php's default values.
+If you want to change the appearance of your default CAPTCHA, you can play with the settings panel.
 
-In the upcoming versions, a Settings panel will be added to allow easy costumization of the CAPTCHA.
+= I can't see Sliders on the Login/Registration/Password Lost page... What is the problem? =
+If you are not seeing the sliders, probabily they are disabled on the settings page. If you still can't see any slider after the activation, please submit a support thread so we can help you.
 
+= Oh dear, I've updated from 0.5 and my custom sliders are with a weird look/behave. What should I do? =
+One of the changes from the 0.5 to the 1.0 was the `slider_captcha()` function. We added an new argument and the function signature is now `slider_captcha($slider_name = 'general', $container = 'p', $settings = null)`. Because of that, you may have to add a new argument on the first position, with the name of your slider.
+
+Also, the name of the `$params keys also have changed. Please verify if your `$params` array is updated.
 
 == Screenshots ==
 
 1. The default slider on the WordPress Twenty Fourteen theme.
 
+2. Settings panel 
+
+3. The live preview
+
 == Changelog ==
+
+= 1.0 =
+* Code refactorization
+* Multiple sliders on the same page are now possible
+* Settings page included with live preview
+* Updated jQuery Slider Captcha to the latest version with new properties names
+* Added three extra sliders (register form; login form; lost password form.)
+* Bug fixes
 
 = 0.5.4 =
 * Fixed bug with wrong settings on Comment Form captcha.
@@ -120,6 +141,10 @@ In the upcoming versions, a Settings panel will be added to allow easy costumiza
 * Initial release.
 
 == Upgrade Notice ==
+
+= 1.0 =
+*Update now!* 
+New settings page where you can configure as many sliders as you like!
 
 = 0.5 =
 Initial release

@@ -1,0 +1,71 @@
+#form_options_container, #live_preview_container {
+  background: white;
+  margin-top: 20px;
+  padding: 10px 20px;
+  -moz-border-top-left-radius: 3px;
+  -moz-border-bottom-left-radius: 3px;
+  -webkit-border-top-left-radius: 3px;
+  -webkit-border-bottom-left-radius: 3px;
+  -ms-border-top-left-radius: 3px;
+  -ms-border-bottom-left-radius: 3px;
+  border-top-left-radius: 3px;
+  border-bottom-left-radius: 3px;
+  -moz-border-top-right-radius: 3px;
+  -moz-border-bottom-right-radius: 3px;
+  -webkit-border-top-right-radius: 3px;
+  -webkit-border-bottom-right-radius: 3px;
+  -ms-border-top-right-radius: 3px;
+  -ms-border-bottom-right-radius: 3px;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px; }
+
+p#general_slider + p {
+  display: none; }
+
+#form_options_container {
+  position: relative; }
+
+#form_options_container > fieldset:first-child {
+  visibility: visible; }
+#form_options_container > fieldset:not(:first-child) {
+  position: absolute;
+  visibility: hidden; }
+
+label.label-radio + label.label-radio {
+  margin-left: 20px; }
+
+label + input, label + select {
+  margin-left: 10px; }
+
+p.hint_text {
+  float: left; }
+  p.hint_text + p.hint_text {
+    margin-left: 10px; }
+
+fieldset p + h3 {
+  margin-top: 30px; }
+
+fieldset.slider_styles_container > h3 {
+  margin-bottom: 0; }
+fieldset.slider_styles_container > fieldset.column_presentation {
+  float: left;
+  width: 50%; }
+
+h2 + h3 {
+  margin-top: 20px; }
+
+.number_input {
+  width: 65px; }
+
+.color_input {
+  width: 80px; }
+
+#slidercaptcha {
+  margin-top: 30px; }
+
+.units {
+  color: #888888; }
+
+label + div.wp-picker-container, label + div.select2-container {
+  vertical-align: middle;
+  margin-left: 5px; }
