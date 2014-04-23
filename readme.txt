@@ -48,7 +48,7 @@ Yes, at the moment you have four places where you can place automaticly your Sli
 
 You can costumize each of this sliders, or use the General Settings to have your settings all across your sliders.
 
-If you want to insert your slider in any another position, you can use  the `slider_captcha($slider_name, $container, $params)` function to insert a new Slider CAPTCHA.
+If you want to insert your slider in any another position, you can use the `slider_captcha($slider_name, $container, $params)` function to insert a new Slider CAPTCHA.
 The `$slider_name` is the name of your slider. You can also use 'general', 'registration', 'comments', 'login', 'reset_password' if you want to use any of the existing themes.
 The `$container` is the container where your CAPTCHA will be placed. By default it is "p".
 The `$params` is an array where you can costumize the Slider Captcha, acording to this:

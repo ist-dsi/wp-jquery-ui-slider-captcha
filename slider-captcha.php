@@ -116,7 +116,7 @@ class SliderCaptcha {
 		$this->sliders = get_option('slider_captcha_sliders',$default_sliders);
 
 		$this->captcha_locations = array(
-				'general' 	    	=> __( 'General options' ,'slider_captcha'),
+				'general' 	    	=> __( 'General' ,'slider_captcha'),
 				'comments'			=> __( 'Comments form' ,'slider_captcha'),
 				'registration'		=> __( 'Registration form' ,'slider_captcha'),
 				'reset_password' 	=> __( 'Reset password form' ,'slider_captcha'),

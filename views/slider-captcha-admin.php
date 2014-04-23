@@ -116,8 +116,9 @@ foreach($_POST as $machine => $post) {
 
 endif;?>
 <fieldset>
-	<p><?php _e( 'Slider activation should take place in individual form option. Individual slider settings will overide general options for each form. By default, comments form slider captcha is active. All other slider captcha still disabled until individual activation.', 'slider_captcha' ); ?></p>
-   	<select name="curr_slider" id="slider_captcha_form_selector" style="width: 200px;">
+	<p><?php _e( 'Slider activation should take place in individual form option. Individual slider settings will overide general options for each form. By default, comments form slider CAPTCHA is active. All other slider CAPTCHA still disabled until individual activation.', 'slider_captcha' ); ?></p>
+	<h3><?= __( 'Slider options', 'slider_captcha'); ?></h3>
+	<select name="curr_slider" id="slider_captcha_form_selector" style="width: 200px;">
 		<?foreach($this->captcha_locations as $machine=>$location):?>
 			<option value="<?=$machine?>" <?=selected($_POST['curr_slider'],$machine)?> ><?=$location?></option>
 		<?endforeach?>
@@ -130,7 +131,7 @@ endif;?>
 		<fieldset id="<?=$machine?>_options_container">
 			<fieldset class="general_settings_container">
 				<?php if ( $i ) : ?>
-				<h3><?=sprintf( __( '%s activation', 'slider_captcha'), __( 'Slider Captcha', 'slider_captcha') )?></h3>
+				<h3><?=sprintf( __( '%s activation', 'slider_captcha'), $location )?></h3>
 				<p>
 					<label for="<?=$machine?>_slider_enable" class="label-radio">
 						<input value="1" type="radio" name="<?=$machine?>[slider_enable]" id="<?=$machine?>_slider_enable" <?checked($slider['enabled'],1)?>> <span><?php _e( 'Enabled' ,'slider_captcha'); ?></span>

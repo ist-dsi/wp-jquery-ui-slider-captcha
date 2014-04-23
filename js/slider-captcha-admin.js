@@ -1,5 +1,4 @@
 (function( $ ) {
-
 	$(document).ready( function () {
 
 		$('select').select2();
@@ -37,7 +36,7 @@
 
 		});
 
-		$( '#form_options_container input, #form_options_container select').change(function () {
+		$( '#form_options_container fieldset input, #form_options_container fieldset select').change(function () {
 			$( '#slider_captcha_form_selector' ).change();
 		});
 

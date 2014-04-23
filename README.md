@@ -31,6 +31,14 @@ Just download and extract slider-captcha to your `wp-content/plugins` directory.
 
 ## Changelog
 
+### 1.0
+ - Code refactorization
+ - Multiple sliders on the same page are now possible
+ - Settings page included with live preview
+ - Updated jQuery Slider Captcha to the latest version with new properties names
+ - Added three extra sliders (register form; login form; lost password form.)
+ - Bug fixes
+
 ### 0.5.4
  - Version 0.5.4 added, fixed major bug
  
