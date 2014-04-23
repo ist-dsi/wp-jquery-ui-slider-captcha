@@ -129,7 +129,6 @@ endif;?>
 		?>
 		<fieldset id="<?=$machine?>_options_container">
 			<fieldset class="general_settings_container">
-				<h2><?=sprintf( __( '%s', 'slider_captcha'), $location )?></h2>
 				<?php if ( $i ) : ?>
 				<h3><?=sprintf( __( '%s activation', 'slider_captcha'), __( 'Slider Captcha', 'slider_captcha') )?></h3>
 				<p>
@@ -270,7 +269,7 @@ endif;?>
 
 <fieldset id="live_preview_container">
 	<h3><?php _e( 'Live preview', 'slider_captcha' ); ?></h3>
-	<p><?php _e( 'This preview could differ of the theme, because css backoffice and theme are differents.', 'slider_captcha' ); ?></p>
+	<p><?php _e( 'This preview may differ from the theme, because css backoffice and theme aren\'t the same.', 'slider_captcha' ); ?></p>
 	<p id="general_slider"></p>
 	<p><?php _e( 'Do you want to <a href="#">test slider captcha again</a>?', 'slider_captcha'); ?></p>
 	<input type="hidden" name="submited" value="1" />
