@@ -39,8 +39,17 @@ label + input, label + select {
 
 p.hint_text {
   float: left; }
+  @media screen and (max-width: 900px) {
+    p.hint_text {
+      float: none; } }
   p.hint_text + p.hint_text {
     margin-left: 10px; }
+    @media screen and (max-width: 900px) {
+      p.hint_text + p.hint_text {
+        margin-left: 0; } }
+
+h3 + p.hint_text, h3 + p.hint_text + p.hint_text {
+  margin-top: 0px; }
 
 fieldset p + h3 {
   margin-top: 30px; }
@@ -50,6 +59,10 @@ fieldset.slider_styles_container > h3 {
 fieldset.slider_styles_container > fieldset.column_presentation {
   float: left;
   width: 50%; }
+  @media screen and (max-width: 900px) {
+    fieldset.slider_styles_container > fieldset.column_presentation {
+      float: none;
+      width: 100%; } }
 
 h2 + h3 {
   margin-top: 20px; }
@@ -69,3 +82,7 @@ h2 + h3 {
 label + div.wp-picker-container, label + div.select2-container {
   vertical-align: middle;
   margin-left: 5px; }
+
+@media screen and (max-width: 782px) {
+  input, textarea {
+    font-size: 13px; } }
