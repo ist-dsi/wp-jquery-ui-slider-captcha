@@ -17,54 +17,97 @@ foreach($_POST as $machine => $post) {
 		$new_array['textFeedbackAnimation'] = $post['slider_animation_type'];
 
 	//Save the dimensions
-	if($post['slider_width']!='')
-		$new_array['width'] = $post['slider_width'];
-	if($post['slider_height']!='')
-		$new_array['height'] = $post['slider_height'];
+	$new_array['width'] = $post['slider_width'];
+	$new_array['height'] = $post['slider_height'];
 
 	//Save the texts
-	if($post['hint_text_before_unlock'] != '')
+	if($post['hint_text_before_unlock'] != '' || $machine!= 'general')
 		$new_array['hintText'] = $post['hint_text_before_unlock'];
-	if($post['hint_text_after_unlock'] != '')
+	else if ($machine == 'general' && $post['hint_text_before_unlock']=='')
+		$this->remove_general_setting('hintText');
+
+	if($post['hint_text_after_unlock'] != '' || $machine!= 'general')
 		$new_array['hintTextAfterUnlock'] = $post['hint_text_after_unlock'];
+	else if ($machine == 'general' && $post['hint_text_after_unlock']=='')
+		$this->remove_general_setting('hintTextAfterUnlock');
+
 
 	//Save the general styles
-	if($post['slider_background_color'] != '')
+	if($post['slider_background_color'] != '' || $machine!= 'general')
 		$new_array['styles']['backgroundColor'] = $post['slider_background_color'];
-	if($post['hint_text_size_unlock'] != '')
-		$new_array['hintTextSize'] = $post['hint_text_size_unlock'];
+	else if ($machine == 'general' && $post['slider_background_color']=='')
+		$this->remove_general_setting('styles','backgroundColor');
+
+	$new_array['hintTextSize'] = $post['hint_text_size_unlock'];
 
 	//Save before unlock styles
-	if($post['knob_icon_face_before_unlock'] != '')
+	if($post['knob_icon_face_before_unlock'] != '' || $machine!= 'general')
 		$new_array['face']['icon'] = $post['knob_icon_face_before_unlock'];
-	if($post['knob_color_before_unlock'] != '')
+	else if ($machine == 'general' && $post['knob_icon_face_before_unlock']=='')
+		$this->remove_general_setting('face','icon');
+
+	if($post['knob_color_before_unlock'] != '' || $machine!= 'general')
 		$new_array['styles']['knobColor'] = $post['knob_color_before_unlock'];
-	if($post['knob_text_color_before_unlock'] != '')
+	else if ($machine == 'general' && $post['knob_color_before_unlock']=='')
+		$this->remove_general_setting('styles','knobColor');
+	
+	if($post['knob_text_color_before_unlock'] != '' || $machine!= 'general')
 		$new_array['face']['textColor'] = $post['knob_text_color_before_unlock'];
-	if($post['knob_text_size_before_unlock'] != '')
+	else if ($machine == 'general' && $post['knob_text_color_before_unlock']=='')
+		$this->remove_general_setting('face','textColor');
+
+	if($post['knob_text_size_before_unlock'] != '' || $machine!= 'general')
 		$new_array['face']['textSize'] = $post['knob_text_size_before_unlock'];
-	if($post['knob_top_offset_before_unlock'] != '')
+	else if ($machine == 'general' && $post['knob_text_size_before_unlock']=='')
+		$this->remove_general_setting('face','textSize');
+	if($post['knob_top_offset_before_unlock'] != '' || $machine!= 'general')
 		$new_array['face']['top'] = $post['knob_top_offset_before_unlock'];
-	if($post['knob_right_offset_before_unlock'] != '')
+	else if ($machine == 'general' && $post['knob_top_offset_before_unlock']=='')
+		$this->remove_general_setting('face','top');
+	if($post['knob_right_offset_before_unlock'] != '' || $machine!= 'general')
 		$new_array['face']['right'] = $post['knob_right_offset_before_unlock'];
-	if($post['hint_text_color_before_unlock'] != '')
+	else if ($machine == 'general' && $post['knob_right_offset_before_unlock']=='')
+		$this->remove_general_setting('face','right');
+	if($post['hint_text_color_before_unlock'] != '' || $machine!= 'general')
 		$new_array['styles']['textColor'] = $post['hint_text_color_before_unlock'];
+	else if ($machine == 'general' && $post['hint_text_color_before_unlock']=='')
+		$this->remove_general_setting('styles','textColor');
 
 	//Save after unlock styles
-	if($post['knob_icon_face_after_unlock'] != '')
+	if($post['knob_icon_face_after_unlock'] != '' || $machine!= 'general')
 		$new_array['face']['iconAfterUnlock'] = $post['knob_icon_face_after_unlock'];
-	if($post['knob_color_after_unlock'] != '')
+	else if ($machine == 'general' && $post['knob_icon_face_after_unlock']=='')
+		$this->remove_general_setting('face','iconAfterUnlock');
+
+	if($post['knob_color_after_unlock'] != '' || $machine!= 'general')
 		$new_array['styles']['knobColorAfterUnlock'] = $post['knob_color_after_unlock'];
-	if($post['knob_text_color_after_unlock'] != '')
+	else if ($machine == 'general' && $post['knob_color_after_unlock']=='')
+		$this->remove_general_setting('styles','knobColorAfterUnlock');
+
+	if($post['knob_text_color_after_unlock'] != '' || $machine!= 'general')
 		$new_array['face']['textColorAfterUnlock'] = $post['knob_text_color_after_unlock'];
-	if($post['knob_text_size_after_unlock'] != '')
+	else if ($machine == 'general' && $post['knob_text_color_after_unlock']=='')
+		$this->remove_general_setting('face','textColorAfterUnlock');
+
+	if($post['knob_text_size_after_unlock'] != '' || $machine!= 'general')
 		$new_array['face']['textSizeAfterUnlock'] = $post['knob_text_size_after_unlock'];
-	if($post['knob_top_offset_after_unlock'] != '')
+	else if ($machine == 'general' && $post['knob_text_size_after_unlock']=='')
+		$this->remove_general_setting('face','textSizeAfterUnlock');
+
+	if($post['knob_top_offset_after_unlock'] != '' || $machine!= 'general')
 		$new_array['face']['topAfterUnlock'] = $post['knob_top_offset_after_unlock'];
-	if($post['knob_right_offset_after_unlock'] != '')
+	else if ($machine == 'general' && $post['knob_top_offset_after_unlock']=='')
+			$this->remove_general_setting('face','topAfterUnlock');
+
+	if($post['knob_right_offset_after_unlock'] != '' || $machine!= 'general')
 		$new_array['face']['rightAfterUnlock'] = $post['knob_right_offset_after_unlock'];
-	if($post['hint_text_color_after_unlock'] != '')
+	else if ($machine == 'general' && $post['knob_right_offset_after_unlock']=='')
+			$this->remove_general_setting('face','rightAfterUnlock');
+
+	if($post['hint_text_color_after_unlock'] != '' || $machine!= 'general')
 		$new_array['styles']['textColorAfterUnlock'] = $post['hint_text_color_after_unlock'];
+	else if ($machine == 'general' && $post['hint_text_color_after_unlock']=='')
+			$this->remove_general_setting('styles','textColorAfterUnlock');
 
 
 	slider_update_slider($machine,$new_array);
@@ -74,9 +117,9 @@ foreach($_POST as $machine => $post) {
 endif;?>
 <fieldset>
 	<p><?php _e( 'Slider activation should take place in individual form option. Individual slider settings will overide general options for each form. By default, comments form slider captcha is active. All other slider captcha still disabled until individual activation.', 'slider_captcha' ); ?></p>
-   	<select id="slider_captcha_form_selector" style="width: 200px;">
+   	<select name="curr_slider" id="slider_captcha_form_selector" style="width: 200px;">
 		<?foreach($this->captcha_locations as $machine=>$location):?>
-			<option value="<?=$machine?>"><?=$location?></option>
+			<option value="<?=$machine?>" <?=selected($_POST['curr_slider'],$machine)?> ><?=$location?></option>
 		<?endforeach?>
 	</select>
 </fieldset>
@@ -102,7 +145,7 @@ endif;?>
 				<h3><?php _e( 'Type', 'slider_captcha' ); ?></h3>
 				<p>
 					<label for="<?=$machine?>_slider_type_normal" class="label-radio">
-						<input value="normal" type="radio" name="<?=$machine?>[slider_type]" id="<?=$machine?>_slider_type_normal" <?=($slider['type']=='normal' || ($slider['type']=='' && $machine=='general')) ? 'checked="checked"' : ''?>> <span><?php _e( 'Normal' ,'slider_captcha'); ?></span>
+						<input value="normal" type="radio" name="<?=$machine?>[slider_type]" id="<?=$machine?>_slider_type_normal" <?=($slider['type']=='normal' || ($slider['type']=='' || $machine=='general')) ? 'checked="checked"' : ''?>> <span><?php _e( 'Normal' ,'slider_captcha'); ?></span>
 					</label>
 					<label for="<?=$machine?>_slider_type_filled" class="label-radio">
 						<input value="filled" type="radio" name="<?=$machine?>[slider_type]" id="<?=$machine?>_slider_type_filled" <?=checked($slider['type'],'filled')?>> <span><?php _e( 'Filled' ,'slider_captcha'); ?></span>
@@ -111,7 +154,7 @@ endif;?>
 				<h4 <?=($slider['type'] != 'filled' ? 'style="display: none;"' : '')?> ><?php _e( 'Animation type', 'slider_captcha' ); ?></h4>
 				<p <?=($slider['type'] != 'filled' ? 'style="display: none;"' : '')?>>
 					<label for="<?=$machine?>_slider_animation_type_overlap" class="label-radio">
-						<input value="overlap" type="radio" name="<?=$machine?>[slider_animation_type]" id="<?=$machine?>_slider_animation_type_overlap" <?=($slider['textFeedbackAnimation']=='overlap' || ($slider['textFeedbackAnimation']=='' && $machine=='general')) ? 'checked="checked"' : ''?>> <span><?php _e( 'Overlap' ,'slider_captcha'); ?></span>
+						<input value="overlap" type="radio" name="<?=$machine?>[slider_animation_type]" id="<?=$machine?>_slider_animation_type_overlap" <?=($slider['textFeedbackAnimation']=='overlap' || ($slider['textFeedbackAnimation']=='' || $machine=='general')) ? 'checked="checked"' : ''?>> <span><?php _e( 'Overlap' ,'slider_captcha'); ?></span>
 					</label>
 					<label for="<?=$machine?>_slider_animation_type_swipe" class="label-radio">
 						<input value="swipe" type="radio" name="<?=$machine?>[slider_animation_type]" id="<?=$machine?>_slider_animation_type_swipe" <?=checked($slider['textFeedbackAnimation'],'swipe')?> > <span><?php _e( 'Swipe' ,'slider_captcha'); ?></span>

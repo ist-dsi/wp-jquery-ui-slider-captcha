@@ -43,7 +43,7 @@ class SliderCaptcha {
 
 		// Admin register function
 		add_action( 'admin_menu', array( $this, 'register_menus' ), 49);
-		add_action( 'admin_head', 'admin_color_scheme');
+		add_action( 'admin_head', array( $this, 'admin_color_scheme'));
 
 		// Load front-end srcipts for live preview		
 		add_action( 'admin_enqueue_scripts', array(&$this, 'register_scripts' ));
@@ -263,7 +263,6 @@ class SliderCaptcha {
 			@session_start();
 
 		if(isset($_REQUEST['wp-submit'])) {
-
 			$validateOnServer = $_REQUEST['slider_captcha_validated'];
 			if( $validateOnServer != 1) {
 				wp_clear_auth_cookie();
@@ -273,8 +272,9 @@ class SliderCaptcha {
 			} else {
 				return $user;
 			}
-
 		}
+
+		return $user;
 	}
 
 	/**
@@ -283,10 +283,10 @@ class SliderCaptcha {
 	public function register_menus() {
 		// This page will be under "Settings"
 		add_options_page(
-			'options-general.php', 
-			'Slider Captcha', 
+			__('Slider CAPTCHA Settings', 'slider_captcha'), 
+			'Slider CAPTCHA', 
 			'manage_options', 
-			'slider-captcha-setting', 
+			'slider-captcha-settings', 
 			array( $this, 'create_admin_page' )
 		);
 	}
@@ -295,7 +295,7 @@ class SliderCaptcha {
 		?>
 		<div class="wrap">
 			<?php screen_icon(); ?>
-			<h2><?php _e( 'Slider Captcha Settings', 'slider_captcha' ) ?></h2>
+			<h2><?php _e('Slider CAPTCHA Settings', 'slider_captcha') ?></h2>
 			<form method="post" action="">
 				<?php include( "views/slider-captcha-admin.php" ); ?>
 			</form>
@@ -304,7 +304,7 @@ class SliderCaptcha {
 	}
 
 	public function register_admin_scripts($hook) {
-		if( $hook == "settings_page_slider-captcha-setting" ) {
+		if( $hook == "settings_page_slider-captcha-settings" ) {
 
 			wp_enqueue_script('wp-color-picker');
 			wp_enqueue_style( 'wp-color-picker' );
@@ -326,7 +326,7 @@ class SliderCaptcha {
 	public function get_slider($slider_name) {
 		if( !isset($this->sliders[$slider_name]) )
 			return $this->sliders['general'];
-		return $this->sliders[$slider_name];
+		return array_merge($this->sliders['general'], $this->sliders[$slider_name]);
 	}
 
 	public function update_slider($slider_name, $options) {
@@ -358,6 +358,17 @@ class SliderCaptcha {
 	public function is_slider_enabled($slider) {
 		$sliders = $this->get_sliders();
 		return isset($sliders[$slider]['enabled']) && $sliders[$slider]['enabled'] == 1; 
+	}
+
+	public function remove_general_setting($setting_name, $child_setting = false) {
+		$sliders = $this->get_sliders();
+		if(!$child_setting)
+			unset($sliders['general'][$setting_name]);
+		else 
+			unset($sliders['general'][$setting_name][$child_setting]);
+
+		$this->set_sliders($sliders);
+
 	}
 }
 
