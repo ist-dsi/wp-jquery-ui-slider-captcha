@@ -66,12 +66,26 @@ class SliderCaptcha {
 			add_action( 'register_post', array(&$this, 'validate_register_slider'),  10, 3 );
 			add_action( 'signup_extra_fields', array(&$this, 'render_slider_on_register') );
 		}
+		
+		//Lost password
+		if ($this->is_slider_enabled('reset_password')) {
+			add_action( 'lostpassword_form', array(&$this, 'render_slider_on_lost_password') );
+			add_action( 'lostpassword_post', array(&$this, 'validate_lost_password_slider'),  10, 3 );
+		}
+
+		//Login password
+		if ($this->is_slider_enabled('login')) {
+			add_action( 'login_form', array(&$this, 'render_slider_on_login') );
+			add_action( 'authenticate', array(&$this, 'validate_login_slider'),  30, 1);
+		}
 
 		//Load the css and styles on the login form	
-		if ($this->is_slider_enabled('login') || $this->is_slider_enabled('registration')) {
+		if ($this->is_slider_enabled('login') || $this->is_slider_enabled('registration') ||
+			$this>is_slider_enabled('reset_password')) {
 			add_action( 'login_enqueue_scripts', array(&$this, 'register_scripts' ));
 			add_action( 'login_enqueue_scripts', array(&$this, 'register_admin_scripts'));
 		}
+
 
 	}
 
@@ -198,6 +212,69 @@ class SliderCaptcha {
 		}
 
 		return $errors ;
+	}
+
+	public function render_slider_on_lost_password() {
+		?>
+		<p style="margin-bottom: 10px" id="lostpass_slider_captcha"></p>
+		<script type="text/javascript">
+		jQuery(function($) {
+			$( document ).ready(function() {
+					//Load the slider captcha
+					$("#lostpass_slider_captcha").sliderCaptcha(<?=json_encode($this->get_slider('reset_password'))?>);
+			});
+		});
+		</script>
+		<?
+
+		return true;
+	}
+
+	public function validate_lost_password_slider() {
+		//ignore validation if user_login is empty
+		if( isset( $_REQUEST['user_login'] ) && $_REQUEST['user_login']=="" )
+			return;
+
+		$validateOnServer = $_POST['slider_captcha_validated'];
+		if( $validateOnServer != 1)
+			wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation... Please make sure you have Javascript enabled on your browser.",'slider_captcha'));
+
+	}
+
+	public function render_slider_on_login() {
+		?>
+		<p style="margin-bottom: 10px" id="lostpass_slider_captcha"></p>
+		<script type="text/javascript">
+		jQuery(function($) {
+			$( document ).ready(function() {
+					//Load the slider captcha
+					$("#lostpass_slider_captcha").sliderCaptcha(<?=json_encode($this->get_slider('login'))?>);
+			});
+		});
+		</script>
+		<?
+
+		return true;
+	}
+
+	public function validate_login_slider($user) {
+
+		if ( "" == session_id() )
+			@session_start();
+
+		if(isset($_REQUEST['wp-submit'])) {
+
+			$validateOnServer = $_REQUEST['slider_captcha_validated'];
+			if( $validateOnServer != 1) {
+				wp_clear_auth_cookie();
+				$error = new WP_Error();
+				$error->add( 'slider_captcha_missing', __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation... Please make sure you have Javascript enabled on your browser.",'slider_captcha') );
+				return $error;
+			} else {
+				return $user;
+			}
+
+		}
 	}
 
 	/**
