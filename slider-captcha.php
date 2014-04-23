@@ -43,7 +43,7 @@ class SliderCaptcha {
 
 		// Admin register function
 		add_action( 'admin_menu', array( $this, 'register_menus' ), 49);
-		add_action( 'admin_head', 'admin_color_scheme');
+		add_action( 'admin_head', array( $this, 'admin_color_scheme'));
 
 		// Load front-end srcipts for live preview		
 		add_action( 'admin_enqueue_scripts', array(&$this, 'register_scripts' ));
@@ -66,12 +66,26 @@ class SliderCaptcha {
 			add_action( 'register_post', array(&$this, 'validate_register_slider'),  10, 3 );
 			add_action( 'signup_extra_fields', array(&$this, 'render_slider_on_register') );
 		}
+		
+		//Lost password
+		if ($this->is_slider_enabled('reset_password')) {
+			add_action( 'lostpassword_form', array(&$this, 'render_slider_on_lost_password') );
+			add_action( 'lostpassword_post', array(&$this, 'validate_lost_password_slider'),  10, 3 );
+		}
+
+		//Login password
+		if ($this->is_slider_enabled('login')) {
+			add_action( 'login_form', array(&$this, 'render_slider_on_login') );
+			add_action( 'authenticate', array(&$this, 'validate_login_slider'),  30, 1);
+		}
 
 		//Load the css and styles on the login form	
-		if ($this->is_slider_enabled('login') || $this->is_slider_enabled('registration')) {
+		if ($this->is_slider_enabled('login') || $this->is_slider_enabled('registration') ||
+			$this>is_slider_enabled('reset_password')) {
 			add_action( 'login_enqueue_scripts', array(&$this, 'register_scripts' ));
 			add_action( 'login_enqueue_scripts', array(&$this, 'register_admin_scripts'));
 		}
+
 
 	}
 
@@ -200,16 +214,79 @@ class SliderCaptcha {
 		return $errors ;
 	}
 
+	public function render_slider_on_lost_password() {
+		?>
+		<p style="margin-bottom: 10px" id="lostpass_slider_captcha"></p>
+		<script type="text/javascript">
+		jQuery(function($) {
+			$( document ).ready(function() {
+					//Load the slider captcha
+					$("#lostpass_slider_captcha").sliderCaptcha(<?=json_encode($this->get_slider('reset_password'))?>);
+			});
+		});
+		</script>
+		<?
+
+		return true;
+	}
+
+	public function validate_lost_password_slider() {
+		//ignore validation if user_login is empty
+		if( isset( $_REQUEST['user_login'] ) && $_REQUEST['user_login']=="" )
+			return;
+
+		$validateOnServer = $_POST['slider_captcha_validated'];
+		if( $validateOnServer != 1)
+			wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation... Please make sure you have Javascript enabled on your browser.",'slider_captcha'));
+
+	}
+
+	public function render_slider_on_login() {
+		?>
+		<p style="margin-bottom: 10px" id="lostpass_slider_captcha"></p>
+		<script type="text/javascript">
+		jQuery(function($) {
+			$( document ).ready(function() {
+					//Load the slider captcha
+					$("#lostpass_slider_captcha").sliderCaptcha(<?=json_encode($this->get_slider('login'))?>);
+			});
+		});
+		</script>
+		<?
+
+		return true;
+	}
+
+	public function validate_login_slider($user) {
+
+		if ( "" == session_id() )
+			@session_start();
+
+		if(isset($_REQUEST['wp-submit'])) {
+			$validateOnServer = $_REQUEST['slider_captcha_validated'];
+			if( $validateOnServer != 1) {
+				wp_clear_auth_cookie();
+				$error = new WP_Error();
+				$error->add( 'slider_captcha_missing', __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation... Please make sure you have Javascript enabled on your browser.",'slider_captcha') );
+				return $error;
+			} else {
+				return $user;
+			}
+		}
+
+		return $user;
+	}
+
 	/**
 	 * Admin interface functions 
 	 */
 	public function register_menus() {
 		// This page will be under "Settings"
 		add_options_page(
-			'options-general.php', 
-			'Slider Captcha', 
+			__('Slider CAPTCHA Settings', 'slider_captcha'), 
+			'Slider CAPTCHA', 
 			'manage_options', 
-			'slider-captcha-setting', 
+			'slider-captcha-settings', 
 			array( $this, 'create_admin_page' )
 		);
 	}
@@ -218,7 +295,7 @@ class SliderCaptcha {
 		?>
 		<div class="wrap">
 			<?php screen_icon(); ?>
-			<h2><?php _e( 'Slider Captcha Settings', 'slider_captcha' ) ?></h2>
+			<h2><?php _e('Slider CAPTCHA Settings', 'slider_captcha') ?></h2>
 			<form method="post" action="">
 				<?php include( "views/slider-captcha-admin.php" ); ?>
 			</form>
@@ -227,7 +304,7 @@ class SliderCaptcha {
 	}
 
 	public function register_admin_scripts($hook) {
-		if( $hook == "settings_page_slider-captcha-setting" ) {
+		if( $hook == "settings_page_slider-captcha-settings" ) {
 
 			wp_enqueue_script('wp-color-picker');
 			wp_enqueue_style( 'wp-color-picker' );
@@ -249,7 +326,7 @@ class SliderCaptcha {
 	public function get_slider($slider_name) {
 		if( !isset($this->sliders[$slider_name]) )
 			return $this->sliders['general'];
-		return $this->sliders[$slider_name];
+		return array_merge($this->sliders['general'], $this->sliders[$slider_name]);
 	}
 
 	public function update_slider($slider_name, $options) {
@@ -281,6 +358,17 @@ class SliderCaptcha {
 	public function is_slider_enabled($slider) {
 		$sliders = $this->get_sliders();
 		return isset($sliders[$slider]['enabled']) && $sliders[$slider]['enabled'] == 1; 
+	}
+
+	public function remove_general_setting($setting_name, $child_setting = false) {
+		$sliders = $this->get_sliders();
+		if(!$child_setting)
+			unset($sliders['general'][$setting_name]);
+		else 
+			unset($sliders['general'][$setting_name][$child_setting]);
+
+		$this->set_sliders($sliders);
+
 	}
 }
 
