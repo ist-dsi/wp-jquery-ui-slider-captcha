@@ -23,7 +23,8 @@ p#general_slider + p {
   display: none; }
 
 #form_options_container {
-  position: relative; }
+  position: relative;
+  margin-top: 15px; }
 
 #form_options_container > fieldset {
   float: left;
