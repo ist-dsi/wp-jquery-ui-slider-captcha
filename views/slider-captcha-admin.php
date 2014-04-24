@@ -280,17 +280,28 @@ endif;?>
 	$colors = $_wp_admin_css_colors[ get_user_option( 'admin_color', get_current_user_id() ) ]->colors;
 
 	$settings = array(
+		'type' => 'normal',
+		'styles' => array(
+			'knobColor' => $colors[1],
+			'knobColorAfterUnlock' => $colors[0],
+			'backgroundColor' => $colors[2],
+			'textColor' => '#fff',
+			'textColorAfterUnlock' => '#fff',
+			'width' => '300px',
+			'height' => '38px'
+		),
 		'hintText' => 'Swipe to save changes',
 		'hintTextAfterUnlock' => 'Saving changes',
 		'hintTextSize' => '13px',
-		'styles' => array(
-			'width' => '300px',
-			'height' => '38px',
-			'knobColorAfterUnlock' => $colors[0],
-			'knobColor' => $colors[1],
-			'backgroundColor' => $colors[2],
-			'textColor' => '#fff',
-			'textColorAfterUnlock' => '#fff'
+		'face' => array(
+            'icon' => '',
+            'top' => '',
+            'right' => '',
+            'textColor' => '',
+            'iconAfterUnlock' => '',
+            'topAfterUnlock' => '',
+            'rightAfterUnlock' => '',
+            'textColorAfterUnlock' => '',
 		),
 		'events' => array( 'submitAfterUnlock' => '1')
 	);
