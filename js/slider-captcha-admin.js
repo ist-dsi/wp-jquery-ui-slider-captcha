@@ -13,13 +13,7 @@
 			palettes: false
 		});
 
-		$( '#slider_captcha_form_selector' ).change(function () {
-			$( '#form_options_container > fieldset' ).css({'visibility': 'hidden', 'position': 'absolute'}).height( 0 );
-			$( '#' + $(this).val() + '_options_container' ).css({'visibility': 'visible', 'position': 'relative'}).height( 'auto' );
-		}).change();
-		
 		$( '#live_preview_container p' ).eq(2).click( function () {
-			
 			$( '#slider_captcha_form_selector' ).change();
 
 			return !1;
@@ -27,20 +21,23 @@
 
 		$( '#general_slider' ).sliderCaptcha( parseSliderCaptchaSettings( $( '#form_options_container > fieldset' ).eq(0) ) );
 
-		$( '#slider_captcha_form_selector' ).change(function () {
+		$( '#slider_captcha_form_selector' ).change(function () {				
 			var general_options = parseSliderCaptchaSettings( $( '#form_options_container > fieldset' ).eq(0) ),
 				individual_options = parseSliderCaptchaSettings( $( '#form_options_container > fieldset#' +  $(this).val() + '_options_container' ) );
+
+			$( '#form_options_container > fieldset' ).css({'visibility': 'hidden', 'position': 'absolute'}).height( 0 );
+			$( '#' + $(this).val() + '_options_container' ).css({'visibility': 'visible', 'position': 'relative'}).height( 'auto' );
 
 			$( '#general_slider' ).next().slideUp();
 			$( '#general_slider' ).empty().sliderCaptcha( $.extend(true, {}, general_options, individual_options ) );
 
-		});
+		}).change();
 
 		$( '#form_options_container fieldset input, #form_options_container fieldset select').change(function () {
 			$( '#slider_captcha_form_selector' ).change();
 		});
 
-		$( '[name*="[slider_type]"]' ).change(function () {
+		$( 'input[name*="[slider_type]"]' ).change(function () {
 			if( 'filled' == $( this ).val() ) {
 				$( this ).closest( 'p' ).next().slideDown().next().slideDown();
 			} else {
