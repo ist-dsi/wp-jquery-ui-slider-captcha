@@ -92,8 +92,6 @@ class SliderCaptcha {
 	function init_default() {
 		//Slider default settings
 		$this->js_settings = array(
-			'hintText' => __('Swipe to Validate','slider_captcha'),
-			'hintTextAfterUnlock' => __("You can now Submit",'slider_captcha'),
 			'events' => array(
 				'validateOnServer' => true,
 				),
@@ -105,15 +103,15 @@ class SliderCaptcha {
 
 		$default_sliders = array(
 			'general' => array_merge( 
-				array_merge($this->js_settings, $this->settings),
+				array_merge(array_filter($this->js_settings, 'strval'), array_filter($this->settings, 'strval')),
 				array('enabled' => 0)),
 			);
 
-		$default_sliders['comments'] = array_merge($default_sliders['general'], array(
+		$default_sliders['comments'] = array_merge(array_filter($default_sliders['general'], 'strval'), array(
 				'enabled' => 1,
 			));
 
-		$this->sliders = get_option('slider_captcha_sliders',$default_sliders);
+		$this->sliders = get_option('slider_captcha_sliders', $default_sliders);
 
 		$this->captcha_locations = array(
 				'general' 	    	=> __( 'General' ,'slider_captcha'),
@@ -129,7 +127,6 @@ class SliderCaptcha {
 
 	function admin_color_scheme() {
    		global $_wp_admin_css_colors;
-   		//$_wp_admin_css_colors = 0;
 	}
 
 	/**
@@ -182,7 +179,7 @@ class SliderCaptcha {
 	public function validate_comment_slider($comment_data) {
 		$validateOnServer = $_POST['slider_captcha_validated'];
 		if( $validateOnServer != 1)
-			wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation... Please make sure you have Javascript enabled on your browser.",'slider_captcha'));
+			wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha'));
 		return $comment_data;
 	}
 
@@ -207,7 +204,7 @@ class SliderCaptcha {
 	
 		/* If someone tryies to hack */
 		if ( $_REQUEST['slider_captcha_validated'] != 1 ) {
-			$errors->add( 'slider_captcha_missing', __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation... Please make sure you have Javascript enabled on your browser.",'slider_captcha') );
+			$errors->add( 'slider_captcha_missing', __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha') );
 			return $errors;
 		}
 
@@ -237,7 +234,7 @@ class SliderCaptcha {
 
 		$validateOnServer = $_POST['slider_captcha_validated'];
 		if( $validateOnServer != 1)
-			wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation... Please make sure you have Javascript enabled on your browser.",'slider_captcha'));
+			wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha'));
 
 	}
 
@@ -267,7 +264,7 @@ class SliderCaptcha {
 			if( $validateOnServer != 1) {
 				wp_clear_auth_cookie();
 				$error = new WP_Error();
-				$error->add( 'slider_captcha_missing', __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation... Please make sure you have Javascript enabled on your browser.",'slider_captcha') );
+				$error->add( 'slider_captcha_missing', __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha') );
 				return $error;
 			} else {
 				return $user;
@@ -326,7 +323,7 @@ class SliderCaptcha {
 	public function get_slider($slider_name) {
 		if( !isset($this->sliders[$slider_name]) )
 			return $this->sliders['general'];
-		return array_merge($this->sliders['general'], $this->sliders[$slider_name]);
+		return array_merge(array_filter($this->sliders['general'], 'strval'), array_filter($this->sliders[$slider_name], 'strval'));
 	}
 
 	public function update_slider($slider_name, $options) {

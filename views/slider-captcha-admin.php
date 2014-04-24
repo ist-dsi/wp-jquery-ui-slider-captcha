@@ -116,7 +116,8 @@ foreach($_POST as $machine => $post) {
 
 endif;?>
 <fieldset>
-	<p><?php _e( 'Slider activation should take place in individual form option. Individual slider settings will overide general options for each form. By default, comments form slider CAPTCHA is active. All other slider CAPTCHA still disabled until individual activation.', 'slider_captcha' ); ?></p>
+	<p><?php _e( 'By default the only place were the slider is applied is in the comments form. If you want to activate the slider for other kinds of forms (registration form, reset password form, login form or others) you need to activate them individually. The general settings apply to all kinds of forms. If you want to customize a slider for a specific kind of form you can do it. You just need to sellect the type of form (under "Slider options") and change the settings.', 'slider_captcha' ); ?></p>
+
 	<h3><?= __( 'Slider options', 'slider_captcha'); ?></h3>
 	<select name="curr_slider" id="slider_captcha_form_selector" style="width: 200px;">
 		<?foreach($this->captcha_locations as $machine=>$location):?>
@@ -154,13 +155,13 @@ endif;?>
 				<h4 <?=($slider['type'] != 'filled' ? 'style="display: none;"' : '')?> ><?php _e( 'Animation type', 'slider_captcha' ); ?></h4>
 				<p <?=($slider['type'] != 'filled' ? 'style="display: none;"' : '')?>>
 					<label for="<?=$machine?>_slider_animation_type_overlap" class="label-radio">
-						<input value="overlap" type="radio" name="<?=$machine?>[slider_animation_type]" id="<?=$machine?>_slider_animation_type_overlap" <?=($slider['textFeedbackAnimation']=='overlap' || ($slider['textFeedbackAnimation']=='' || $machine=='general')) ? 'checked="checked"' : ''?>> <span><?php _e( 'Overlap' ,'slider_captcha'); ?></span>
+						<input value="overlap" type="radio" name="<?=$machine?>[slider_animation_type]" id="<?=$machine?>_slider_animation_type_overlap" <?=($slider['textFeedbackAnimation']=='overlap' || ($slider['textFeedbackAnimation']=='' || $machine=='general')) ? 'checked="checked"' : ''?>> <span><?php _e( 'Overlap text' ,'slider_captcha'); ?></span>
 					</label>
 					<label for="<?=$machine?>_slider_animation_type_swipe" class="label-radio">
-						<input value="swipe" type="radio" name="<?=$machine?>[slider_animation_type]" id="<?=$machine?>_slider_animation_type_swipe" <?checked($slider['textFeedbackAnimation'],'swipe')?>> <span><?php _e( 'Swipe' ,'slider_captcha'); ?></span>
+						<input value="swipe" type="radio" name="<?=$machine?>[slider_animation_type]" id="<?=$machine?>_slider_animation_type_swipe" <?checked($slider['textFeedbackAnimation'],'swipe')?>> <span><?php _e( 'Swipe text' ,'slider_captcha'); ?></span>
 					</label>					
 					<label for="<?=$machine?>_slider_animation_type_overlap_swipe" class="label-radio">
-						<input value="swipe_overlap" type="radio" name="<?=$machine?>[slider_animation_type]" id="<?=$machine?>_slider_animation_type_overlap_swipe" <?checked($slider['textFeedbackAnimation'],'swipe_overlap')?>> <span><?php _e( 'Swipe & overlap' ,'slider_captcha'); ?></span>
+						<input value="swipe_overlap" type="radio" name="<?=$machine?>[slider_animation_type]" id="<?=$machine?>_slider_animation_type_overlap_swipe" <?checked($slider['textFeedbackAnimation'],'swipe_overlap')?>> <span><?php _e( 'Swipe & overlap text' ,'slider_captcha'); ?></span>
 					</label>
 				</p>				
 				<h3><?php _e( 'Dimensions', 'slider_captcha' ); ?></h3>
@@ -198,17 +199,17 @@ endif;?>
 				<fieldset class="column_presentation">
 					<h4><?php _e( 'Before unlock', 'slider_captcha' ); ?></h4>
 					<p>
-						<label for="<?=$machine?>_knob_icon_face_before_unlock"><?php _e( 'Icon face', 'slider_captcha' ); ?></label>
+						<label for="<?=$machine?>_knob_color_before_unlock"><?php _e( 'Knob color', 'slider_captcha' ); ?></label>
+						<input value="<?=$slider['styles']['knobColor']?>" class="color_input" type="text" name="<?=$machine?>[knob_color_before_unlock]" id="<?=$machine?>_knob_color_before_unlock" placeholder="">
+					</p>					
+					<p>
+						<label for="<?=$machine?>_knob_icon_face_before_unlock"><?php _e( 'Icon', 'slider_captcha' ); ?></label>
 						<select name="<?=$machine?>[knob_icon_face_before_unlock]" id="<?=$machine?>_knob_icon_face_before_unlock" style="width: 180px;">
 							<?php _slider_draw_fontface_options('icon',$slider) ?>
 						</select>
 					</p>
 					<p>
-						<label for="<?=$machine?>_knob_color_before_unlock"><?php _e( 'Knob color', 'slider_captcha' ); ?></label>
-						<input value="<?=$slider['styles']['knobColor']?>" class="color_input" type="text" name="<?=$machine?>[knob_color_before_unlock]" id="<?=$machine?>_knob_color_before_unlock" placeholder="">
-					</p>
-					<p>
-						<label for="<?=$machine?>_knob_text_color_before_unlock"><?php _e( 'Knob text color', 'slider_captcha' ); ?></label>
+						<label for="<?=$machine?>_knob_text_color_before_unlock"><?php _e( 'Icon color', 'slider_captcha' ); ?></label>
 						<input value="<?=$slider['face']['textColor']?>" type="text" class="color_input" name="<?=$machine?>[knob_text_color_before_unlock]" id="<?=$machine?>_knob_text_color_before_unlock" placeholder="">
 					</p>
 					<!--<p>
@@ -217,7 +218,7 @@ endif;?>
 						<span class="units"><?php _e( 'px', 'slider_captcha' ); ?></span>
 					</p>-->
 					<p>
-						<label for="<?=$machine?>_knob_top_offset_before_unlock"><?php _e( 'Offset ( top &times; right)', 'slider_captcha' ); ?></label>
+						<label for="<?=$machine?>_knob_top_offset_before_unlock"><?php _e( 'Icon position ( top &times; right)', 'slider_captcha' ); ?></label>
 						<input value="<?=$slider['face']['top']?>" type="number" class="number_input" name="<?=$machine?>[knob_top_offset_before_unlock]" id="<?=$machine?>_knob_top_offset_before_unlock" placeholder="0">
 						<span class="units"><?php _e( 'px', 'slider_captcha' ); ?></span>
 						&times;
@@ -232,17 +233,17 @@ endif;?>
 				<fieldset class="column_presentation">
 					<h4><?php _e( 'After unlock', 'slider_captcha' ); ?></h4>
 					<p>
-						<label for="<?=$machine?>_knob_icon_face_after_unlock"><?php _e( 'Icon face', 'slider_captcha' ); ?></label>
+						<label for="<?=$machine?>_knob_color_after_unlock"><?php _e( 'Knob color', 'slider_captcha' ); ?></label>
+						<input value="<?=$slider['styles']['knobColorAfterUnlock']?>" class="color_input" type="text" name="<?=$machine?>[knob_color_after_unlock]" id="<?=$machine?>_knob_color_after_unlock" placeholder="">
+					</p>					
+					<p>
+						<label for="<?=$machine?>_knob_icon_face_after_unlock"><?php _e( 'Icon', 'slider_captcha' ); ?></label>
 						<select name="<?=$machine?>[knob_icon_face_after_unlock]" id="<?=$machine?>_knob_icon_face_after_unlock" style="width: 180px;">
 							<?php _slider_draw_fontface_options('iconAfterUnlock',$slider) ?>
 						</select>
 					</p>
 					<p>
-						<label for="<?=$machine?>_knob_color_after_unlock"><?php _e( 'Knob color', 'slider_captcha' ); ?></label>
-						<input value="<?=$slider['styles']['knobColorAfterUnlock']?>" class="color_input" type="text" name="<?=$machine?>[knob_color_after_unlock]" id="<?=$machine?>_knob_color_after_unlock" placeholder="">
-					</p>
-					<p>
-						<label for="<?=$machine?>_knob_text_color_after_unlock"><?php _e( 'Knob text color', 'slider_captcha' ); ?></label>
+						<label for="<?=$machine?>_knob_text_color_after_unlock"><?php _e( 'Icon color', 'slider_captcha' ); ?></label>
 						<input value="<?=$slider['face']['textColorAfterUnlock']?>" type="text" class="color_input" name="<?=$machine?>[knob_text_color_after_unlock]" id="<?=$machine?>_knob_text_color_after_unlock" placeholder="">
 					</p>
 					<!--<p>
@@ -270,7 +271,7 @@ endif;?>
 
 <fieldset id="live_preview_container">
 	<h3><?php _e( 'Live preview', 'slider_captcha' ); ?></h3>
-	<p><?php _e( 'This preview may differ from the theme, because css backoffice and theme aren\'t the same.', 'slider_captcha' ); ?></p>
+	<p><?php _e( 'This preview may differ from the one published on your website. Since the styles of the theme may override the settings of the plugin you should always check the slider appearance by browsing a page that requires validation.', 'slider_captcha' ); ?></p>
 	<p id="general_slider"></p>
 	<p><?php _e( 'Do you want to <a href="#">test slider captcha again</a>?', 'slider_captcha'); ?></p>
 	<input type="hidden" name="submited" value="1" />
