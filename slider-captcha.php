@@ -112,7 +112,7 @@ class SliderCaptcha {
 				'enabled' => 1,
 			));
 
-		$this->sliders = get_option('dasdas', $default_sliders);
+		$this->sliders = get_option('slider-captcha-sliders', $default_sliders);
 
 		$this->captcha_locations = array(
 				'general' 	    	=> __( 'General' ,'slider_captcha'),
