@@ -18,16 +18,16 @@ function slider_captcha($slider_name = 'general', $container = 'p', $settings = 
 		? 'class="' . $settings['containerClass'] . '"' : '');
 
 	?>
-		<<?=$container?> <?=$container_class?> id="slidercaptcha-<?=$slider_name?>"> </<?=$container?>>
+		<<?php echo $container?> <?php echo $container_class?> id="slidercaptcha-<?php echo $slider_name?>"> </<?php echo $container?>>
 		<script type="text/javascript">
 		jQuery(function($) {
 			$( document ).ready(function() {
 				//Load the slider captcha
-				$("#slidercaptcha-<?=$slider_name?>").sliderCaptcha(<?=json_encode($settings)?>);
+				$("#slidercaptcha-<?php echo $slider_name?>").sliderCaptcha(<?php echo json_encode($settings)?>);
 			});
 		});
 		</script>
-	<?
+	<?php
 
 }
 
@@ -47,17 +47,26 @@ function _deprectated_slider_captcha($container = 'p', $settings = null) {
 
 	$number=rand(0,23541);
 	?>
-		<<?=$container?> <?=$container_class?> id="slidercaptcha<?=$number?>"> </<?=$container?>>
+		<<?php echo $container?> <?php echo $container_class?> id="slidercaptcha<?php echo $number?>"> </<?php echo $container?>>
 		<script type="text/javascript">
 		jQuery(function($) {
 			$( document ).ready(function() {
 				//Load the slider captcha
-				$("#slidercaptcha<?=$number?>").sliderCaptcha(<?=json_encode($settings)?>);
+				$("#slidercaptcha<?php echo $number?>").sliderCaptcha(<?php echo json_encode($settings)?>);
 			});
 		});
 		</script>
-	<?
+	<?php
 
+}
+
+/**
+ * Get the database settings, without a merge with the general slider
+ */
+function slider_get_raw_slider_options($slider_name) {
+	global $sliderCaptcha;
+	$sliders = $sliderCaptcha->get_sliders();
+	return (isset($sliders[$slider_name]) ? $sliders[$slider_name] : false);
 }
 
 function slider_get_slider_options($slider_name) {

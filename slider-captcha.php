@@ -168,12 +168,12 @@ class SliderCaptcha {
 
 				if($("#commentform .form-submit").before('<p id="auto_slidercaptcha"></p>')) {
 					//Load the slider captcha
-					$("#auto_slidercaptcha").sliderCaptcha(<?=json_encode($this->get_slider('comments'))?>);
+					$("#auto_slidercaptcha").sliderCaptcha(<?php echo json_encode($this->get_slider('comments'))?>);
 				}
 			});
 		});
 		</script>
-		<?
+		<?php
 	}
 
 	public function validate_comment_slider($comment_data) {
@@ -191,11 +191,11 @@ class SliderCaptcha {
 		jQuery(function($) {
 			$( document ).ready(function() {
 					//Load the slider captcha
-					$("#register_slider_captcha").sliderCaptcha(<?=json_encode($this->get_slider('registration'))?>);
+					$("#register_slider_captcha").sliderCaptcha(<?php echo json_encode($this->get_slider('registration'))?>);
 			});
 		});
 		</script>
-		<?
+		<?php
 
 		return true;
 	} 
@@ -218,11 +218,11 @@ class SliderCaptcha {
 		jQuery(function($) {
 			$( document ).ready(function() {
 					//Load the slider captcha
-					$("#lostpass_slider_captcha").sliderCaptcha(<?=json_encode($this->get_slider('reset_password'))?>);
+					$("#lostpass_slider_captcha").sliderCaptcha(<?php echo json_encode($this->get_slider('reset_password'))?>);
 			});
 		});
 		</script>
-		<?
+		<?php
 
 		return true;
 	}
@@ -245,11 +245,11 @@ class SliderCaptcha {
 		jQuery(function($) {
 			$( document ).ready(function() {
 					//Load the slider captcha
-					$("#lostpass_slider_captcha").sliderCaptcha(<?=json_encode($this->get_slider('login'))?>);
+					$("#lostpass_slider_captcha").sliderCaptcha(<?php echo json_encode($this->get_slider('login'))?>);
 			});
 		});
 		</script>
-		<?
+		<?php
 
 		return true;
 	}

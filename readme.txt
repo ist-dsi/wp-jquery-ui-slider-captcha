@@ -25,7 +25,7 @@ With our brand new Settings page, you can now fully custumize every Slider on yo
 3. Configure and enable the sliders you want to have on your website.
 4. Have fun.
 
-**Did you know...** If you can't see any CAPTCHA on your Comment's page, you must edit comments.php of your template and add the following code in the position that you want to have your CAPTCHA.
+**Did you know...** If you can't see any CAPTCHA on your Comment's page, you must edit comments.<?php of your template and add the following code in the position that you want to have your CAPTCHA.
 `<?php if(function_exists('slider_captcha'))
 	slider_captcha('comments');
 ?>`
@@ -34,7 +34,7 @@ With our brand new Settings page, you can now fully custumize every Slider on yo
 
 = I've activated the plugin, but I can't see any CAPTCHA... What can I do? =
 
-That's probabily because of the way your theme is built. You will have to edit your comments.php of your template and add the following code in the position that you want to have your CAPTCHA.
+That's probabily because of the way your theme is built. You will have to edit your comments.<?php of your template and add the following code in the position that you want to have your CAPTCHA.
 `<?php if(function_exists('slider_captcha'))
 	slider_captcha('comments');
 ?>`
