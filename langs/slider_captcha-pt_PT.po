@@ -1,10 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CAS Maestro\n"
-"POT-Creation-Date: 2014-04-07 13:56-0000\n"
-"PO-Revision-Date: 2014-04-07 14:07-0000\n"
+"POT-Creation-Date: 2014-04-29 10:41-0000\n"
+"PO-Revision-Date: 2014-04-29 10:52-0000\n"
 "Last-Translator: \n"
 "Language-Team: NME <nme@ist.utl.pt>\n"
+"Language: pt_PT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -14,21 +15,222 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"Language: pt_PT\n"
 "X-Poedit-SearchPath-0: ..\n"
 
-#: ../slider-captcha.php:28
-msgid "Swipe to Validate"
-msgstr "Arrastar para Validar"
+#: ../slider-captcha.php:117
+msgid "General"
+msgstr "Geral"
 
-#: ../slider-captcha.php:29
-msgid "You can now Submit"
-msgstr "Já pode submeter"
+#: ../slider-captcha.php:118
+msgid "Comments form"
+msgstr "Formulário de comentários"
 
-#: ../slider-captcha.php:98
+#: ../slider-captcha.php:119
+msgid "Registration form"
+msgstr "Formulário de registo"
+
+#: ../slider-captcha.php:120
+msgid "Reset password form"
+msgstr "Formulário de password perdida"
+
+#: ../slider-captcha.php:121
+msgid "Login form"
+msgstr "Formulário de login"
+
+#: ../slider-captcha.php:182 ../slider-captcha.php:207
+#: ../slider-captcha.php:237 ../slider-captcha.php:267
 msgid ""
-"<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation... "
-"Please make sure you have Javascript enabled on your browser."
+"<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. "
+"Please make sure you have JavaScript enabled on your browser."
 msgstr ""
 "<strong>ERRO</strong>: Aconteceu um problema com a validação do CAPTCHA… Por "
-"favor, verifique se tem o Javascript activo no seu navegador."
+"favor, verifique se tem o Javascript activo no seu navegador. "
+
+#: ../slider-captcha.php:283 ../slider-captcha.php:295
+msgid "Slider CAPTCHA Settings"
+msgstr "Definições do Slider CAPTCHA"
+
+#: ../views/slider-captcha-admin.php:115
+msgid "All the settings have been successfully saved."
+msgstr "Todas as definições foram gravadas com sucesso."
+
+#: ../views/slider-captcha-admin.php:119
+msgid ""
+"By default the only place were the slider is applied is in the comments "
+"form. If you want to activate the slider for other kinds of forms "
+"(registration form, reset password form, login form or others) you need to "
+"activate them individually. The general settings apply to all kinds of "
+"forms. If you want to customize a slider for a specific kind of form you can "
+"do it. You just need to sellect the type of form (under \"Slider options\") "
+"and change the settings."
+msgstr ""
+"Por omissão, o único local onde o slider é aplicado é ao formulário de "
+"comentários. Se deseja activar o slider para outro tipo de formulários "
+"(registo, recuperação de password, login ou outros) deve activa-lo "
+"individualmente. As definições gerais aplicam-se a todos os formulários. Se "
+"deseja personalizar um slider para um determinado tipo de formulário também "
+"é possível: basta seleccionar o tipo de formulário (Em \"Opções de Slider\") "
+"e mudar as definições."
+
+#: ../views/slider-captcha-admin.php:121
+msgid "Slider options"
+msgstr "Opções de Slider"
+
+#: ../views/slider-captcha-admin.php:140
+#, php-format
+msgid "%s activation"
+msgstr "Activação de %s"
+
+#: ../views/slider-captcha-admin.php:143
+msgid "Enabled"
+msgstr "Activo"
+
+#: ../views/slider-captcha-admin.php:146
+msgid "Disabled"
+msgstr "Inactivo"
+
+#: ../views/slider-captcha-admin.php:151
+msgid "Type"
+msgstr "Tipo"
+
+#: ../views/slider-captcha-admin.php:154
+msgid "Normal"
+msgstr "Normal"
+
+#: ../views/slider-captcha-admin.php:157
+msgid "Filled"
+msgstr "Preenchido"
+
+#: ../views/slider-captcha-admin.php:160
+msgid "Animation type"
+msgstr "Tipo de animaç\ao"
+
+#: ../views/slider-captcha-admin.php:163
+msgid "Overlap text"
+msgstr "Texto de sobreposição"
+
+#: ../views/slider-captcha-admin.php:166
+msgid "Swipe text"
+msgstr "Texto de arrasto"
+
+#: ../views/slider-captcha-admin.php:169
+msgid "Swipe & overlap text"
+msgstr "Texto de sobreposição & arrasto"
+
+#: ../views/slider-captcha-admin.php:172
+msgid "Dimensions"
+msgstr "Tamanhos"
+
+#: ../views/slider-captcha-admin.php:174
+msgid "Width"
+msgstr "Largura"
+
+#: ../views/slider-captcha-admin.php:174
+msgid "height:"
+msgstr "altura:"
+
+#: ../views/slider-captcha-admin.php:175
+msgid "100%"
+msgstr "100%"
+
+#: ../views/slider-captcha-admin.php:176
+msgid "px (or %)"
+msgstr "px (ou %)"
+
+#: ../views/slider-captcha-admin.php:178
+msgid "46"
+msgstr "46"
+
+#: ../views/slider-captcha-admin.php:179 ../views/slider-captcha-admin.php:201
+#: ../views/slider-captcha-admin.php:223 ../views/slider-captcha-admin.php:228
+#: ../views/slider-captcha-admin.php:231 ../views/slider-captcha-admin.php:257
+#: ../views/slider-captcha-admin.php:262 ../views/slider-captcha-admin.php:265
+msgid "px"
+msgstr "px"
+
+#: ../views/slider-captcha-admin.php:181
+msgid "Hint text"
+msgstr "Texto sugestivo"
+
+#: ../views/slider-captcha-admin.php:183 ../views/slider-captcha-admin.php:205
+msgid "Before unlock"
+msgstr "Antes de desbloquear"
+
+#: ../views/slider-captcha-admin.php:184
+msgid "Swipe to Unlock"
+msgstr "Arrastar para Validar"
+
+#: ../views/slider-captcha-admin.php:187
+msgid "and after unlock"
+msgstr "e depois de desbloquear"
+
+#: ../views/slider-captcha-admin.php:188
+msgid "Unlocked"
+msgstr "Desbloqueado"
+
+#: ../views/slider-captcha-admin.php:192
+msgid "Styles"
+msgstr "Estilos"
+
+#: ../views/slider-captcha-admin.php:195
+msgid "Background color"
+msgstr "Cor de fundo"
+
+#: ../views/slider-captcha-admin.php:199
+msgid "Hint text size"
+msgstr "Tamanho do texto sugestivo"
+
+#: ../views/slider-captcha-admin.php:207 ../views/slider-captcha-admin.php:241
+msgid "Knob color"
+msgstr "Cor do puxador"
+
+#: ../views/slider-captcha-admin.php:211 ../views/slider-captcha-admin.php:245
+msgid "Icon"
+msgstr "Icon"
+
+#: ../views/slider-captcha-admin.php:217 ../views/slider-captcha-admin.php:251
+msgid "Icon color"
+msgstr "Cor do icon"
+
+#: ../views/slider-captcha-admin.php:221 ../views/slider-captcha-admin.php:255
+msgid "Knob text size"
+msgstr "Tamanho do texto do puxador"
+
+#: ../views/slider-captcha-admin.php:226
+msgid "Icon position ( top &times; right)"
+msgstr "Posição do icon ( topo &times; direita)"
+
+#: ../views/slider-captcha-admin.php:234 ../views/slider-captcha-admin.php:268
+msgid "Hint text color"
+msgstr "Cor do texto sugestivo"
+
+#: ../views/slider-captcha-admin.php:239
+msgid "After unlock"
+msgstr "Depois de desbloquear"
+
+#: ../views/slider-captcha-admin.php:260
+msgid "Offset ( top &times; right)"
+msgstr "Deslocamento (topo &times; direita)"
+
+#: ../views/slider-captcha-admin.php:278
+msgid "Live preview"
+msgstr "Pré visualização"
+
+#: ../views/slider-captcha-admin.php:279
+msgid ""
+"This preview may differ from the one published on your website. Since the "
+"styles of the theme may override the settings of the plugin you should "
+"always check the slider appearance by browsing a page that requires "
+"validation."
+msgstr ""
+"Esta pré-visualização pode ser diferente da publicada no seu website. Uma "
+"vez que os estilos do tema podem sobrepor-se ás definições do plugin, deve "
+"sempre verificar a aparência do slider navegando para uma página que requer "
+"validação."
+
+#: ../views/slider-captcha-admin.php:281
+msgid "Do you want to <a href=\"#\">test slider captcha again</a>?"
+msgstr "Deseja <a href=\"#\">experimentar o slider captcha novamente</a>? "
+
+#~ msgid "You can now Submit"
+#~ msgstr "Já pode submeter"
