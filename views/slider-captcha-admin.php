@@ -258,7 +258,7 @@ endif;?>
 						<span class="units"><?php _e( 'px', 'slider_captcha' ); ?></span>
 					</p>-->
 					<p>
-						<label for="<?php echo $machine?>_knob_top_offset_after_unlock"><?php _e( 'Offset ( top &times; right)', 'slider_captcha' ); ?></label>
+						<label for="<?php echo $machine?>_knob_top_offset_after_unlock"><?php _e( 'Icon position ( top &times; right)', 'slider_captcha' ); ?></label>
 						<input value="<?php echo $slider_raw['face']['topAfterUnlock']?>" type="number" class="number_input" name="<?php echo $machine?>[knob_top_offset_after_unlock]" id="<?php echo $machine?>_knob_top_offset_after_unlock" placeholder="0">
 						<span class="units"><?php _e( 'px', 'slider_captcha' ); ?></span>
 						&times;
@@ -297,8 +297,8 @@ endif;?>
 			'width' => '300px',
 			'height' => '38px'
 		),
-		'hintText' => 'Swipe to save changes',
-		'hintTextAfterUnlock' => 'Saving changes',
+		'hintText' => __('Swipe to save changes','slider_captcha'),
+		'hintTextAfterUnlock' => __('Saving changes','slider_captcha'),
 		'hintTextSize' => '13px',
 		'face' => array(
             'icon' => '',
