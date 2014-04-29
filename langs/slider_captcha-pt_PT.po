@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: CAS Maestro\n"
 "POT-Creation-Date: 2014-04-29 12:11-0000\n"
-"PO-Revision-Date: 2014-04-29 12:13-0000\n"
+"PO-Revision-Date: 2014-04-29 12:16-0000\n"
 "Last-Translator: \n"
 "Language-Team: NME <nme@ist.utl.pt>\n"
 "Language: pt_PT\n"
@@ -154,7 +154,7 @@ msgstr "px"
 
 #: ../views/slider-captcha-admin.php:182
 msgid "Hint text"
-msgstr "Texto sugestivo"
+msgstr "Texto de ajuda"
 
 #: ../views/slider-captcha-admin.php:184 ../views/slider-captcha-admin.php:206
 msgid "Before unlock"
@@ -182,7 +182,7 @@ msgstr "Cor de fundo"
 
 #: ../views/slider-captcha-admin.php:200
 msgid "Hint text size"
-msgstr "Tamanho do texto sugestivo"
+msgstr "Tamanho do texto de ajuda"
 
 #: ../views/slider-captcha-admin.php:208 ../views/slider-captcha-admin.php:242
 msgid "Knob color"
@@ -206,7 +206,7 @@ msgstr "Posição do ícone ( topo &times; direita)"
 
 #: ../views/slider-captcha-admin.php:235 ../views/slider-captcha-admin.php:269
 msgid "Hint text color"
-msgstr "Cor do texto sugestivo"
+msgstr "Cor do texto de ajuda"
 
 #: ../views/slider-captcha-admin.php:240
 msgid "After unlock"
