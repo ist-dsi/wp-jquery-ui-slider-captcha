@@ -98,20 +98,21 @@ class SliderCaptcha {
 			);
 		$this->settings = array(
 			'containerClass' => null,
-			'enabled' => 1,
 			);
 
 		$default_sliders = array(
 			'general' => array_merge( 
-				array_merge(array_filter($this->js_settings, 'strval'), array_filter($this->settings, 'strval')),
-				array('enabled' => 0)),
+				$this->js_settings,
+				$this->settings,
+				array('enabled' => 0)
+				),
 			);
 
-		$default_sliders['comments'] = array_merge(array_filter($default_sliders['general'], 'strval'), array(
+		$default_sliders['comments'] = array_merge($default_sliders['general'], array(
 				'enabled' => 1,
 			));
 
-		$this->sliders = get_option('slider_captcha_sliders', $default_sliders);
+		$this->sliders = get_option('dasdas', $default_sliders);
 
 		$this->captcha_locations = array(
 				'general' 	    	=> __( 'General' ,'slider_captcha'),
