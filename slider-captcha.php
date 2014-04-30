@@ -66,7 +66,7 @@ class SliderCaptcha {
 			add_action( 'register_post', array(&$this, 'validate_register_slider'),  10, 3 );
 			add_action( 'signup_extra_fields', array(&$this, 'render_slider_on_register') );
 		}
-		
+
 		//Lost password
 		if ($this->is_slider_enabled('reset_password')) {
 			add_action( 'lostpassword_form', array(&$this, 'render_slider_on_lost_password') );
@@ -323,8 +323,9 @@ class SliderCaptcha {
 	 */
 	public function get_slider($slider_name) {
 		if( !isset($this->sliders[$slider_name]) )
-			return $this->sliders['general'];
-		return array_merge(array_filter($this->sliders['general'], 'strval'), array_filter($this->sliders[$slider_name], 'strval'));
+			return $this->sliders;
+		$curr_slide = _slider_array_filter_recursive($this->sliders[$slider_name]);
+		return array_merge($this->sliders['general'], $curr_slide);
 	}
 
 	public function update_slider($slider_name, $options) {
@@ -340,7 +341,7 @@ class SliderCaptcha {
 
 	public function set_sliders(array $s) {
 		$this->sliders = $s;
-		return update_option('slider_captcha_sliders', $s);
+		return update_option('slider-captcha-sliders', $s);
 	}
 
 	public function add_to_sliders($slide_name, array $options) {
@@ -353,9 +354,9 @@ class SliderCaptcha {
 		return json_encode($this->get_slider($slider));
 	}
 
-	public function is_slider_enabled($slider) {
-		$sliders = $this->get_sliders();
-		return isset($sliders[$slider]['enabled']) && $sliders[$slider]['enabled'] == 1; 
+	public function is_slider_enabled($slider_name) {
+		$slider = $this->get_slider($slider_name);
+		return isset($slider['enabled']) && $slider['enabled'] == 1; 
 	}
 
 	public function remove_general_setting($setting_name, $child_setting = false) {

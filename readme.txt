@@ -18,6 +18,14 @@ Besides, you can use the `slider_captcha()` function to insert a Slider CAPTCHA 
 
 With our brand new Settings page, you can now fully custumize every Slider on your WordPress installation and live preview the result. In the upcoming version, you will be able to create your own slider. At the moment, if you want to create your own custom slider you should use the `slider_captcha()`. Check the FAQ for more info.
 
+**Current possible Slider CAPTCHA locations:**
+
+* Comments page
+* Login page
+* Registration page
+* Lost Password page
+
+
 == Installation ==
 
 1. Install Slider CAPTCHA either via the WordPress.org plugin directory, or by uploading the files to your server (`/wp-content/plugins/`) 
@@ -34,7 +42,7 @@ With our brand new Settings page, you can now fully custumize every Slider on yo
 
 = I've activated the plugin, but I can't see any CAPTCHA... What can I do? =
 
-That's probabily because of the way your theme is built. You will have to edit your comments.<?php of your template and add the following code in the position that you want to have your CAPTCHA.
+That's probabily because of the way your theme is built. You will have to edit your comments.php of your template and add the following code in the position that you want to have your CAPTCHA.
 `<?php if(function_exists('slider_captcha'))
 	slider_captcha('comments');
 ?>`
@@ -95,7 +103,7 @@ For instance, if you want to change your hint text and your width, you must send
 	),
 );`
 
-To add a class to the container, you can use `'containerClass' => 'nameoftheclass' on your $params array.
+To add a class to the container, you can use `'containerClass' => 'nameoftheclass'` on your $params array.
 
 = How do I change the appearence of the comment form Slider Captcha? =
 If you want to change the appearance of your default CAPTCHA, you can play with the settings panel.
@@ -142,8 +150,7 @@ Also, the name of the `$params keys also have changed. Please verify if your `$p
 
 == Upgrade Notice ==
 
-= 1.0 =
-*Update now!* 
+= Update now! Version 1.0 released =  
 New settings page where you can configure as many sliders as you like!
 
 = 0.5 =

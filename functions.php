@@ -87,3 +87,21 @@ function slider_update_slider($slider_name, array $options) {
 function _slider_draw_fontface_options($field='',$options) {
 	include SLIDER_CAPTCHA_PATH . 'font_face_options.php';
 }
+
+function _slider_array_filter_recursive($array) {
+   foreach ($array as $key => &$value) {
+      if (empty($value)) {
+         unset($array[$key]);
+      }
+      else {
+         if (is_array($value)) {
+            $value = _slider_array_filter_recursive($value);
+            if (empty($value)) {
+               unset($array[$key]);
+            }
+         }
+      }
+   }
+
+   return $array;
+}
