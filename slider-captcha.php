@@ -23,7 +23,7 @@ class SliderCaptcha {
 	/* Private */
 
 	private $options;
-	private $plugin_version = '1.0';
+	private $plugin_version = '1.0.1';
 
 	/* Public */
 

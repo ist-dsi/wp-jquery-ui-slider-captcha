@@ -126,6 +126,10 @@ Also, the name of the `$params keys also have changed. Please verify if your `$p
 
 == Changelog ==
 
+= 1.0.1 =
+* Bug fixed with saves and settings override
+* jQuery Slider Captcha version updated
+
 = 1.0 =
 * Code refactorization
 * Multiple sliders on the same page are now possible

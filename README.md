@@ -31,8 +31,9 @@ Just download and extract slider-captcha to your `wp-content/plugins` directory.
 
 ## Changelog
 
-### 1.0.1 
+### 1.0.1
  - Bug fixed with saves and settings override
+ - jQuery Slider Captcha version updated
 
 ### 1.0
  - Code refactorization
