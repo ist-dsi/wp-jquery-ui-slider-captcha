@@ -7,11 +7,11 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 	public function __construct($machine_name, &$instance) {
 		parent::__construct($machine_name, $instance);
 
-		
-		add_action('init', array(&$this, 'add_slider_captcha_shortcode'));
-		//Register Contact Form 7 shortcode
-		add_action('admin_init', array(&$this, 'add_tag_generator'), 45);
-	
+		if($this->is_enabled()) {
+			add_action('init', array(&$this, 'add_slider_captcha_shortcode'));
+			//Register Contact Form 7 shortcode
+			add_action('admin_init', array(&$this, 'add_tag_generator'), 45);
+		}	
 	
 	}
 
