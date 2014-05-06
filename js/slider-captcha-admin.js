@@ -47,14 +47,19 @@
 	})
 
 	var parseSliderCaptchaSettings = function ( el ) {
-		var $el = el,
-			el_id = $el.attr( 'id' ),
+		var $el = el;
+		console.log(el);
+			console.log($el);
+		var	el_id = $el.attr( 'id' ),
 			key = el_id.replace( '_options_container', '' ),
 			form_object = $( '#' + key + '_options_container' ), 
 			obj = {},
 			styles = {},
 			face = {},
 			events = {};
+
+
+			
 
 			obj['type'] = form_object.find( '[name*="[slider_type]"]:checked' ).val();
 			obj['textFeedbackAnimation'] = form_object.find( '[name*="[slider_animation_type]"]:checked' ).val();
@@ -63,7 +68,7 @@
 				obj['hintText'] = form_object.find( '[name*="[hint_text_before_unlock]"]' ).val();
 			
 			if( '' != form_object.find( '[name*="[hint_text_size_unlock]"]' ).val() )
-				obj['hintTextSize'] = form_object.find( '[name*="[hint_text_size_unlock]"]' ).val() + 'px';
+				obj['hintTextSize'] = form_object.find( '[name*="[hint_text_size_unlock]"]' ).val();
 			
 			if ( '' != form_object.find( '[name*="[hint_text_after_unlock]"]' ).val() ) 
 				obj['hintTextAfterUnlock'] = form_object.find( '[name*="[hint_text_after_unlock]"]' ).val();
@@ -84,19 +89,19 @@
 				styles['textColorAfterUnlock'] = form_object.find( '[name*="[hint_text_color_after_unlock]"]' ).val();
 			
 			if ( '' != form_object.find( '[name*="[slider_width]"]' ).val() )
-				styles['width'] = form_object.find( '[name*="[slider_width]"]' ).val();
+				obj['width'] = form_object.find( '[name*="[slider_width]"]' ).val();
 
 			if ( '' != form_object.find( '[name*="[slider_height]"]' ).val() )
-				styles['height'] = form_object.find( '[name*="[slider_height]"]' ).val() + 'px';
+				obj['height'] = form_object.find( '[name*="[slider_height]"]' ).val();
 
 			if ( '' != form_object.find( '[name*="[knob_text_size_before_unlock]"]' ).val() )
-				face['textSize'] = form_object.find( '[name*="[knob_text_size_before_unlock]"]' ).val() + 'px';
+				face['textSize'] = form_object.find( '[name*="[knob_text_size_before_unlock]"]' ).val();
 
 			if ( '' != form_object.find( '[name*="[knob_top_offset_before_unlock]"]' ).val() )
-				face['top'] = form_object.find( '[name*="[knob_top_offset_before_unlock]"]' ).val() + 'px';
+				face['top'] = form_object.find( '[name*="[knob_top_offset_before_unlock]"]' ).val();
 
 			if ( '' != form_object.find( '[name*="[knob_right_offset_before_unlock]"]' ).val() )
-				face['right'] = form_object.find( '[name*="[knob_right_offset_before_unlock]"]' ).val() + 'px';
+				face['right'] = form_object.find( '[name*="[knob_right_offset_before_unlock]"]' ).val();
 
 			if ( '' != form_object.find( '[name*="[knob_icon_face_before_unlock]"]' ).val() )
 				face['icon'] = form_object.find( '[name*="[knob_icon_face_before_unlock]"]' ).val();
@@ -105,16 +110,16 @@
 				face['textColor'] = form_object.find( '[name*="[knob_text_color_before_unlock]"]' ).val();
 
 			if ( '' != form_object.find( '[name*="[knob_text_size_after_unlock]"]' ).val() )
-				face['textSizeAfterUnlock'] = form_object.find( '[name*="[knob_text_size_after_unlock]"]' ).val() + 'px';
+				face['textSizeAfterUnlock'] = form_object.find( '[name*="[knob_text_size_after_unlock]"]' ).val();
 
 			if ( '' != form_object.find( '[name*="[knob_text_color_after_unlock]"]' ).val() )
 				face['textColorAfterUnlock'] = form_object.find( '[name*="[knob_text_color_after_unlock]"]' ).val();
 
 			if ( '' != form_object.find( '[name*="[knob_top_offset_after_unlock]"]' ).val() )
-				face['topAfterUnlock'] = form_object.find( '[name*="[knob_top_offset_after_unlock]"]' ).val() + 'px';
+				face['topAfterUnlock'] = form_object.find( '[name*="[knob_top_offset_after_unlock]"]' ).val();
 
 			if ( '' != form_object.find( '[name*="[knob_right_offset_after_unlock]"]' ).val() )
-				face['rightAfterUnlock'] = form_object.find( '[name*="[knob_right_offset_after_unlock]"]' ).val() + 'px';
+				face['rightAfterUnlock'] = form_object.find( '[name*="[knob_right_offset_after_unlock]"]' ).val();
 
 			if ( '' != form_object.find( '[name*="[knob_icon_face_after_unlock]"]' ).val() )
 				face['iconAfterUnlock'] = form_object.find( '[name*="[knob_icon_face_after_unlock]"]' ).val();
