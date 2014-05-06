@@ -18,12 +18,15 @@ if(!defined('SLIDER_CAPTCHA_PATH')) {
 	define('SLIDER_CAPTCHA_PATH', plugin_dir_path( __FILE__ ));
 }
 
+include SLIDER_CAPTCHA_PATH.'modules/sliderCaptchaModule.class.php'; //Load the abstract module class
+
 class SliderCaptcha {
 
 	/* Private */
+	public $plugin_version = '1.0';
 
-	private $options;
-	private $plugin_version = '1.0';
+	private $load_modules; //Modules to be loaded
+	private $modules; //Loaded modules classes
 
 	/* Public */
 
@@ -48,6 +51,21 @@ class SliderCaptcha {
 		// Load front-end srcipts for live preview		
 		add_action( 'admin_enqueue_scripts', array(&$this, 'register_scripts' ));
 		add_action( 'admin_enqueue_scripts', array(&$this, 'register_admin_scripts'));
+
+		$this->load_modules = array(
+				'slider_captcha_cf7' => SLIDER_CAPTCHA_PATH . 'modules/contact-form-7.php',
+			);
+
+		$this->modules = array();
+		foreach($this->load_modules as $module_name => $module_path) {
+			if(file_exists($module_path)) {
+				include $module_path;
+				if(class_exists($module_name)) {
+					//Load the module
+					$this->modules[$module_name] = new $module_name($module_name, &$this);
+				}
+			}
+		}
 
 	}
 
@@ -86,6 +104,10 @@ class SliderCaptcha {
 			add_action( 'login_enqueue_scripts', array(&$this, 'register_admin_scripts'));
 		}
 
+		//Modules hooks
+		foreach($this->modules as $module)
+			if($module->is_enabled())
+				$module->init_hooks();
 
 	}
 
@@ -112,8 +134,6 @@ class SliderCaptcha {
 				'enabled' => 1,
 			));
 
-		$this->sliders = get_option('slider-captcha-sliders', $default_sliders);
-
 		$this->captcha_locations = array(
 				'general' 	    	=> __( 'General' ,'slider_captcha'),
 				'comments'			=> __( 'Comments form' ,'slider_captcha'),
@@ -121,6 +141,24 @@ class SliderCaptcha {
 				'reset_password' 	=> __( 'Reset password form' ,'slider_captcha'),
 				'login' 			=> __( 'Login form', 'slider_captcha'),
 			);
+
+		/**
+		 * Modules loading
+		 */
+		$this->modules = array();
+		foreach($this->modules as $module_name => $module) {
+		
+			//Add to the locations if enabled
+			if($module->is_enabled())
+				$this->captcha_locations[$module_name] = __( $module->name, 'slider_captcha');
+			if($module->defaults != NULL)
+				$default_sliders[$module_name] = array_merge($default_sliders['general'], $module->defaults);				
+		
+			
+		}
+
+		//Get the settings
+		$this->sliders = get_option('slider-captcha-sliders', $default_sliders);
 
 		// Init all the hooks
 		$this->init_hooks();
@@ -155,6 +193,10 @@ class SliderCaptcha {
 		wp_enqueue_script('jquery-slider-captcha', plugins_url( '/js/slider-captcha.min.js', __FILE__ ), array('jquery-ui-core','jquery-ui-touch-punch'), $plugin_version,false);
 		
 		wp_enqueue_style('slider-captcha-css', plugins_url( '/css/slider-captcha.css', __FILE__ ), $plugin_version );
+
+		//Register modules scripts
+		foreach($this->modules as $module)
+			$module->init_scripts();
 	}
 
 	/**
@@ -316,6 +358,23 @@ class SliderCaptcha {
 			wp_register_style( 'slider-captcha-admin-css', plugins_url( '/css/slider-captcha-admin.css', __FILE__), array(), $plugin_version );
 			wp_enqueue_style( 'slider-captcha-admin-css' );
 		}
+	}
+
+	/**
+	 * Contact Form 7 integration 
+	 **/
+
+	function is_cf7_active() {
+	    return in_array( 
+		'contact-form-7/wp-contact-form-7.php', 
+		apply_filters( 
+		    'active_plugins', 
+		    get_option( 
+			'active_plugins' ) ) );
+	}
+
+	function register_shortcode() {
+
 	}
 
 	/**
