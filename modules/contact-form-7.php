@@ -34,8 +34,8 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 		$class = wpcf7_form_controls_class($tag['type']);
 		if($validation_error)
 			$validation = "<span role='alert' class='wpcf7-not-valid-tip'>$validation_error</span>";
-		var_dump(new WPCF7_Shortcode($tag));
-		return	$validation_error.$tag.'<span class="wpcf7-form-control-wrap slidercaptcha"><div id="register_slider_captcha"></div></p>' . $validation . '
+
+		return	'<span class="wpcf7-form-control-wrap slidercaptcha"><div id="register_slider_captcha"></div></p>' . $validation . '
 		<script type="text/javascript">
 		jQuery(function($) {
 			$( document ).ready(function() {
@@ -49,7 +49,6 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 	function add_tag_generator() {
 		if(!function_exists('wpcf7_add_tag_generator'))
 			return;
-
 		wpcf7_add_tag_generator('slidercaptcha', __('Slider CAPTCHA', 'slider_captcha'), 'slider-captcha', array($this, 'tag_generator_rendering'));
 	}
 
@@ -88,8 +87,10 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 
 	function cf7_validate_captcha($result, $tag) {
 		if(!is_admin())	{
-			$result['valid'] = FALSE;
-			$result['reason'][$tag] = wpcf7_get_message('bypassed');
+			if(!isset($_POST['slider_captcha_validated']) && $_REQUEST['slider_captcha_validated'] != 1) {
+				$result['valid'] = FALSE;
+				$result['reason'][$tag] = wpcf7_get_message('bypassed');
+			}
 		}
 		return $result;
 	}

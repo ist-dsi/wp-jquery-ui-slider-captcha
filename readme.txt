@@ -4,7 +4,7 @@ Donate link: https://dsi.tecnico.ulisboa.pt
 Tags: slider, captcha, ui, comment, comments, responsive, spam, antispam, anti-spam, jquery, jquery-ui, plugin, registation, login, form, password reset, security, secure
 Requires at least: 3.5
 Tested up to: 3.9
-Stable tag: 1.0.1
+Stable tag: 1.1
 License: GPLv3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -25,6 +25,7 @@ With our brand new Settings page, you can now fully custumize every Slider on yo
 * Registration page
 * Lost Password page
 
+**It now supports Contact Form 7!**
 
 == Installation ==
 
@@ -126,6 +127,14 @@ Also, the name of the `$params keys also have changed. Please verify if your `$p
 
 == Changelog ==
 
+= 1.1 =
+* Contact Form 7 support added
+* Abstract class for other plugins support in the future created.
+* Bug fixes
+
+= 1.0.1 =
+* Bug fixed with saves and settings override
+
 = 1.0 =
 * Code refactorization
 * Multiple sliders on the same page are now possible
@@ -150,8 +159,6 @@ Also, the name of the `$params keys also have changed. Please verify if your `$p
 
 == Upgrade Notice ==
 
-= Update now! Version 1.0 released =  
-New settings page where you can configure as many sliders as you like!
+= Update now! Version 1.1 released =  
+Now with Contact Form 7 support!
 
-= 0.5 =
-Initial release
