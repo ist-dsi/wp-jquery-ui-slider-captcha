@@ -292,10 +292,10 @@ endif;?>
 			'knobColorAfterUnlock' => $colors[0],
 			'backgroundColor' => $colors[2],
 			'textColor' => '#fff',
-			'textColorAfterUnlock' => '#fff',
-			'width' => '300px',
-			'height' => '38px'
+			'textColorAfterUnlock' => '#fff'
 		),
+		'width' => '300px',
+		'height' => '38px',
 		'hintText' => __('Swipe to save changes','slider_captcha'),
 		'hintTextAfterUnlock' => __('Saving changes','slider_captcha'),
 		'hintTextSize' => '13px',
