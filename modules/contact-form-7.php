@@ -4,7 +4,7 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 
 	public $name = "Contact Form 7";
 
-	public function __construct($machine_name, $instance) {
+	public function __construct($machine_name, &$instance) {
 		parent::__construct($machine_name, $instance);
 
 		

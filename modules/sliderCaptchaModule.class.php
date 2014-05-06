@@ -10,7 +10,7 @@ abstract class sliderCaptchaModule {
 	protected $sliderCaptcha;
 	protected $machine_name;
 
-	public function __construct($machine_name, $instance) {
+	public function __construct($machine_name, &$instance) {
 		$this->sliderCaptcha = $instance;
 		$this->machine_name = $machine_name;
 	}
