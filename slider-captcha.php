@@ -3,7 +3,7 @@
 Plugin Name: Slider Captcha
 Plugin URL: http://nme.ist.utl.pt
 Description: Slider Captcha is a module that will replace all the captcha from WordPress. 
-Version: 1.0
+Version: 1.0.1
 Author: NME - Núcleo de Multimédia e E-Learning.
 Author URI: http://nme.ist.utl.pt
 Text Domain: slider_captcha
@@ -93,7 +93,7 @@ class SliderCaptcha {
 		//Slider default settings
 		$this->js_settings = array(
 			'events' => array(
-				'validateOnServer' => true,
+				'validateOnServer' => 1,
 				),
 			);
 		$this->settings = array(
@@ -241,12 +241,12 @@ class SliderCaptcha {
 
 	public function render_slider_on_login() {
 		?>
-		<p style="margin-bottom: 10px" id="lostpass_slider_captcha"></p>
+		<p style="margin-bottom: 10px" id="login_slider_captcha"></p>
 		<script type="text/javascript">
 		jQuery(function($) {
 			$( document ).ready(function() {
 					//Load the slider captcha
-					$("#lostpass_slider_captcha").sliderCaptcha(<?php echo json_encode($this->get_slider('login'))?>);
+					$("#login_slider_captcha").sliderCaptcha(<?php echo json_encode($this->get_slider('login'))?>);
 			});
 		});
 		</script>
@@ -323,7 +323,8 @@ class SliderCaptcha {
 	 */
 	public function get_slider($slider_name) {
 		if( !isset($this->sliders[$slider_name]) )
-			return $this->sliders;
+			return $this->sliders['general'];
+
 		$curr_slide = _slider_array_filter_recursive($this->sliders[$slider_name]);
 		return array_merge($this->sliders['general'], $curr_slide);
 	}
@@ -331,7 +332,6 @@ class SliderCaptcha {
 	public function update_slider($slider_name, $options) {
 		$curr_slide = $this->get_slider($slider_name);
 		$options = array_merge($curr_slide, $options);
-
 		return $this->add_to_sliders($slider_name, $options);
 	}
 

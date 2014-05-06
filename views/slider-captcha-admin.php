@@ -97,18 +97,17 @@ foreach($_POST as $machine => $post) {
 	if($post['knob_top_offset_after_unlock'] != '' || $machine!= 'general')
 		$new_array['face']['topAfterUnlock'] = $post['knob_top_offset_after_unlock'];
 	else if ($machine == 'general' && $post['knob_top_offset_after_unlock']=='')
-			$this->remove_general_setting('face','topAfterUnlock');
+		$this->remove_general_setting('face','topAfterUnlock');
 
 	if($post['knob_right_offset_after_unlock'] != '' || $machine!= 'general')
 		$new_array['face']['rightAfterUnlock'] = $post['knob_right_offset_after_unlock'];
 	else if ($machine == 'general' && $post['knob_right_offset_after_unlock']=='')
-			$this->remove_general_setting('face','rightAfterUnlock');
+		$this->remove_general_setting('face','rightAfterUnlock');
 
 	if($post['hint_text_color_after_unlock'] != '' || $machine!= 'general')
 		$new_array['styles']['textColorAfterUnlock'] = $post['hint_text_color_after_unlock'];
 	else if ($machine == 'general' && $post['hint_text_color_after_unlock']=='')
-			$this->remove_general_setting('styles','textColorAfterUnlock');
-
+		$this->remove_general_setting('styles','textColorAfterUnlock');
 
 	slider_update_slider($machine,$new_array);
 }
@@ -211,7 +210,7 @@ endif;?>
 					<p>
 						<label for="<?php echo $machine?>_knob_icon_face_before_unlock"><?php _e( 'Icon', 'slider_captcha' ); ?></label>
 						<select name="<?php echo $machine?>[knob_icon_face_before_unlock]" id="<?php echo $machine?>_knob_icon_face_before_unlock" style="width: 180px;">
-							<?php _slider_draw_fontface_options('icon',$slider) ?>
+							<?php _slider_draw_fontface_options('icon',$slider_raw) ?>
 						</select>
 					</p>
 					<p>
@@ -245,7 +244,7 @@ endif;?>
 					<p>
 						<label for="<?php echo $machine?>_knob_icon_face_after_unlock"><?php _e( 'Icon', 'slider_captcha' ); ?></label>
 						<select name="<?php echo $machine?>[knob_icon_face_after_unlock]" id="<?php echo $machine?>_knob_icon_face_after_unlock" style="width: 180px;">
-							<?php _slider_draw_fontface_options('iconAfterUnlock',$slider) ?>
+							<?php _slider_draw_fontface_options('iconAfterUnlock',$slider_raw) ?>
 						</select>
 					</p>
 					<p>
