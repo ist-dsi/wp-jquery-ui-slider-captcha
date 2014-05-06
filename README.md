@@ -31,6 +31,9 @@ Just download and extract slider-captcha to your `wp-content/plugins` directory.
 
 ## Changelog
 
+### 1.0.1 
+ - Bug fixed with saves and settings override
+
 ### 1.0
  - Code refactorization
  - Multiple sliders on the same page are now possible
