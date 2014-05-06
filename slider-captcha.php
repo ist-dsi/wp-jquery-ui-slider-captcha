@@ -145,16 +145,12 @@ class SliderCaptcha {
 		/**
 		 * Modules loading
 		 */
-		$this->modules = array();
 		foreach($this->modules as $module_name => $module) {
-		
 			//Add to the locations if enabled
 			if($module->is_enabled())
 				$this->captcha_locations[$module_name] = __( $module->name, 'slider_captcha');
 			if($module->defaults != NULL)
 				$default_sliders[$module_name] = array_merge($default_sliders['general'], $module->defaults);				
-		
-			
 		}
 
 		//Get the settings

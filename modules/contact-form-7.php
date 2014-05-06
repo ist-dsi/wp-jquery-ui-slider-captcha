@@ -14,7 +14,11 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 	}
 
 	public function init_hooks() {
-		
+		//Load the messages
+		add_filter('wpcf7_messages', array(&$this,'cf7_messages'));
+		//Validate the captcha
+		add_filter('wpcf7_validate_slidercaptcha', array(&$this, 'cf7_validate_captcha'), 10, 2);
+
 	}
 
 	public function is_enabled() {
@@ -26,7 +30,12 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 	}
 
 	public function slidercaptcha_shortcode($tag) {
-		return	'<p><div id="register_slider_captcha"></div></p>
+		$validation_error = wpcf7_get_validation_error($tag['type']);
+		$class = wpcf7_form_controls_class($tag['type']);
+		if($validation_error)
+			$validation = "<span role='alert' class='wpcf7-not-valid-tip'>$validation_error</span>";
+		var_dump(new WPCF7_Shortcode($tag));
+		return	$validation_error.$tag.'<span class="wpcf7-form-control-wrap slidercaptcha"><div id="register_slider_captcha"></div></p>' . $validation . '
 		<script type="text/javascript">
 		jQuery(function($) {
 			$( document ).ready(function() {
@@ -34,7 +43,7 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 					$("#register_slider_captcha").sliderCaptcha('.  json_encode($this->sliderCaptcha->get_slider($this->machine_name)) .');
 			});
 		});
-		</script>';
+		</script></span>';
 	}
 
 	function add_tag_generator() {
@@ -62,6 +71,27 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 				</div>
 			</form>
 		</div>';
+	}
+
+
+	function cf7_messages($messages){
+		return array_merge(
+			$messages,
+			array(
+				'bypassed' => array(
+					'description' => __('Invalid captcha value.', 'math-captcha'),
+					'default' => __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha')
+				)
+			)
+		);
+	}
+
+	function cf7_validate_captcha($result, $tag) {
+		if(!is_admin())	{
+			$result['valid'] = FALSE;
+			$result['reason'][$tag] = wpcf7_get_message('bypassed');
+		}
+		return $result;
 	}
 
 }
