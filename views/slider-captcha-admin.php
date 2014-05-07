@@ -136,7 +136,7 @@ endif;?>
 			<?php endif;?>
 			>
 			<fieldset class="general_settings_container">
-				<?php if ( $i ) : ?>
+				<?php if ( $i && $machine!='custom') : ?>
 				<h3><?php echo sprintf( __( '%s activation', 'slider_captcha'), $location )?></h3>
 				<p>
 					<label for="<?php echo $machine?>_slider_enable" class="label-radio">
@@ -272,6 +272,10 @@ endif;?>
 			</fieldset>
 		</fieldset>
 	<?php endforeach?>
+</fieldset>
+
+<fieldset id="custom_export_container">
+	<h3><?php _e('Export your Slider','slider_captcha'); ?></h3> 
 </fieldset>
 
 <fieldset id="live_preview_container">

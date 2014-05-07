@@ -53,10 +53,14 @@ class SliderCaptcha {
 		add_action( 'admin_enqueue_scripts', array(&$this, 'register_scripts' ));
 		add_action( 'admin_enqueue_scripts', array(&$this, 'register_admin_scripts'));
 
+		//Slider Captcha modules. @TODO add a filter
 		$this->load_modules = array(
 				'slider_captcha_cf7' => SLIDER_CAPTCHA_PATH . 'modules/contact-form-7.php',
 			);
 
+		/**
+		 * Modules loading
+		 */
 		$this->modules = array();
 		foreach($this->load_modules as $module_name => $module_path) {
 			if(file_exists($module_path)) {
@@ -143,9 +147,7 @@ class SliderCaptcha {
 				'login' 			=> __( 'Login form', 'slider_captcha'),
 			);
 
-		/**
-		 * Modules loading
-		 */
+		//Setup the modules
 		foreach($this->modules as $module_name => $module) {
 			//Add to the locations if enabled
 			if($module->is_enabled())
@@ -153,6 +155,9 @@ class SliderCaptcha {
 			if($module->defaults != NULL)
 				$default_sliders[$module_name] = array_merge($default_sliders['general'], $module->defaults);				
 		}
+
+		//The custom must be the last location to be generated.
+		$this->captcha_locations['custom'] = __( 'Custom form', 'slider_captcha');
 
 		//Get the settings
 		$this->sliders = get_option('slider-captcha-sliders', $default_sliders);
