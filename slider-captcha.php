@@ -3,7 +3,7 @@
 Plugin Name: Slider Captcha
 Plugin URL: http://nme.ist.utl.pt
 Description: Slider Captcha is a module that will replace all the captcha from WordPress. 
-Version: 1.1
+Version: 1.1.1
 Author: NME - Núcleo de Multimédia e E-Learning.
 Author URI: http://nme.ist.utl.pt
 Text Domain: slider_captcha
@@ -23,7 +23,7 @@ include SLIDER_CAPTCHA_PATH.'modules/sliderCaptchaModule.class.php'; //Load the 
 class SliderCaptcha {
 
 	/* Private */
-	public $plugin_version = '1.1';
+	public $plugin_version = '1.1.1';
 
 	private $load_modules; //Modules to be loaded
 	private $modules; //Loaded modules classes
@@ -355,23 +355,6 @@ class SliderCaptcha {
 			wp_register_style( 'slider-captcha-admin-css', plugins_url( '/css/slider-captcha-admin.css', __FILE__), array(), $plugin_version );
 			wp_enqueue_style( 'slider-captcha-admin-css' );
 		}
-	}
-
-	/**
-	 * Contact Form 7 integration 
-	 **/
-
-	function is_cf7_active() {
-	    return in_array( 
-		'contact-form-7/wp-contact-form-7.php', 
-		apply_filters( 
-		    'active_plugins', 
-		    get_option( 
-			'active_plugins' ) ) );
-	}
-
-	function register_shortcode() {
-
 	}
 
 	/**
