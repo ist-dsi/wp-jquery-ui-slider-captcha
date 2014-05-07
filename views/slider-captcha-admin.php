@@ -274,10 +274,6 @@ endif;?>
 	<?php endforeach?>
 </fieldset>
 
-<fieldset id="custom_export_container">
-	<h3><?php _e('Export your Slider','slider_captcha'); ?></h3> 
-</fieldset>
-
 <fieldset id="live_preview_container">
 	<h3><?php _e( 'Live preview', 'slider_captcha' ); ?></h3>
 	<p><?php _e( 'This preview may differ from the one published on your website. Since the styles of the theme may override the settings of the plugin you should always check the slider appearance by browsing a page that requires validation.', 'slider_captcha' ); ?></p>
@@ -285,6 +281,18 @@ endif;?>
 	<p><?php _e( 'Do you want to <a href="#">test slider captcha again</a>?', 'slider_captcha'); ?></p>
 	<input type="hidden" name="submited" value="1" />
 </fieldset>
+
+<fieldset id="custom_export_container">
+	<h3><?php _e('Export your Slider','slider_captcha'); ?></h3>
+	<p><?php _e( 'Copy the next code of this custom slider, and apply it wherever you want. You have three options: php code, JavaScript code and shortcode (this one can be inserted into content editor, others into templates pages).', 'slider_captcha'); ?></p>
+	<p>
+		<textarea id="code_generator"></textarea>
+		<span class="active"><a href="#" title="php code" data-code="php">php code</a></span>
+		<span><a href="#" title="JavaScript code" data-code="js">JavaScript code</a></span>
+		<span><a href="#" title="shortcode" data-code="sc">shortcode</a></span>
+	</p>
+</fieldset>
+
 <?php 
 	global $_wp_admin_css_colors;
 	$colors = $_wp_admin_css_colors[ get_user_option( 'admin_color', get_current_user_id() ) ]->colors;

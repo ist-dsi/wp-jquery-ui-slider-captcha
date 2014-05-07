@@ -25,11 +25,16 @@
 			var general_options = parseSliderCaptchaSettings( $( '#form_options_container > fieldset' ).eq(0) ),
 				individual_options = parseSliderCaptchaSettings( $( '#form_options_container > fieldset#' +  $(this).val() + '_options_container' ) );
 
-			$( '#form_options_container > fieldset' ).css({'visibility': 'hidden', 'position': 'absolute'}).height( 0 );
-			$( '#' + $(this).val() + '_options_container' ).css({'visibility': 'visible', 'position': 'relative'}).height( 'auto' );
+			$( '#form_options_container > fieldset' ).removeClass('active').css({'visibility': 'hidden', 'position': 'absolute'}).height( 0 );
+			$( '#' + $(this).val() + '_options_container' ).addClass('active').css({'visibility': 'visible', 'position': 'relative'}).height( 'auto' );
 
 			$( '#general_slider' ).next().slideUp();
 			$( '#general_slider' ).empty().sliderCaptcha( $.extend(true, {}, general_options, individual_options ) );
+
+			if( 'custom' == $(this).val() )
+				$('#custom_export_container').show()
+			else
+				$('#custom_export_container').hide()
 
 		}).change();
 
@@ -44,6 +49,51 @@
 				$( this ).closest( 'p' ).next().slideUp().next().slideUp();
 			}
 		})
+
+		$( '#custom_export_container span a' ).click(function () {
+
+			var $textArea = $(this).parent().parent().find( 'textarea' );
+			var general_options = parseSliderCaptchaSettings( $( '#form_options_container > fieldset' ).eq(0) ),
+				individual_options = parseSliderCaptchaSettings( $( '#form_options_container > fieldset.active' ) ),
+				merged_options = $.extend(true, {}, general_options, individual_options );
+
+			if ( $(this).parent().not( '.active' ).length ) {
+				$(this).parent().parent().find('span.active').removeClass( 'active' );
+				$(this).parent().addClass( 'active' );
+
+				switch( $(this).data( 'code' ) ) {
+					case 'php':
+						$textArea.val( getTemplateCodePHP( merged_options ) );
+					break;
+					case 'js':
+						$textArea.val( getTemplateCodeJS( merged_options ) );
+					break;
+					case 'sc':
+						$textArea.val( getTemplateCodeSC( merged_options ) );
+					break;
+				}
+			}
+
+			return !1;
+		}).eq(0).click();
+
+		// Custom slidr functions
+
+		function getTemplateCode( template ) {
+			return function getTemplateCodeWithParams ( params ) {
+				return function () {
+
+					console.log(params)
+
+					return template + params;
+				};	
+			}
+		}
+
+		var getTemplateCodePHP = getTemplateCode( 'php' ),
+			getTemplateCodeJS = getTemplateCode( '<' ),
+			getTemplateCodeSC = getTemplateCode( '[sliderCaptcha]' );
+
 	})
 
 	var parseSliderCaptchaSettings = function ( el ) {

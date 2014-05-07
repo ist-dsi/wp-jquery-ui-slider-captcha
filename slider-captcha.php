@@ -23,7 +23,7 @@ include SLIDER_CAPTCHA_PATH.'modules/sliderCaptchaModule.class.php'; //Load the 
 class SliderCaptcha {
 
 	/* Private */
-	public $plugin_version = '1.1.1';
+	public $plugin_version = '1.1.2';
 
 	private $load_modules; //Modules to be loaded
 	private $modules; //Loaded modules classes

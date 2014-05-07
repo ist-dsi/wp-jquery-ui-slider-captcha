@@ -1,10 +1,13 @@
 @import 'partials/base'
 
-#form_options_container, #live_preview_container
+#form_options_container, #live_preview_container, #custom_export_container
   background: #fff
   margin-top: 20px
   padding: 10px 20px
   +rect-radius()
+
+#custom_export_container
+  display: none
 
 p#general_slider + p
   display: none
@@ -74,6 +77,33 @@ label + div.wp-picker-container, label + div.select2-container
   vertical-align: middle
   margin-left: 5px
 
+#custom_export_container
+  
+  a
+    text-decoration: none
+    outline: 0
+
+  span
+    padding: 5px 10px
+    +rect-radius()
+
+    &.active
+      background: #ccc
+      & > a:hover
+        cursor: default        
+
+
+
+
+#code_generator
+  display: block
+  width: auto
+  min-width: 70%
+  height: 100px
+  margin-bottom: 10px
+
 @media screen and (max-width: 782px)
   input, textarea
     font-size: 13px
+  #code_generator
+    min-width: 100%
