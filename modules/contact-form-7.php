@@ -4,6 +4,8 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 
 	public $name = "Contact Form 7";
 
+	public $instance_number = 0;
+
 	public function __construct($machine_name, &$instance) {
 		parent::__construct($machine_name, $instance);
 
@@ -34,18 +36,22 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 	}
 
 	public function slidercaptcha_shortcode($tag) {
+
 		$validation_error = wpcf7_get_validation_error($tag['type']);
 		$class = wpcf7_form_controls_class($tag['type']);
-		$random_int = rand(0,1234);
+		
+		//Generate the instance number, to allow multiple sliders on same form.
+		$instance = $this->instance_number++;
+
 		if($validation_error)
 			$validation = "<span role='alert' class='wpcf7-not-valid-tip'>$validation_error</span>";
 
-		return	'<span class="wpcf7-form-control-wrap slidercaptcha"><div id="'.$tag['type'].$random_int.'"></div></p>' . $validation . '
+		return	'<span class="wpcf7-form-control-wrap slidercaptcha"><div id="'.$tag['type'].$instance.'"></div></p>' . $validation . '
 		<script type="text/javascript">
 		jQuery(function($) {
 			$( document ).ready(function() {
 					//Load the slider captcha
-					$("#'.$tag['type'].$random_int.'").sliderCaptcha('.  json_encode($this->sliderCaptcha->get_slider($this->machine_name)) .');
+					$("#'.$tag['type'].$instance.'").sliderCaptcha('.  json_encode($this->sliderCaptcha->get_slider($this->machine_name)) .');
 			});
 		});
 		</script></span>';
