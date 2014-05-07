@@ -47,19 +47,14 @@
 	})
 
 	var parseSliderCaptchaSettings = function ( el ) {
-		var $el = el;
-		console.log(el);
-			console.log($el);
-		var	el_id = $el.attr( 'id' ),
+		var $el = el,
+			el_id = $el.attr( 'id' ),
 			key = el_id.replace( '_options_container', '' ),
 			form_object = $( '#' + key + '_options_container' ), 
 			obj = {},
 			styles = {},
 			face = {},
 			events = {};
-
-
-			
 
 			obj['type'] = form_object.find( '[name*="[slider_type]"]:checked' ).val();
 			obj['textFeedbackAnimation'] = form_object.find( '[name*="[slider_animation_type]"]:checked' ).val();
