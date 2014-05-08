@@ -17,7 +17,7 @@
 			$( '#slider_captcha_form_selector' ).change();
 
 			return !1;
-		})
+		});
 
 		$( '#general_slider' ).sliderCaptcha( parseSliderCaptchaSettings( $( '#form_options_container > fieldset' ).eq(0) ) );
 
@@ -36,6 +36,9 @@
 			else
 				$('#custom_export_container').hide()
 
+			if ( $( '#custom_options_container' ).hasClass( 'active' ) )
+				$( '#custom_export_container span.active a' ).click();
+
 		}).change();
 
 		$( '#form_options_container fieldset input, #form_options_container fieldset select').change(function () {
@@ -50,6 +53,28 @@
 			}
 		})
 
+		// Custom slider functions
+
+		function getTemplateCode( template ) {
+			return function getTemplateCodeWithParams ( params ) {
+					return template.replace( '$1',  params);
+			}
+		}
+
+		$( '#custom_export_container textarea').focus(function () {
+			var $this = $(this);
+			$this.select();
+
+			$this.mouseup(function() {
+				$this.unbind("mouseup");
+				return false;
+			});
+		})
+
+		var getTemplateCodePHP = getTemplateCode( '<?php if(function_exists("slider_captcha")) slider_captcha( "general", "p", $1); ?>' ),
+			getTemplateCodeJS = getTemplateCode( '<script>$(document).ready(function(){$("#custom_slider_captcha").sliderCaptcha($1)});</script><p id="custom_slider_captcha"></p>' ),
+			getTemplateCodeSC = getTemplateCode( '[sliderCaptcha$1]' );
+
 		$( '#custom_export_container span a' ).click(function () {
 
 			var $textArea = $(this).parent().parent().find( 'textarea' );
@@ -57,43 +82,23 @@
 				individual_options = parseSliderCaptchaSettings( $( '#form_options_container > fieldset.active' ) ),
 				merged_options = $.extend(true, {}, general_options, individual_options );
 
-			if ( $(this).parent().not( '.active' ).length ) {
-				$(this).parent().parent().find('span.active').removeClass( 'active' );
-				$(this).parent().addClass( 'active' );
+			$(this).parent().parent().find('span.active').removeClass( 'active' );
+			$(this).parent().addClass( 'active' );
 
-				switch( $(this).data( 'code' ) ) {
-					case 'php':
-						$textArea.val( getTemplateCodePHP( merged_options ) );
-					break;
-					case 'js':
-						$textArea.val( getTemplateCodeJS( merged_options ) );
-					break;
-					case 'sc':
-						$textArea.val( getTemplateCodeSC( merged_options ) );
-					break;
-				}
+			switch( $(this).data( 'code' ) ) {
+				case 'php':
+					$textArea.val( getTemplateCodePHP( jsObj2phpObj( merged_options ) ) );
+				break;
+				case 'js':
+					$textArea.val( getTemplateCodeJS( JSON.stringify( merged_options ) ) );
+				break;
+				case 'sc':
+					$textArea.val( getTemplateCodeSC( jsObj2shortcode( merged_options ) ) );
+				break;
 			}
 
 			return !1;
 		}).eq(0).click();
-
-		// Custom slidr functions
-
-		function getTemplateCode( template ) {
-			return function getTemplateCodeWithParams ( params ) {
-				return function () {
-
-					console.log(params)
-
-					return template + params;
-				};	
-			}
-		}
-
-		var getTemplateCodePHP = getTemplateCode( 'php' ),
-			getTemplateCodeJS = getTemplateCode( '<' ),
-			getTemplateCodeSC = getTemplateCode( '[sliderCaptcha]' );
-
 	})
 
 	var parseSliderCaptchaSettings = function ( el ) {
@@ -178,9 +183,50 @@
 			obj['face'] = face;
 			obj['events'] = events;
 
-			//console.log( obj );
-
 			return obj;
+	}
+
+	function jsObj2phpObj( obj ) {
+		var php = '';
+	
+		for(property in obj) {
+			var val = obj[property];
+	
+			if( "string" == typeof(val) || "number" == typeof(val) )
+				php += '"' + property + '" => "' + val + '",';
+			else if( !val[0] )
+				php += '"' + property + '" => ' + jsObj2phpObj( val ) + ',';
+			else {
+				php += '"' + property + '" => array(';
+				for(prop in val)
+					php += '"' + val[prop] + '",';
+				php = php.slice(0,-1) + '),';
+			}
+		}
+	
+		return 'array(' + php.slice(0,-1) + ')';
+	}
+
+	function jsObj2shortcode( obj ) {
+		var sc = '';
+	
+		for(property in obj) {
+			var val = obj[property];
+
+			if( "string" == typeof(val) || "number" == typeof(val) )
+				sc += " " + property + '="' + val + '"';
+			else if( !val[0] ) {
+				var parent_prop = property;
+				sc += jsObj2shortcode( val ).replace(/\s/g, ' ' + parent_prop + '_');
+			}
+			else {
+				sc += ' ' + property + '="';
+				for(prop in val)
+					sc += val[prop] + '-';
+				sc = sc.slice(0,-1) + '"';
+			}
+		}	
+		return sc;
 	}
 
 })(jQuery)

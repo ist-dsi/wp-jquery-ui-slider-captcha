@@ -286,8 +286,8 @@ endif;?>
 	<h3><?php _e('Export your Slider','slider_captcha'); ?></h3>
 	<p><?php _e( 'Copy the next code of this custom slider, and apply it wherever you want. You have three options: php code, JavaScript code and shortcode (this one can be inserted into content editor, others into templates pages).', 'slider_captcha'); ?></p>
 	<p>
-		<textarea id="code_generator"></textarea>
-		<span class="active"><a href="#" title="php code" data-code="php">php code</a></span>
+		<textarea readonly id="code_generator"></textarea>
+		<span><a href="#" title="php code" data-code="php">php code</a></span>
 		<span><a href="#" title="JavaScript code" data-code="js">JavaScript code</a></span>
 		<span><a href="#" title="shortcode" data-code="sc">shortcode</a></span>
 	</p>
@@ -306,11 +306,11 @@ endif;?>
 			'textColor' => '#fff',
 			'textColorAfterUnlock' => '#fff'
 		),
-		'width' => '300px',
-		'height' => '38px',
+		'width' => '300',
+		'height' => '38',
 		'hintText' => __('Swipe to save changes','slider_captcha'),
 		'hintTextAfterUnlock' => __('Saving changes','slider_captcha'),
-		'hintTextSize' => '13px',
+		'hintTextSize' => '13',
 		'face' => array(
             'icon' => '',
             'top' => '',

@@ -196,6 +196,8 @@ class SliderCaptcha {
 		
 		wp_enqueue_style('slider-captcha-css', plugins_url( '/css/slider-captcha.css', __FILE__ ), $plugin_version );
 
+		wp_enqueue_script('json2');
+
 		//Register modules scripts
 		foreach($this->modules as $module)
 			$module->init_scripts();
