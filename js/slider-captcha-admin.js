@@ -217,7 +217,7 @@
 			else {
 				sc += ' ' + property + '="';
 				for(prop in val)
-					sc += val[prop] + '-';
+					sc += val[prop] + ',';
 				sc = sc.slice(0,-1) + '"';
 			}
 		}	
