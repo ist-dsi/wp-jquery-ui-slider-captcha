@@ -24,8 +24,8 @@ With our brand new Settings page, you can now fully custumize every Slider on yo
 * Login page
 * Registration page
 * Lost Password page
-
-**It now supports Contact Form 7!**
+* Custom localization
+* Contact Form 7
 
 == Installation ==
 
@@ -48,63 +48,18 @@ That's probabily because of the way your theme is built. You will have to edit y
 	slider_captcha('comments');
 ?>`
 
+Be sure that your theme is calling `wp_head()` and `wp_footer()` functions.
+
 = What if I want to add another Slider? Can I costumize it? =
-Yes, at the moment you have four places where you can place automaticly your Slider CAPTCHA:
+Yes, at the moment you have four places where you can place automatically your Slider CAPTCHA. On the other hand, you can use it in Contact Form 7 and wherever you want with Custom Slider options.
+
 * The comment form, enabled by default;
 * The user registration form;
 * The lost password form;
-* The user login form.
+* The user login form;
+* Wherever you want, just use export code into any template or in content editor.
 
 You can costumize each of this sliders, or use the General Settings to have your settings all across your sliders.
-
-If you want to insert your slider in any another position, you can use the `slider_captcha($slider_name, $container, $params)` function to insert a new Slider CAPTCHA.
-The `$slider_name` is the name of your slider. You can also use 'general', 'registration', 'comments', 'login', 'reset_password' if you want to use any of the existing themes.
-The `$container` is the container where your CAPTCHA will be placed. By default it is "p".
-The `$params` is an array where you can costumize the Slider Captcha, acording to this:
-`{
-	type: "filled",
-	textFeedbackAnimation: 'swipe_overlap',
-	hintText: "Swipe to submit",
-	hintTextSize: '12px',
-	hintTextAfterUnlock: 'You can submit now',
-	styles: {
-		knobColor: "#5CDF3B",
-		knobColorAfterUnlock: "#000000",
-		backgroundColor: "#444",
-		textColor: "#fff",
-		textColorAfterUnlock: "#fff",
-		width: '90%',
-		height: '35px'
-	},
-	face: {
-		top: 4,
-		right: 9,
-		icon: 'right-thin',
-		textColor: '#ddd',
-		textColorAfterUnlock: '#5CDF3B',
-		topAfterUnlock: 3,
-		rightAfterUnlock: 9,				
-		iconAfterUnlock: 'flag'
-	},
-	events: {
-		afterUnlock: function () {	},
-		beforeUnlock: function () {	},
-		beforeSubmit: function () {	},
-		submitAfterUnlock: 0,
-		validateOnServer: 1,
-		validateOnServerParamName: "my_form_param_name"
-	}
-}`
-
-For instance, if you want to change your hint text and your width, you must send the following array:
-`$param = array(
-	'hintText' => 'your new hint text',
-	'styles' => array(
-		'width' => '300px' //this can be a %
-	),
-);`
-
-To add a class to the container, you can use `'containerClass' => 'nameoftheclass'` on your $params array.
 
 = How do I change the appearence of the comment form Slider Captcha? =
 If you want to change the appearance of your default CAPTCHA, you can play with the settings panel.
@@ -125,7 +80,15 @@ Also, the name of the `$params keys also have changed. Please verify if your `$p
 
 3. The live preview
 
+4. Export options
+
 == Changelog ==
+
+= 1.2 =
+* New feature that allows to add a slider in a template by php or JavaScript code or through shortcode in content editor
+* Bug fixed for more than one form in Contact Form 7 
+
+Export code added to a custom slider option
 
 = 1.1.1 =
 * Fixed Contact Form bug when plugin not installed.
