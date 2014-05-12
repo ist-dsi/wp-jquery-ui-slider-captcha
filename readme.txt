@@ -3,8 +3,8 @@ Contributors: vaurdan, jpargana, playoutpt
 Donate link: https://dsi.tecnico.ulisboa.pt
 Tags: slider, captcha, ui, comment, comments, responsive, spam, antispam, anti-spam, jquery, jquery-ui, plugin, registration, login, form, password reset, security, secure
 Requires at least: 3.5
-Tested up to: 3.9
-Stable tag: 1.1.1
+Tested up to: 3.9.1
+Stable tag: 1.2
 License: GPLv3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -87,8 +87,7 @@ Also, the name of the `$params keys also have changed. Please verify if your `$p
 = 1.2 =
 * New feature that allows to add a slider in a template by php or JavaScript code or through shortcode in content editor
 * Bug fixed for more than one form in Contact Form 7 
-
-Export code added to a custom slider option
+* WordPress 3.9.1 compatibility checked
 
 = 1.1.1 =
 * Fixed Contact Form bug when plugin not installed.
@@ -125,5 +124,5 @@ Export code added to a custom slider option
 
 == Upgrade Notice ==
 
-= Update now! Version 1.1 released =  
-Now with Contact Form 7 support!
+= Update now! Version 1.2 released =   
+Now with Contact Form 7 support and short tag export!
