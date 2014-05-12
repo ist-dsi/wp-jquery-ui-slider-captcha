@@ -278,18 +278,18 @@ endif;?>
 	<h3><?php _e( 'Live preview', 'slider_captcha' ); ?></h3>
 	<p><?php _e( 'This preview may differ from the one published on your website. Since the styles of the theme may override the settings of the plugin you should always check the slider appearance by browsing a page that requires validation.', 'slider_captcha' ); ?></p>
 	<p id="general_slider"></p>
-	<p><?php _e( 'Do you want to <a href="#">test slider captcha again</a>?', 'slider_captcha'); ?></p>
+	<p><?php _e( 'Do you want to <a href="#">test slider CAPCTHA again</a>?', 'slider_captcha'); ?></p>
 	<input type="hidden" name="submited" value="1" />
 </fieldset>
 
 <fieldset id="custom_export_container">
-	<h3><?php _e('Export your Slider','slider_captcha'); ?></h3>
-	<p><?php _e( 'Copy the next code of this custom slider, and apply it wherever you want. You have three options: php code, JavaScript code and shortcode (this one can be inserted into content editor, others into templates pages).', 'slider_captcha'); ?></p>
+	<h3><?php _e('Export options','slider_captcha'); ?></h3>
+	<p><?php _e( 'You can copy the code of this custom slider, and apply it wherever you want. You have three options: php code, JavaScript code and shortcode. This last one can be inserted into content editor, while the others should be placed into theme templates.', 'slider_captcha'); ?></p>
 	<p>
 		<textarea readonly id="code_generator"></textarea>
-		<span><a href="#" title="php code" data-code="php">php code</a></span>
-		<span><a href="#" title="JavaScript code" data-code="js">JavaScript code</a></span>
-		<span><a href="#" title="shortcode" data-code="sc">shortcode</a></span>
+		<span><a href="#" title="<?php _e('php code','slider_captcha'); ?>" data-code="php"><?php _e('php code','slider_captcha'); ?></a></span>
+		<span><a href="#" title="<?php _e('JavaScript code','slider_captcha'); ?>" data-code="js"><?php _e('JavaScript code','slider_captcha'); ?></a></span>
+		<span><a href="#" title="<?php _e('shortcode','slider_captcha'); ?>" data-code="sc"><?php _e('shortcode','slider_captcha'); ?></a></span>
 	</p>
 </fieldset>
 

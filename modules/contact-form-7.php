@@ -69,14 +69,14 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 				<table>
 					<tr>
 						<td>
-							' . __("To custumize the Slider Captcha you must go to the Slider CAPTCHA's settings panel and change the layout.", 'slider_captcha') .' 
+							' . __("To custumize the Slider CAPTCHA you must go to the Slider CAPTCHA's settings panel and change the layout.", 'slider_captcha') .' 
 						</td>
 					</tr>
 				</table>
 				<p>
 				<p>
 				<div class="tg-tag">
-					'.esc_html(__('Copy this code and paste it into the form on the left.', 'slider-captcha')).'<br />
+					'.esc_html(__('Copy this code and paste it into the form on the left.', 'slider_captcha')).'<br />
 					<input value="[slidercaptcha]" type="text" readonly="readonly" onfocus="this.select()" />
 				</div>
 			</form>
@@ -89,7 +89,7 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 			$messages,
 			array(
 				'bypassed' => array(
-					'description' => __('Invalid captcha value.', 'math-captcha'),
+					'description' => __('Invalid CAPTCHA value.', 'slider-captcha'),
 					'default' => __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha')
 				)
 			)

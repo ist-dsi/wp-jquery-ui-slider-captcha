@@ -19,8 +19,6 @@
 			return !1;
 		});
 
-		$( '#general_slider' ).sliderCaptcha( parseSliderCaptchaSettings( $( '#form_options_container > fieldset' ).eq(0) ) );
-
 		$( '#slider_captcha_form_selector' ).change(function () {				
 			var general_options = parseSliderCaptchaSettings( $( '#form_options_container > fieldset' ).eq(0) ),
 				individual_options = parseSliderCaptchaSettings( $( '#form_options_container > fieldset#' +  $(this).val() + '_options_container' ) );
@@ -29,7 +27,7 @@
 			$( '#' + $(this).val() + '_options_container' ).addClass('active').css({'visibility': 'visible', 'position': 'relative'}).height( 'auto' );
 
 			$( '#general_slider' ).next().slideUp();
-			$( '#general_slider' ).empty().sliderCaptcha( $.extend(true, {}, general_options, individual_options ) );
+			$( '#general_slider' ).empty().sliderCaptcha( $.extend( true, {}, parseSliderCaptchaSettings( $( '#form_options_container > fieldset' ).eq(0) ), {events: {afterUnlock: function () { $( '#general_slider' ).next().slideDown();}}} ) );
 
 			if( 'custom' == $(this).val() )
 				$('#custom_export_container').show()
@@ -175,9 +173,6 @@
 				face['iconAfterUnlock'] = form_object.find( '[name*="[knob_icon_face_after_unlock]"]' ).val();
 			
 			events['validateOnServer'] = 1;
-			events['afterUnlock'] = function () {
-				$( '#general_slider' ).next().slideDown();
-			};
 			
 			obj['styles'] = styles;
 			obj['face'] = face;
