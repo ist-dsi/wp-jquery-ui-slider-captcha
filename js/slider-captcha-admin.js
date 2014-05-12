@@ -27,7 +27,7 @@
 			$( '#' + $(this).val() + '_options_container' ).addClass('active').css({'visibility': 'visible', 'position': 'relative'}).height( 'auto' );
 
 			$( '#general_slider' ).next().slideUp();
-			$( '#general_slider' ).empty().sliderCaptcha( $.extend( true, {}, parseSliderCaptchaSettings( $( '#form_options_container > fieldset' ).eq(0) ), {events: {afterUnlock: function () { $( '#general_slider' ).next().slideDown();}}} ) );
+			$( '#general_slider' ).empty().sliderCaptcha( $.extend( true, {}, general_options, individual_options , {events: {afterUnlock: function () { $( '#general_slider' ).next().slideDown();}}} ) );
 
 			if( 'custom' == $(this).val() )
 				$('#custom_export_container').show()
@@ -70,7 +70,7 @@
 		})
 
 		var getTemplateCodePHP = getTemplateCode( '<?php if(function_exists("slider_captcha")) slider_captcha( "general", "p", $1); ?>' ),
-			getTemplateCodeJS = getTemplateCode( '<script>$(document).ready(function(){$("#custom_slider_captcha").sliderCaptcha($1)});</script><p id="custom_slider_captcha"></p>' ),
+			getTemplateCodeJS = getTemplateCode( '<script>jQuery(document).ready(function(){jQuery("#custom_slider_captcha").sliderCaptcha($1)});</script><p id="custom_slider_captcha"></p>' ),
 			getTemplateCodeSC = getTemplateCode( '[sliderCaptcha$1]' );
 
 		$( '#custom_export_container span a' ).click(function () {

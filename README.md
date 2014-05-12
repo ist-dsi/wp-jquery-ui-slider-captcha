@@ -31,6 +31,13 @@ Just download and extract slider-captcha to your `wp-content/plugins` directory.
 
 ## Changelog
 
+= 1.2 =
+ - New feature that allows to add a slider in a template by php or JavaScript code or through shortcode in content editor
+ - Bug fixed for more than one form in contact form 7 
+
+### 1.1.1
+ - Fixed Contact Form bug when plugin not installed.
+
 ### 1.1
  - Contact Form 7 support added
  - Abstract class for other plugins support in the future created.
