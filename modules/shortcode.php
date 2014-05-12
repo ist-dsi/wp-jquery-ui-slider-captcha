@@ -4,6 +4,8 @@
 class sliderCaptchaShortCode extends sliderCaptchaModule {
 	
 	public $name = "Shortcode";
+	public $instance_number = 0;
+
 
 	private $attributes = array(
 		"type" => "type",
@@ -54,7 +56,8 @@ class sliderCaptchaShortCode extends sliderCaptchaModule {
 	}	
 
 	public function draw_shorttag($attr, $content = null) {
-		slider_captcha('custom_short','p',$this->translate_array($attr));
+		$instance = $this->instance_number++;
+		slider_captcha('custom_short_'.$instance,'p',$this->translate_array($attr));
 	}
 
 	private function translate_array($array) {
