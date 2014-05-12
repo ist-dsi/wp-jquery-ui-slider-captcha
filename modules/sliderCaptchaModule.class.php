@@ -23,6 +23,13 @@ abstract class sliderCaptchaModule {
 	}
 
 	/**
+	 * Returns true if the  module is a type of slider
+	 */
+	public function is_a_type() {
+		return true;
+	}
+
+	/**
 	 * Init the WordPress hooks
 	 */
 	public abstract function init_hooks();	
