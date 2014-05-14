@@ -18,6 +18,7 @@ if(!defined('SLIDER_CAPTCHA_PATH')) {
 	define('SLIDER_CAPTCHA_PATH', plugin_dir_path( __FILE__ ));
 }
 
+
 include SLIDER_CAPTCHA_PATH.'modules/sliderCaptchaModule.class.php'; //Load the abstract module class
 
 class SliderCaptcha {
@@ -91,6 +92,11 @@ class SliderCaptcha {
 			add_action( 'register_form', array(&$this, 'render_slider_on_register') );
 			add_action( 'register_post', array(&$this, 'validate_register_slider'),  10, 3 );
 			add_action( 'signup_extra_fields', array(&$this, 'render_slider_on_register') );
+			if(is_plugin_active('buddypress/bp-loader.php')) {
+				//Hooks related to the buddypress plugin.
+				add_action('bp_before_registration_submit_buttons', array(&$this, 'render_slider_on_register'));
+                add_action('bp_signup_validate', array(&$this, 'validate_register_slider_buddypress'));
+			}
 		}
 
 		//Lost password
@@ -260,6 +266,16 @@ class SliderCaptcha {
 		}
 
 		return $errors ;
+	}
+
+	public function validate_register_slider_buddypress($result) {
+	
+		/* If someone tryies to hack */
+		if ( $_REQUEST['slider_captcha_validated'] != 1 ) {
+        	wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha'));
+		}
+
+		return $result ;
 	}
 
 	public function render_slider_on_lost_password() {
