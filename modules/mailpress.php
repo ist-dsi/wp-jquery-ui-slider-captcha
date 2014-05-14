@@ -30,7 +30,7 @@ class slider_captcha_mailpress extends sliderCaptchaModule {
 		return class_exists('MailPress');
 	}
 
-	public function draw_slider($email, &$options) {
+	public function draw_slider($email, $options) {
 		$options['jq'] = false;
 		$options['js'] = false;
 		$container = "p";
