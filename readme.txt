@@ -4,7 +4,7 @@ Donate link: https://dsi.tecnico.ulisboa.pt
 Tags: slider, captcha, ui, comment, comments, responsive, spam, antispam, anti-spam, jquery, jquery-ui, plugin, registration, login, form, password reset, security, secure
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.3beta
+Stable tag: 1.3
 License: GPLv3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -26,6 +26,7 @@ With our brand new Settings page, you can now fully custumize every Slider on yo
 * Lost Password page
 * Custom localization
 * Contact Form 7
+* MailPress
 
 == Installation ==
 
