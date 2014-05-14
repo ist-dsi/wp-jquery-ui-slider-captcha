@@ -31,8 +31,6 @@ class slider_captcha_mailpress extends sliderCaptchaModule {
 	}
 
 	public function draw_slider($email, $options) {
-		$options['jq'] = false;
-		$options['js'] = false;
 		$container = "p";
 		?>
 		<<?php echo $container?> id="slidercaptcha-mailpress-<?php echo $this->instance_number?>"> </<?php echo $container?>>
