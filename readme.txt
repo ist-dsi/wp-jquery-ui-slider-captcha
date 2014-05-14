@@ -8,7 +8,7 @@ Stable tag: 1.2
 License: GPLv3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
-Slider CAPTCHA is a WordPress plugin that will allow you to replace or add a CAPTCHA field to any WordPress form.
+Slider CAPTCHA is a WordPress plugin that will allow you to replace or add a CAPTCHA field to any WordPress form. 
 
 == Description ==
 
@@ -125,4 +125,4 @@ Also, the name of the `$params keys also have changed. Please verify if your `$p
 == Upgrade Notice ==
 
 = Update now! Version 1.2 released =   
-Now with Contact Form 7 support and short tag export!
+Now with Contact Form 7 support and shortcode export!

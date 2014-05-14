@@ -53,9 +53,11 @@ class SliderCaptcha {
 		add_action( 'admin_enqueue_scripts', array(&$this, 'register_scripts' ));
 		add_action( 'admin_enqueue_scripts', array(&$this, 'register_admin_scripts'));
 
+
 		//Slider Captcha modules. @TODO add a filter
 		$this->load_modules = array(
 				'slider_captcha_cf7' => SLIDER_CAPTCHA_PATH . 'modules/contact-form-7.php',
+				'slider_captcha_mailpress' => SLIDER_CAPTCHA_PATH . 'modules/mailpress.php',
 				'sliderCaptchaShortCode' => SLIDER_CAPTCHA_PATH . 'modules/shortcode.php'
 			);
 
@@ -148,21 +150,21 @@ class SliderCaptcha {
 				'login' 			=> __( 'Login form', 'slider_captcha'),
 			);
 
+		//Get the settings
+		$this->sliders = get_option('slider-captcha-sliders', $default_sliders);
+
 		//Setup the modules
 		foreach($this->modules as $module_name => $module) {
 			//Add to the locations if enabled
 			if($module->is_enabled() && $module->is_a_type()) {
 				$this->captcha_locations[$module_name] = __( $module->name, 'slider_captcha');
-				if($module->defaults != NULL)
-					$default_sliders[$module_name] = array_merge($default_sliders['general'], $module->defaults);
+				if($module->has_defaults())
+					$this->update_slider($module_name, $module->defaults);
 			}				
 		}
 
 		//The custom must be the last location to be generated.
 		$this->captcha_locations['custom'] = __( 'Custom form', 'slider_captcha');
-
-		//Get the settings
-		$this->sliders = get_option('slider-captcha-sliders', $default_sliders);
 
 		// Init all the hooks
 		$this->init_hooks();
@@ -379,7 +381,9 @@ class SliderCaptcha {
 
 	public function update_slider($slider_name, $options) {
 		$curr_slide = $this->get_slider($slider_name);
+
 		$options = array_merge($curr_slide, $options);
+
 		return $this->add_to_sliders($slider_name, $options);
 	}
 
