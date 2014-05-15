@@ -122,6 +122,7 @@ class SliderCaptcha {
 		$this->js_settings = array(
 			'events' => array(
 				'validateOnServer' => 1,
+				'highValidationOnServer' => 1,
 				),
 			);
 		$this->settings = array(
