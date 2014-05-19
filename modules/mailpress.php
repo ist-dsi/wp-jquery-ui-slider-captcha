@@ -43,7 +43,7 @@ class slider_captcha_mailpress extends sliderCaptchaModule {
 			});
 		});
 		</script>
-		<?
+		<?php
 	}
 
 	public function turn_js_css_on($defaults) {
