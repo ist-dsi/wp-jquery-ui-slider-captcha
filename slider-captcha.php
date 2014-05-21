@@ -199,7 +199,7 @@ class SliderCaptcha {
 		wp_enqueue_script('jquery-ui-mouse');
 		wp_enqueue_script('jquery-ui-draggable');
 		wp_enqueue_script('jquery-ui-droppable');
-		wp_enqueue_script('jquery-ui-touch-punch', plugins_url( '/js/jquery.ui.touch-punch-improved.js', __FILE__ ), array('jquery-ui-droppable', 'jquery-ui-draggable', 'jquery-ui-widget', 'jquery-ui-core',' jquery-ui-mouse', 'jquery'), '0.3.1',false);
+		wp_enqueue_script('jquery-ui-touch-punch', plugins_url( '/js/jquery.ui.touch-punch-improved.js', __FILE__ ), array('jquery-ui-core',' jquery-ui-mouse', 'jquery'), '0.3.1',false);
 	
 		wp_enqueue_script('jquery-slider-captcha', plugins_url( '/js/slider-captcha.min.js', __FILE__ ), array('jquery-ui-droppable', 'jquery-ui-draggable', 'jquery-ui-widget', 'jquery-ui-core', 'jquery-ui-mouse', 'jquery', 'jquery-ui-touch-punch'), $plugin_version,false);
 		
