@@ -4,7 +4,7 @@ Donate link: https://dsi.tecnico.ulisboa.pt
 Tags: slider, captcha, ui, comment, comments, responsive, spam, antispam, anti-spam, jquery, jquery-ui, plugin, registration, login, form, password reset, security, secure
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.3.2
+Stable tag: 1.3.3
 License: GPLv3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -85,7 +85,10 @@ Also, the name of the `$params keys also have changed. Please verify if your `$p
 
 == Changelog ==
 
-= 1.3.1 =
+= 1.3.3 =
+* Fixed error with MailPress
+
+= 1.3.2 =
 * Bug fixes with Unexpected end of file
 
 = 1.3 =

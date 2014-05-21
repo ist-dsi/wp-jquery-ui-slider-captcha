@@ -3,7 +3,7 @@
 Plugin Name: Slider Captcha
 Plugin URL: http://nme.ist.utl.pt
 Description: Slider Captcha is a module that will replace all the captcha from WordPress. 
-Version: 1.3.2
+Version: 1.3.3
 Author: NME - Núcleo de Multimédia e E-Learning.
 Author URI: http://nme.ist.utl.pt
 Text Domain: slider_captcha
@@ -24,7 +24,7 @@ include SLIDER_CAPTCHA_PATH.'modules/sliderCaptchaModule.class.php'; //Load the 
 class SliderCaptcha {
 
 	/* Private */
-	public $plugin_version = '1.3.2';
+	public $plugin_version = '1.3.3';
 
 	private $load_modules; //Modules to be loaded
 	private $modules; //Loaded modules classes
@@ -92,7 +92,7 @@ class SliderCaptcha {
 			add_action( 'register_form', array(&$this, 'render_slider_on_register') );
 			add_action( 'register_post', array(&$this, 'validate_register_slider'),  10, 3 );
 			add_action( 'signup_extra_fields', array(&$this, 'render_slider_on_register') );
-			if(is_plugin_active('buddypress/bp-loader.php')) {
+			if(class_exists('BuddyPress')) {
 				//Hooks related to the buddypress plugin.
 				add_action('bp_before_registration_submit_buttons', array(&$this, 'render_slider_on_register'));
                 add_action('bp_signup_validate', array(&$this, 'validate_register_slider_buddypress'));
