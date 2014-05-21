@@ -4,7 +4,7 @@ Donate link: https://dsi.tecnico.ulisboa.pt
 Tags: slider, captcha, ui, comment, comments, responsive, spam, antispam, anti-spam, jquery, jquery-ui, plugin, registration, login, form, password reset, security, secure
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.3
+Stable tag: 1.3.1
 License: GPLv3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -85,6 +85,9 @@ Also, the name of the `$params keys also have changed. Please verify if your `$p
 
 == Changelog ==
 
+= 1.3.1 =
+* Bug fixes with Unexpected end of file
+
 = 1.3 =
 * Added MailPress support
 * Added Buddypress registration form support
@@ -130,5 +133,5 @@ Also, the name of the `$params keys also have changed. Please verify if your `$p
 
 == Upgrade Notice ==
 
-= Update now! Version 1.2 released =   
-Now with Contact Form 7 support and shortcode export!
+= Update now! Version 1.3 released =   
+Now with MailPress support!
