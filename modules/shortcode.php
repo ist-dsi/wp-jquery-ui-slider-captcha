@@ -57,7 +57,12 @@ class sliderCaptchaShortCode extends sliderCaptchaModule {
 
 	public function draw_shorttag($attr, $content = null) {
 		$instance = $this->instance_number++;
+		ob_start();
 		slider_captcha('custom_short_'.$instance,'p',$this->translate_array($attr));
+		$output_string = ob_get_contents();
+		ob_end_clean();
+
+		return $output_string;
 	}
 
 	private function translate_array($array) {

@@ -3,7 +3,7 @@
 Plugin Name: Slider Captcha
 Plugin URL: http://nme.ist.utl.pt
 Description: Slider Captcha is a module that will replace all the captcha from WordPress. 
-Version: 1.2
+Version: 1.3.3
 Author: NME - Núcleo de Multimédia e E-Learning.
 Author URI: http://nme.ist.utl.pt
 Text Domain: slider_captcha
@@ -18,16 +18,16 @@ if(!defined('SLIDER_CAPTCHA_PATH')) {
 	define('SLIDER_CAPTCHA_PATH', plugin_dir_path( __FILE__ ));
 }
 
+
 include SLIDER_CAPTCHA_PATH.'modules/sliderCaptchaModule.class.php'; //Load the abstract module class
 
 class SliderCaptcha {
 
 	/* Private */
-	public $plugin_version = '1.2';
+	public $plugin_version = '1.3.4';
 
 	private $load_modules; //Modules to be loaded
 	private $modules; //Loaded modules classes
-
 
 	/* Public */
 
@@ -53,9 +53,11 @@ class SliderCaptcha {
 		add_action( 'admin_enqueue_scripts', array(&$this, 'register_scripts' ));
 		add_action( 'admin_enqueue_scripts', array(&$this, 'register_admin_scripts'));
 
+
 		//Slider Captcha modules. @TODO add a filter
 		$this->load_modules = array(
 				'slider_captcha_cf7' => SLIDER_CAPTCHA_PATH . 'modules/contact-form-7.php',
+				'slider_captcha_mailpress' => SLIDER_CAPTCHA_PATH . 'modules/mailpress.php',
 				'sliderCaptchaShortCode' => SLIDER_CAPTCHA_PATH . 'modules/shortcode.php'
 			);
 
@@ -89,6 +91,11 @@ class SliderCaptcha {
 			add_action( 'register_form', array(&$this, 'render_slider_on_register') );
 			add_action( 'register_post', array(&$this, 'validate_register_slider'),  10, 3 );
 			add_action( 'signup_extra_fields', array(&$this, 'render_slider_on_register') );
+			if(class_exists('BuddyPress')) {
+				//Hooks related to the buddypress plugin.
+				add_action('bp_before_registration_submit_buttons', array(&$this, 'render_slider_on_register'));
+                add_action('bp_signup_validate', array(&$this, 'validate_register_slider_buddypress'));
+			}
 		}
 
 		//Lost password
@@ -149,21 +156,21 @@ class SliderCaptcha {
 				'login' 			=> __( 'Login form', 'slider_captcha'),
 			);
 
+		//Get the settings
+		$this->sliders = get_option('slider-captcha-sliders', $default_sliders);
+
 		//Setup the modules
 		foreach($this->modules as $module_name => $module) {
 			//Add to the locations if enabled
 			if($module->is_enabled() && $module->is_a_type()) {
 				$this->captcha_locations[$module_name] = __( $module->name, 'slider_captcha');
-				if($module->defaults != NULL)
-					$default_sliders[$module_name] = array_merge($default_sliders['general'], $module->defaults);
+				if($module->has_defaults())
+					$this->update_slider($module_name, $module->defaults);
 			}				
 		}
 
 		//The custom must be the last location to be generated.
 		$this->captcha_locations['custom'] = __( 'Custom form', 'slider_captcha');
-
-		//Get the settings
-		$this->sliders = get_option('slider-captcha-sliders', $default_sliders);
 
 		// Init all the hooks
 		$this->init_hooks();
@@ -193,13 +200,13 @@ class SliderCaptcha {
 		wp_enqueue_script('jquery-ui-mouse');
 		wp_enqueue_script('jquery-ui-draggable');
 		wp_enqueue_script('jquery-ui-droppable');
-		wp_enqueue_script('jquery-ui-touch-punch', plugins_url( '/js/jquery.ui.touch-punch-improved.js', __FILE__ ), array('jquery-ui-core','jquery-ui-mouse','jquery'), '0.3.1',false);
+		wp_enqueue_script('jquery-ui-touch-punch', plugins_url( '/js/jquery.ui.touch-punch-improved.js', __FILE__ ), array('jquery'), '0.3.1',false);
 	
-		wp_enqueue_script('jquery-slider-captcha', plugins_url( '/js/slider-captcha.min.js', __FILE__ ), array('jquery-ui-core','jquery-ui-touch-punch'), $plugin_version,false);
-		
-		wp_enqueue_style('slider-captcha-css', plugins_url( '/css/slider-captcha.css', __FILE__ ), $plugin_version );
+		wp_enqueue_script('jquery-slider-captcha', plugins_url( '/js/slider-captcha.min.js', __FILE__ ), array('jquery', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-mouse', 'jquery-ui-droppable', 'jquery-ui-draggable', 'jquery-ui-touch-punch'), $this->plugin_version, false);
 
 		wp_enqueue_script('json2');
+		
+		wp_enqueue_style('slider-captcha-css', plugins_url( '/css/slider-captcha.css', __FILE__ ), $this->plugin_version );
 
 		//Register modules scripts
 		foreach($this->modules as $module)
@@ -259,6 +266,16 @@ class SliderCaptcha {
 		}
 
 		return $errors ;
+	}
+
+	public function validate_register_slider_buddypress($result) {
+	
+		/* If someone tryies to hack */
+		if ( $_REQUEST['slider_captcha_validated'] != 1 ) {
+        	wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha'));
+		}
+
+		return $result ;
 	}
 
 	public function render_slider_on_lost_password() {
@@ -359,10 +376,10 @@ class SliderCaptcha {
 			wp_enqueue_script( 'select2-script', plugins_url('/js/select2/select2.js', __FILE__));
 			wp_enqueue_style( 'select2', plugins_url('/js/select2/select2.css', __FILE__));
 
-			wp_enqueue_script( 'slider-captcha-admin', plugins_url( '/js/slider-captcha-admin.js', __FILE__), array( 'jquery' ), $plugin_version );
+			wp_enqueue_script( 'slider-captcha-admin', plugins_url( '/js/slider-captcha-admin.js', __FILE__), array( 'jquery' ), $this->plugin_version );
 
 			//Register CSS files
-			wp_register_style( 'slider-captcha-admin-css', plugins_url( '/css/slider-captcha-admin.css', __FILE__), array(), $plugin_version );
+			wp_register_style( 'slider-captcha-admin-css', plugins_url( '/css/slider-captcha-admin.css', __FILE__), array(), $this->plugin_version );
 			wp_enqueue_style( 'slider-captcha-admin-css' );
 		}
 	}
@@ -380,7 +397,9 @@ class SliderCaptcha {
 
 	public function update_slider($slider_name, $options) {
 		$curr_slide = $this->get_slider($slider_name);
+
 		$options = array_merge($curr_slide, $options);
+
 		return $this->add_to_sliders($slider_name, $options);
 	}
 

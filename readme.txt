@@ -4,11 +4,11 @@ Donate link: https://dsi.tecnico.ulisboa.pt
 Tags: slider, captcha, ui, comment, comments, responsive, spam, antispam, anti-spam, jquery, jquery-ui, plugin, registration, login, form, password reset, security, secure
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.2
+Stable tag: 1.3.3
 License: GPLv3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
-Slider CAPTCHA is a WordPress plugin that will allow you to replace or add a CAPTCHA field to any WordPress form.
+Slider CAPTCHA is a WordPress plugin that will allow you to replace or add a CAPTCHA field to any WordPress form. 
 
 == Description ==
 
@@ -26,6 +26,7 @@ With our brand new Settings page, you can now fully custumize every Slider on yo
 * Lost Password page
 * Custom localization
 * Contact Form 7
+* MailPress
 
 == Installation ==
 
@@ -84,6 +85,17 @@ Also, the name of the `$params keys also have changed. Please verify if your `$p
 
 == Changelog ==
 
+= 1.3.3 =
+* Fixed error with MailPress
+
+= 1.3.2 =
+* Bug fixes with Unexpected end of file
+
+= 1.3 =
+* Added MailPress support
+* Added Buddypress registration form support
+* Fixed bugs
+
 = 1.2 =
 * New feature that allows to add a slider in a template by php or JavaScript code or through shortcode in content editor
 * Bug fixed for more than one form in Contact Form 7 
@@ -124,5 +136,5 @@ Also, the name of the `$params keys also have changed. Please verify if your `$p
 
 == Upgrade Notice ==
 
-= Update now! Version 1.2 released =   
-Now with Contact Form 7 support and short tag export!
+= Update now! Version 1.3 released =   
+Now with MailPress support!

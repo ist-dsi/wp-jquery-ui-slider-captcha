@@ -40,4 +40,8 @@ abstract class sliderCaptchaModule {
 	public function init_scripts() {
 		return true;
 	}
+
+	public function has_defaults() {
+		return $this->defaults != NULL && is_array($this->defaults) && count($this->defaults) > 0;
+	}
 }

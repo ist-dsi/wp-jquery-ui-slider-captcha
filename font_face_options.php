@@ -1,4 +1,4 @@
-<option value=""><?_e("None selected","slider_captcha")?></option>
+<option value=""><?php _e("None selected","slider_captcha")?></option>
 <option value="note" <?php selected($options['face'][$field], "note")?>>note</option>
 <option value="logo-db" <?php selected($options['face'][$field], "logo-db")?>>logo-db</option>
 <option value="music" <?php selected($options['face'][$field], "music")?>>music</option>

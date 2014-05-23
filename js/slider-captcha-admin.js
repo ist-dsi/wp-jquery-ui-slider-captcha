@@ -70,7 +70,7 @@
 		})
 
 		var getTemplateCodePHP = getTemplateCode( '<?php if(function_exists("slider_captcha")) slider_captcha( "general", "p", $1); ?>' ),
-			getTemplateCodeJS = getTemplateCode( '<script>jQuery(document).ready(function(){jQuery("#custom_slider_captcha").sliderCaptcha($1)});</script><p id="custom_slider_captcha"></p>' ),
+			getTemplateCodeJS = getTemplateCode( '<script>(function($){jQuery(document).ready(function(){jQuery("#custom_slider_captcha").sliderCaptcha($1)})})(jQuery);</script><p id="custom_slider_captcha"></p>' ),
 			getTemplateCodeSC = getTemplateCode( '[sliderCaptcha$1]' );
 
 		$( '#custom_export_container span a' ).click(function () {
