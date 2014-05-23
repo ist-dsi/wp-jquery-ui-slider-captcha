@@ -37,6 +37,8 @@ class SliderCaptcha {
 	public $captcha_locations;
 	private $sliders; //Array where the sliders will be structured. 
 
+	private $last_version;
+
 	function __construct() {
 
 		// Load the languages
@@ -74,6 +76,8 @@ class SliderCaptcha {
 				}
 			}
 		}
+
+		$this->last_version = get_option('slider_captcha_last_version',false);
 
 	}
 
@@ -174,6 +178,20 @@ class SliderCaptcha {
 
 		// Init all the hooks
 		$this->init_hooks();
+
+		//Check if there was a update
+		if($this->last_version == false || version_compare($this->last_version, $this->plugin_version, '<'))
+			$this->on_update();
+
+	}
+
+	function on_update() {
+		//First update the version
+		#$this->last_version = $this->plugin_version;
+		#update_option('slider_captcha_last_version',$this->plugin_version);
+		//Add new defaults
+		foreach($this->sliders as $slider_name=>$values)
+			$this->update_slider($slider_name, array_merge($this->js_settings, $this->settings));
 	}
 
 	function admin_color_scheme() {
@@ -202,7 +220,7 @@ class SliderCaptcha {
 		wp_enqueue_script('jquery-ui-droppable');
 		wp_enqueue_script('jquery-ui-touch-punch', plugins_url( '/js/jquery.ui.touch-punch-improved.js', __FILE__ ), array('jquery'), '0.3.1',false);
 	
-		wp_enqueue_script('jquery-slider-captcha', plugins_url( '/js/slider-captcha.min.js', __FILE__ ), array('jquery', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-mouse', 'jquery-ui-droppable', 'jquery-ui-draggable', 'jquery-ui-touch-punch'), $this->plugin_version, false);
+		wp_enqueue_script('jquery-slider-captcha', plugins_url( '/js/slider-captcha.js', __FILE__ ), array('jquery', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-mouse', 'jquery-ui-droppable', 'jquery-ui-draggable', 'jquery-ui-touch-punch'), $this->plugin_version, false);
 
 		wp_enqueue_script('json2');
 		
@@ -327,8 +345,41 @@ class SliderCaptcha {
 			@session_start();
 
 		if(isset($_REQUEST['wp-submit'])) {
-			$validateOnServer = $_REQUEST['slider_captcha_validated'];
-			if( $validateOnServer != 1) {
+			$valid = false;
+			//INICIO DA VALIDACAO: REFACTORIZAR
+			$matrix_det = $_POST['m'];
+			$slider_name =  $_POST['sliderName'];
+			$validation_hash =  $_POST['slider_captcha_validated'];
+			$cookie_hash = $_COOKIE['sh_'.$slider_name];
+			//Okey, we have the matrix, lets calculate the determinant
+			preg_match("/((-*[0-9]+),(-*[0-9]+),-*[0-9]+,(-*[0-9]+),(-*[0-9]+),-*[0-9]+,-*[0-9]+,-*[0-9]+,-*[0-9]+),(-*[0-9]+)/", 
+				$matrix_det, $matrix_values);
+			$matrix = $matrix_values[1];
+			$a = $matrix_values[2];
+			$b = $matrix_values[3];
+			$c = $matrix_values[4];
+			$d = $matrix_values[5];
+			$determinant = $matrix_values[6];
+			$calculated_det = $a * $d - ($b * $c);
+
+			if($determinant != $calculated_det)
+				die("validation failed"); //todo: return
+
+			//Generate the md5 hash
+			$generated_hash = md5("|$matrix|=$calculated_det;$cookie_hash");
+			if($validation_hash != $generated_hash)
+				die("validation failed"); //todo: return
+
+			if( get_transient( "sct_$validation_hash" ) == $matrix) {
+				die("validation failed");
+			}
+
+			set_transient("sct_$validation_hash",$matrix, 10 * DAY_IN_SECONDS);
+
+			#var_dump($validateOnServer, $matrix,$slider_name,$validation_hash, $generated_hash ,$cookie_hash, $determinant, $calculated_det);
+			$valid = true;
+
+			if( !$valid ) {
 				wp_clear_auth_cookie();
 				$error = new WP_Error();
 				$error->add( 'slider_captcha_missing', __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha') );
