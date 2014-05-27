@@ -187,8 +187,8 @@ class SliderCaptcha {
 
 	function on_update() {
 		//First update the version
-		#$this->last_version = $this->plugin_version;
-		#update_option('slider_captcha_last_version',$this->plugin_version);
+		$this->last_version = $this->plugin_version;
+		update_option('slider_captcha_last_version',$this->plugin_version);
 		//Add new defaults
 		foreach($this->sliders as $slider_name=>$values)
 			$this->update_slider($slider_name, array_merge($this->js_settings, $this->settings));
