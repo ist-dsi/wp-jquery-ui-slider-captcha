@@ -1,15 +1,15 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: CAS Maestro\n"
-"POT-Creation-Date: 2014-05-09 11:51-0000\n"
-"PO-Revision-Date: 2014-05-09 11:51-0000\n"
+"POT-Creation-Date: 2014-05-27 14:48-0000\n"
+"PO-Revision-Date: 2014-05-27 14:48-0000\n"
 "Last-Translator: João Pedro Sequeria Correia Pargana <jpargana@ist.utl.pt>\n"
 "Language-Team: NME <nme@ist.utl.pt>\n"
 "Language: pt_PT\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Poedit 1.6.4\n"
+"X-Generator: Poedit 1.6.2\n"
 "X-Poedit-KeywordsList: _;gettext;gettext_noop;_e;__;__ngettext;_n:1,2;"
 "_nc:4c,1,2\n"
 "X-Poedit-Basepath: .\n"
@@ -20,6 +20,44 @@ msgstr ""
 #: ../font_face_options.php:1
 msgid "None selected"
 msgstr "Nenhum selecionado"
+
+#: ../slider-captcha.php:156
+msgid "General"
+msgstr "Geral"
+
+#: ../slider-captcha.php:157
+msgid "Comments form"
+msgstr "Formulário de comentários"
+
+#: ../slider-captcha.php:158
+msgid "Registration form"
+msgstr "Formulário de registo"
+
+#: ../slider-captcha.php:159
+msgid "Reset password form"
+msgstr "Formulário de password perdida"
+
+#: ../slider-captcha.php:160
+msgid "Login form"
+msgstr "Formulário de login"
+
+#: ../slider-captcha.php:177
+msgid "Custom form"
+msgstr "Formulário personalizado"
+
+#: ../slider-captcha.php:295 ../slider-captcha.php:320
+#: ../slider-captcha.php:331 ../slider-captcha.php:359
+#: ../slider-captcha.php:388 ../modules/contact-form-7.php:93
+msgid ""
+"<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. "
+"Please make sure you have JavaScript & Cookies enabled on your browser."
+msgstr ""
+"<strong>ERRO</strong>: Aconteceu um problema com a validação do CAPTCHA. Por "
+"favor, verifique se tem o Javascript e os Cookies activos no seu navegador."
+
+#: ../slider-captcha.php:404 ../slider-captcha.php:416
+msgid "Slider CAPTCHA Settings"
+msgstr "Definições do Slider CAPTCHA"
 
 #: ../modules/contact-form-7.php:63
 msgid "Slider CAPTCHA"
@@ -40,49 +78,6 @@ msgstr "Copie este código e cole-o no formulário à esquerda."
 #: ../modules/contact-form-7.php:92
 msgid "Invalid CAPTCHA value."
 msgstr "Valor do CAPTCHA inválido."
-
-#: ../modules/contact-form-7.php:93 ../slider-captcha.php:229
-#: ../slider-captcha.php:254 ../slider-captcha.php:284
-#: ../slider-captcha.php:314 ../slider-captcha_conflit_tests.php:195
-#: ../slider-captcha_conflit_tests.php:220
-#: ../slider-captcha_conflit_tests.php:250
-#: ../slider-captcha_conflit_tests.php:280
-msgid ""
-"<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. "
-"Please make sure you have JavaScript enabled on your browser."
-msgstr ""
-"<strong>ERRO</strong>: Aconteceu um problema com a validação do CAPTCHA. Por "
-"favor, verifique se tem o Javascript activo no seu navegador."
-
-#: ../slider-captcha.php:143 ../slider-captcha_conflit_tests.php:118
-msgid "General"
-msgstr "Geral"
-
-#: ../slider-captcha.php:144 ../slider-captcha_conflit_tests.php:119
-msgid "Comments form"
-msgstr "Formulário de comentários"
-
-#: ../slider-captcha.php:145 ../slider-captcha_conflit_tests.php:120
-msgid "Registration form"
-msgstr "Formulário de registo"
-
-#: ../slider-captcha.php:146 ../slider-captcha_conflit_tests.php:121
-msgid "Reset password form"
-msgstr "Formulário de password perdida"
-
-#: ../slider-captcha.php:147 ../slider-captcha_conflit_tests.php:122
-msgid "Login form"
-msgstr "Formulário de login"
-
-#: ../slider-captcha.php:160
-msgid "Custom form"
-msgstr "Formulário personalizado"
-
-#: ../slider-captcha.php:330 ../slider-captcha.php:342
-#: ../slider-captcha_conflit_tests.php:296
-#: ../slider-captcha_conflit_tests.php:308
-msgid "Slider CAPTCHA Settings"
-msgstr "Definições do Slider CAPTCHA"
 
 #: ../views/slider-captcha-admin.php:114
 msgid "All the settings have been successfully saved."

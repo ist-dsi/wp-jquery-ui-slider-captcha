@@ -292,7 +292,7 @@ class SliderCaptcha {
 
 	public function validate_comment_slider($comment_data) {
 		if( !$this->valid_request() )
-			wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha'));
+			wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript & Cookies enabled on your browser.",'slider_captcha'));
 		return $comment_data;
 	}
 
@@ -317,7 +317,7 @@ class SliderCaptcha {
 	
 		/* If someone tryies to hack */
 		if ( !$this->valid_request() ) {
-			$errors->add( 'slider_captcha_missing', __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha') );
+			$errors->add( 'slider_captcha_missing', __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript & Cookies enabled on your browser.",'slider_captcha') );
 			return $errors;
 		}
 
@@ -328,7 +328,7 @@ class SliderCaptcha {
 	
 		/* If someone tryies to hack */
 		if ( !$this->valid_request() ) {
-        	wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha'));
+        	wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript & Cookies enabled on your browser.",'slider_captcha'));
 		}
 
 		return $result ;
@@ -356,7 +356,7 @@ class SliderCaptcha {
 			return;
 
 		if( !$this->valid_request() )
-			wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha'));
+			wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript & Cookies enabled on your browser.",'slider_captcha'));
 
 	}
 
@@ -385,7 +385,7 @@ class SliderCaptcha {
 			if( !$this->valid_request() ) {
 				wp_clear_auth_cookie();
 				$error = new WP_Error();
-				$error->add( 'slider_captcha_missing', __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha') );
+				$error->add( 'slider_captcha_missing', __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript & Cookies enabled on your browser.",'slider_captcha') );
 				return $error;
 			} else {
 				return $user;

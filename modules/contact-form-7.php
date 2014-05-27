@@ -90,7 +90,7 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 			array(
 				'bypassed' => array(
 					'description' => __('Invalid CAPTCHA value.', 'slider-captcha'),
-					'default' => __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha')
+					'default' => __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript & Cookies enabled on your browser.",'slider_captcha')
 				)
 			)
 		);
