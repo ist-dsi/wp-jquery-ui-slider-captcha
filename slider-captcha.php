@@ -83,7 +83,7 @@ class SliderCaptcha {
 
 	function init_hooks() {
 		//Comments hook
-		if( $this->is_slider_enabled('comments') ) {
+		if( $this->is_slider_enabled('comments') && !is_admin() ) {
 			// Draw the captcha on the comment form
 			add_action('comment_form', array($this,'render_slider_on_comments'));
 			// Validate the captcha after comment is made
@@ -91,7 +91,7 @@ class SliderCaptcha {
 		}
 
 		//Registration hook
-		if( $this->is_slider_enabled('registration') ) {
+		if( $this->is_slider_enabled('registration') && !is_admin() ) {
 			add_action( 'register_form', array(&$this, 'render_slider_on_register') );
 			add_action( 'register_post', array(&$this, 'validate_register_slider'),  10, 3 );
 			add_action( 'signup_extra_fields', array(&$this, 'render_slider_on_register') );
@@ -103,13 +103,13 @@ class SliderCaptcha {
 		}
 
 		//Lost password
-		if ($this->is_slider_enabled('reset_password')) {
+		if ($this->is_slider_enabled('reset_password') && !is_admin()) {
 			add_action( 'lostpassword_form', array(&$this, 'render_slider_on_lost_password') );
 			add_action( 'lostpassword_post', array(&$this, 'validate_lost_password_slider'),  10, 3 );
 		}
 
 		//Login password
-		if ($this->is_slider_enabled('login')) {
+		if ($this->is_slider_enabled('login') && !is_admin()) {
 			add_action( 'login_form', array(&$this, 'render_slider_on_login') );
 			add_action( 'authenticate', array(&$this, 'validate_login_slider'),  30, 1);
 		}
@@ -232,6 +232,45 @@ class SliderCaptcha {
 	}
 
 	/**
+	 * This function will handle the server side validation of the slider.
+	 * If one of the arguments isn't passed, it will try to return the default one from POST and/or COOKIES.
+	 */
+	public function valid_request($matrix_det = null, $slider_name = null, $validation_hash = null, $cookie_hash = null) {
+		if($matrix_det == null)
+			$matrix_det = $_POST['m'];
+		if($slider_name == null)
+			$slider_name =  $_POST['sliderName'];
+		if($validation_hash == null)
+			$validation_hash =  $_POST['slider_captcha_validated'];
+		if($cookie_hash == null)
+			$cookie_hash = $_COOKIE['sh_'.$slider_name];
+		//Okey, we have the matrix, lets calculate the determinant
+		preg_match("/((-*[0-9]+),(-*[0-9]+),-*[0-9]+,(-*[0-9]+),(-*[0-9]+),-*[0-9]+,-*[0-9]+,-*[0-9]+,-*[0-9]+),(-*[0-9]+)/", 
+			$matrix_det, $matrix_values);
+		$matrix = $matrix_values[1];
+		$a = $matrix_values[2];
+		$b = $matrix_values[3];
+		$c = $matrix_values[4];
+		$d = $matrix_values[5];
+		$determinant = $matrix_values[6];
+		$calculated_det = $a * $d - ($b * $c);
+
+		if($determinant != $calculated_det)
+			return false;
+
+		//Generate the md5 hash
+		$generated_hash = md5("|$matrix|=$calculated_det;$cookie_hash");
+		if($validation_hash != $generated_hash)
+			return false;
+
+		if( get_transient( "sct_$validation_hash" ) == $matrix) 
+			return false;
+
+		set_transient("sct_$validation_hash",$matrix, 10 * DAY_IN_SECONDS);
+		return true;
+	}
+
+	/**
 	 * Function that will render the Slider Captcha
 	 * @return echos the code
 	 */
@@ -252,8 +291,7 @@ class SliderCaptcha {
 	}
 
 	public function validate_comment_slider($comment_data) {
-		$validateOnServer = $_POST['slider_captcha_validated'];
-		if( $validateOnServer != 1)
+		if( !$this->valid_request() )
 			wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha'));
 		return $comment_data;
 	}
@@ -278,7 +316,7 @@ class SliderCaptcha {
 	public function validate_register_slider($login, $email, $errors) {
 	
 		/* If someone tryies to hack */
-		if ( $_REQUEST['slider_captcha_validated'] != 1 ) {
+		if ( !$this->valid_request() ) {
 			$errors->add( 'slider_captcha_missing', __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha') );
 			return $errors;
 		}
@@ -289,7 +327,7 @@ class SliderCaptcha {
 	public function validate_register_slider_buddypress($result) {
 	
 		/* If someone tryies to hack */
-		if ( $_REQUEST['slider_captcha_validated'] != 1 ) {
+		if ( !$this->valid_request() ) {
         	wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha'));
 		}
 
@@ -317,8 +355,7 @@ class SliderCaptcha {
 		if( isset( $_REQUEST['user_login'] ) && $_REQUEST['user_login']=="" )
 			return;
 
-		$validateOnServer = $_POST['slider_captcha_validated'];
-		if( $validateOnServer != 1)
+		if( !$this->valid_request() )
 			wp_die(__("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha'));
 
 	}
@@ -344,42 +381,8 @@ class SliderCaptcha {
 		if ( "" == session_id() )
 			@session_start();
 
-		if(isset($_REQUEST['wp-submit'])) {
-			$valid = false;
-			//INICIO DA VALIDACAO: REFACTORIZAR
-			$matrix_det = $_POST['m'];
-			$slider_name =  $_POST['sliderName'];
-			$validation_hash =  $_POST['slider_captcha_validated'];
-			$cookie_hash = $_COOKIE['sh_'.$slider_name];
-			//Okey, we have the matrix, lets calculate the determinant
-			preg_match("/((-*[0-9]+),(-*[0-9]+),-*[0-9]+,(-*[0-9]+),(-*[0-9]+),-*[0-9]+,-*[0-9]+,-*[0-9]+,-*[0-9]+),(-*[0-9]+)/", 
-				$matrix_det, $matrix_values);
-			$matrix = $matrix_values[1];
-			$a = $matrix_values[2];
-			$b = $matrix_values[3];
-			$c = $matrix_values[4];
-			$d = $matrix_values[5];
-			$determinant = $matrix_values[6];
-			$calculated_det = $a * $d - ($b * $c);
-
-			if($determinant != $calculated_det)
-				die("validation failed"); //todo: return
-
-			//Generate the md5 hash
-			$generated_hash = md5("|$matrix|=$calculated_det;$cookie_hash");
-			if($validation_hash != $generated_hash)
-				die("validation failed"); //todo: return
-
-			if( get_transient( "sct_$validation_hash" ) == $matrix) {
-				die("validation failed");
-			}
-
-			set_transient("sct_$validation_hash",$matrix, 10 * DAY_IN_SECONDS);
-
-			#var_dump($validateOnServer, $matrix,$slider_name,$validation_hash, $generated_hash ,$cookie_hash, $determinant, $calculated_det);
-			$valid = true;
-
-			if( !$valid ) {
+		if(isset($_REQUEST['wp-submit'])) {			
+			if( !$this->valid_request() ) {
 				wp_clear_auth_cookie();
 				$error = new WP_Error();
 				$error->add( 'slider_captcha_missing', __("<strong>ERROR:</strong> Something went wrong with the CAPTCHA validation. Please make sure you have JavaScript enabled on your browser.",'slider_captcha') );

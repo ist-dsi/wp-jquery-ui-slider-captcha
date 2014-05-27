@@ -98,7 +98,7 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 
 	function cf7_validate_captcha($result, $tag) {
 		if(!is_admin())	{
-			if(!isset($_POST['slider_captcha_validated']) && $_REQUEST['slider_captcha_validated'] != 1) {
+			if(!$this->valid_request()) {
 				$result['valid'] = FALSE;
 				$result['reason'][$tag] = wpcf7_get_message('bypassed');
 			}
