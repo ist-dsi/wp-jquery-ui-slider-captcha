@@ -85,6 +85,11 @@ Also, the name of the `$params keys also have changed. Please verify if your `$p
 
 == Changelog ==
 
+= 1.4 =
+* Server side validation enhanced
+* Resolved a conflict with css Foundation
+* Fixed bugs
+
 = 1.3.3 =
 * Fixed error with MailPress
 

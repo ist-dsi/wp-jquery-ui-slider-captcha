@@ -31,6 +31,22 @@ Just download and extract slider-captcha to your `wp-content/plugins` directory.
 
 ## Changelog
 
+### 1.4
+ - Server side validation enhanced
+ - Resolved a conflict with css Foundation
+ - Fixed bugs
+
+### 1.3.3
+ - Fixed error with MailPress
+
+### 1.3.2
+ - Bug fixes with Unexpected end of file
+
+### 1.3
+ - Added MailPress support
+ - Added Buddypress registration form support
+ - Fixed bugs
+
 ### 1.2
  - New feature that allows to add a slider in a template by php or JavaScript code or through shortcode in content editor
  - Bug fixed for more than one form in contact form 7 
