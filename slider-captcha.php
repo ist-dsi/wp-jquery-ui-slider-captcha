@@ -224,7 +224,7 @@ class SliderCaptcha {
 
 		wp_enqueue_script('json2');
 		
-		wp_enqueue_style('slider-captcha-css', plugins_url( '/css/slider-captcha.css', __FILE__ ), '0.4' );
+		wp_enqueue_style('slider-captcha-css', plugins_url( '/css/slider-captcha.css', __FILE__ ), false, '0.4' );
 
 		//Register modules scripts
 		foreach($this->modules as $module)
