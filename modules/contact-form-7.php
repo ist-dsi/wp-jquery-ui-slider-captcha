@@ -60,7 +60,12 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 	function add_tag_generator() {
 		if(!function_exists('wpcf7_add_tag_generator'))
 			return;
-		wpcf7_add_tag_generator('slidercaptcha', __('Slider CAPTCHA', 'slider_captcha'), 'slider-captcha', array($this, 'tag_generator_rendering'));
+
+		wpcf7_add_tag_generator(
+			'slidercaptcha', 
+			__('Slider CAPTCHA', 'slider_captcha'), 
+			'slider-captcha', 
+			array($this, 'tag_generator_rendering'));
 	}
 
 	function tag_generator_rendering(&$contact_form) {
@@ -98,7 +103,7 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 
 	function cf7_validate_captcha($result, $tag) {
 		if(!is_admin())	{
-			if(!$this->valid_request()) {
+			if(!$this->sliderCaptcha->valid_request()) {
 				$result['valid'] = FALSE;
 				$result['reason'][$tag] = wpcf7_get_message('bypassed');
 			}

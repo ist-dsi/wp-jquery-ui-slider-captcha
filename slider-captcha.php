@@ -3,7 +3,7 @@
 Plugin Name: Slider Captcha
 Plugin URL: http://nme.ist.utl.pt
 Description: Slider Captcha is a module that will replace all the captcha from WordPress. 
-Version: 1.4.1
+Version: 1.4.2
 Author: NME - Núcleo de Multimédia e E-Learning.
 Author URI: http://nme.ist.utl.pt
 Text Domain: slider_captcha
@@ -24,7 +24,8 @@ include SLIDER_CAPTCHA_PATH.'modules/sliderCaptchaModule.class.php'; //Load the 
 class SliderCaptcha {
 
 	/* Private */
-	public $plugin_version = '1.4';
+	public $plugin_version = '1.4.2';
+	public $jquery_plugin_verson = '0.4.1';
 
 	private $load_modules; //Modules to be loaded
 	private $modules; //Loaded modules classes
@@ -218,13 +219,13 @@ class SliderCaptcha {
 		wp_enqueue_script('jquery-ui-mouse');
 		wp_enqueue_script('jquery-ui-draggable');
 		wp_enqueue_script('jquery-ui-droppable');
-		wp_enqueue_script('jquery-ui-touch-punch', plugins_url( '/js/jquery.ui.touch-punch-improved.js', __FILE__ ), array('jquery'), '0.4', false);
+		wp_enqueue_script('jquery-ui-touch-punch', plugins_url( '/js/jquery.ui.touch-punch-improved.js', __FILE__ ), array('jquery'), $this->jquery_plugin_verson, false);
 	
 		wp_enqueue_script('jquery-slider-captcha', plugins_url( '/js/slider-captcha.min.js', __FILE__ ), array('jquery', 'jquery-ui-core', 'jquery-ui-widget', 'jquery-ui-mouse', 'jquery-ui-droppable', 'jquery-ui-draggable', 'jquery-ui-touch-punch'), $this->plugin_version, false);
 
 		wp_enqueue_script('json2');
 		
-		wp_enqueue_style('slider-captcha-css', plugins_url( '/css/slider-captcha.css', __FILE__ ), false, '0.4' );
+		wp_enqueue_style('slider-captcha-css', plugins_url( '/css/slider-captcha.css', __FILE__ ), false, $this->jquery_plugin_verson );
 
 		//Register modules scripts
 		foreach($this->modules as $module)
