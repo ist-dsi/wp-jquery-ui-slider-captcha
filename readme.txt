@@ -4,7 +4,7 @@ Donate link: https://dsi.tecnico.ulisboa.pt
 Tags: slider, captcha, ui, comment, comments, responsive, spam, antispam, anti-spam, jquery, jquery-ui, plugin, registration, login, form, password reset, security, secure
 Requires at least: 3.5
 Tested up to: 3.9.1
-Stable tag: 1.4.2
+Stable tag: 1.4.3
 License: GPLv3
 License URI: https://www.gnu.org/copyleft/gpl.html
 
@@ -84,6 +84,10 @@ Also, the name of the `$params keys also have changed. Please verify if your `$p
 4. Export options
 
 == Changelog ==
+
+= 1.4.3 =
+* Changed the merging function of Slider CAPTCHA settings
+* Fixed bug with the new version updating settings
 
 = 1.4.2 =
 * Fixed fontello conflict with another plugins in Firefox

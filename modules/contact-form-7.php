@@ -90,7 +90,7 @@ class slider_captcha_cf7 extends sliderCaptchaModule {
 
 
 	function cf7_messages($messages){
-		return array_merge(
+		return array_replace_recursive(
 			$messages,
 			array(
 				'bypassed' => array(

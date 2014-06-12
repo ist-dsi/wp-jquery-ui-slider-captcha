@@ -3,7 +3,7 @@
 Plugin Name: Slider Captcha
 Plugin URL: http://nme.ist.utl.pt
 Description: Slider Captcha is a module that will replace all the captcha from WordPress. 
-Version: 1.4.2
+Version: 1.4.3
 Author: NME - Núcleo de Multimédia e E-Learning.
 Author URI: http://nme.ist.utl.pt
 Text Domain: slider_captcha
@@ -24,7 +24,7 @@ include SLIDER_CAPTCHA_PATH.'modules/sliderCaptchaModule.class.php'; //Load the 
 class SliderCaptcha {
 
 	/* Private */
-	public $plugin_version = '1.4.2';
+	public $plugin_version = '1.4.3';
 	public $jquery_plugin_verson = '0.4.1';
 
 	private $load_modules; //Modules to be loaded
@@ -142,14 +142,14 @@ class SliderCaptcha {
 			);
 
 		$default_sliders = array(
-			'general' => array_merge( 
+			'general' => array_replace_recursive( 
 				$this->js_settings,
 				$this->settings,
 				array('enabled' => 0)
 				),
 			);
 
-		$default_sliders['comments'] = array_merge($default_sliders['general'], array(
+		$default_sliders['comments'] = array_replace_recursive($default_sliders['general'], array(
 				'enabled' => 1,
 			));
 
@@ -181,18 +181,19 @@ class SliderCaptcha {
 		$this->init_hooks();
 
 		//Check if there was a update
-		if($this->last_version == false || version_compare($this->last_version, $this->plugin_version, '<'))
+		if($this->last_version == false || version_compare($this->last_version, $this->plugin_version, '!='))
 			$this->on_update();
 
 	}
 
 	function on_update() {
-		//First update the version
+		//Add new defaults
+		foreach($this->sliders as $slider_name=>$values) {
+			$this->update_slider($slider_name, array_replace_recursive($this->js_settings, $this->settings));
+		}
+		//Then update the version
 		$this->last_version = $this->plugin_version;
 		update_option('slider_captcha_last_version',$this->plugin_version);
-		//Add new defaults
-		foreach($this->sliders as $slider_name=>$values)
-			$this->update_slider($slider_name, array_merge($this->js_settings, $this->settings));
 	}
 
 	function admin_color_scheme() {
@@ -447,13 +448,13 @@ class SliderCaptcha {
 			return $this->sliders['general'];
 
 		$curr_slide = _slider_array_filter_recursive($this->sliders[$slider_name]);
-		return array_merge($this->sliders['general'], $curr_slide);
+		return array_replace_recursive($this->sliders['general'], $curr_slide);
 	}
 
 	public function update_slider($slider_name, $options) {
 		$curr_slide = $this->get_slider($slider_name);
 
-		$options = array_merge($curr_slide, $options);
+		$options = array_replace_recursive($curr_slide, $options);
 
 		return $this->add_to_sliders($slider_name, $options);
 	}
