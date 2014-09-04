@@ -3,7 +3,7 @@ Contributors: vaurdan, jpargana, playoutpt
 Donate link: https://dsi.tecnico.ulisboa.pt
 Tags: slider, captcha, ui, comment, comments, responsive, spam, antispam, anti-spam, jquery, jquery-ui, plugin, registration, login, form, password reset, security, secure
 Requires at least: 3.5
-Tested up to: 3.9.1
+Tested up to: 4.0
 Stable tag: 1.4.4
 License: GPLv3
 License URI: https://www.gnu.org/copyleft/gpl.html
